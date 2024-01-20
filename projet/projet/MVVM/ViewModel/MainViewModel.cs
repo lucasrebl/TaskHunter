@@ -12,9 +12,12 @@ namespace projet.MVVM.ViewModel
 
         public RelayCommand DashboardViewCommand { get; set; }
         public RelayCommand GameViewCommand { get; set; }
+        public RelayCommand TaskViewCommand { get; set; }
 
         public DashboardViewModel DashboardVM {  get; set; }
         public GameViewModel GameVM { get; set; }
+        public TaskViewModel TaskVM { get; set; }
+
         private object _currentView;
 
         public object CurrentView
@@ -35,6 +38,7 @@ namespace projet.MVVM.ViewModel
         {
             DashboardVM = new DashboardViewModel();
             GameVM = new GameViewModel();
+            TaskVM = new TaskViewModel();
 
             CurrentView = DashboardVM;
 
@@ -46,6 +50,11 @@ namespace projet.MVVM.ViewModel
             GameViewCommand = new RelayCommand(o =>
             {
                 CurrentView = GameVM;
+            });
+
+            TaskViewCommand = new RelayCommand(o =>
+            {
+                CurrentView = TaskVM;
             });
         }
     }
