@@ -12,11 +12,11 @@
         Background="Transparent"
         AllowsTransparency="True"
         >
-    
+
     <Window.DataContext>
         <viewModel:MainViewModel/>
     </Window.DataContext>
-    
+
     <Border Background="#0C0715"
             CornerRadius="20">
         <Grid>
@@ -25,39 +25,40 @@
                 <ColumnDefinition></ColumnDefinition>
 
             </Grid.ColumnDefinitions>
-            
+
             <Grid.RowDefinitions>
                 <RowDefinition Height="75"/>
                 <RowDefinition>
                 </RowDefinition>
 
             </Grid.RowDefinitions>
-            
-        <TextBlock Text="TaskHunter"
+
+            <TextBlock Text="TaskHunter"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
                    Foreground="Red"
                    FontSize="22"
                    FontWeight="Bold"/>
 
-        <StackPanel Grid.Row="1">
+            <StackPanel Grid.Row="1">
                 <RadioButton Content="Dashboard"
-             Foreground="White"
-             FontSize="14"
-             Height="50"
-             Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding DashboardViewCommand}"/>
+                     Foreground="White"
+                     FontSize="14"
+                     Height="50"
+                     Style="{StaticResource MenuButtonTheme}"
+                     Command="{Binding DashboardViewCommand}"/>
                 <RadioButton Content="Jouer"
-             Foreground="White"
-             FontSize="14"
-             Height="50"
-             Style="{StaticResource MenuButtonTheme}"/>
+                     Foreground="White"
+                     FontSize="14"
+                     Height="50"
+                     Style="{StaticResource MenuButtonTheme}"
+                     Command="{Binding GameViewCommand}"/>
                 <RadioButton Content="To-Do List"
              Foreground="White"
              FontSize="14"
              Height="50"
-                             Command="{Binding GameViewCommand}"
-             Style="{StaticResource MenuButtonTheme}"/>
+             Style="{StaticResource MenuButtonTheme}"
+             Command="{Binding TaskViewCommand}"/>
             </StackPanel>
 
             <ContentControl Grid.Row="1"
@@ -72,6 +73,6 @@
 
 
     </Border>
-            
-            
+
+
 </Window>

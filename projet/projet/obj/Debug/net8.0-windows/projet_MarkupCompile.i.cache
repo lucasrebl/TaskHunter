@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\Gabriel\source\repos\TaskHunter\projet\projet\App.xaml
-41931849801
+5521823737
 
-13-445105203
+15-179420808
 198-294894759
-MainWindow.xaml;MVVM\View\DashboardView.xaml;MVVM\View\GameView.xaml;Themes\MenuButtonTheme.xaml;
+MainWindow.xaml;MVVM\View\DashboardView.xaml;MVVM\View\GameView.xaml;MVVM\View\TaskView.xaml;Themes\MenuButtonTheme.xaml;
 
 True
 
