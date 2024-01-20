@@ -8,19 +8,19 @@
     "net8.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\rebou\\.nuget\\packages\\": {}
+    "C:\\Users\\Gabriel\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Ynov\\B2\\C#\\TaskHunter\\projet\\projet\\projet.csproj",
+      "projectUniqueName": "C:\\Users\\Gabriel\\Source\\Repos\\TaskHunter\\projet\\projet\\projet.csproj",
       "projectName": "projet",
-      "projectPath": "C:\\Ynov\\B2\\C#\\TaskHunter\\projet\\projet\\projet.csproj",
-      "packagesPath": "C:\\Users\\rebou\\.nuget\\packages\\",
-      "outputPath": "C:\\Ynov\\B2\\C#\\TaskHunter\\projet\\projet\\obj\\",
+      "projectPath": "C:\\Users\\Gabriel\\Source\\Repos\\TaskHunter\\projet\\projet\\projet.csproj",
+      "packagesPath": "C:\\Users\\Gabriel\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Gabriel\\Source\\Repos\\TaskHunter\\projet\\projet\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\rebou\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Gabriel\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -40,9 +40,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "default"
       }
     },
     "frameworks": {

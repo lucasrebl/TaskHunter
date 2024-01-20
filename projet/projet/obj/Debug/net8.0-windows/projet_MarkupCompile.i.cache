@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Ynov\B2\C#\TaskHunter\projet\projet\obj\Debug\net8.0-windows\
+C:\Users\Gabriel\source\repos\TaskHunter\projet\projet\obj\Debug\net8.0-windows\
 projet
 none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
-C:\Ynov\B2\C#\TaskHunter\projet\projet\App.xaml
-11407045341
+C:\Users\Gabriel\source\repos\TaskHunter\projet\projet\App.xaml
+41931849801
 
-6-1799356797
+13-445105203
 198-294894759
-MainWindow.xaml;
+MainWindow.xaml;MVVM\View\DashboardView.xaml;MVVM\View\GameView.xaml;Themes\MenuButtonTheme.xaml;
 
-False
+True
 
