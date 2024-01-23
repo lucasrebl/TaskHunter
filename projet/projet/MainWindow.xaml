@@ -11,6 +11,7 @@
         ResizeMode="NoResize"
         Background="Transparent"
         AllowsTransparency="True"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown"
         >
 
     <Window.DataContext>
@@ -67,7 +68,7 @@
                             Grid.Column="1"
                             Content="{Binding CurrentView}" Grid.ColumnSpan="2"/>
 
-            
+            <MediaElement Name="backgroundMusicPlayer" LoadedBehavior="Play" Visibility="Visible" Source="./Sounds/yoneuve.wav"/>
 
             <Button Content="X"
                     Grid.Column="2"

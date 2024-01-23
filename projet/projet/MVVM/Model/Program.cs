@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 public class Program
 {
-    /*static void Main()
+    /* static void Main()
     {
         Player player = new Player("joueur", 40, 40, 1);
         //init attaque pour le joueur
@@ -35,5 +35,5 @@ public class Program
         MonsterCommon.InitCommon();
         MonsterRare.InitRare();
         MonsterEpic.InitEpic();
-    }*/
+    } */
 }

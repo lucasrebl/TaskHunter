@@ -1,40 +1,27 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace projet
 {
     public partial class MainWindow : Window
     {
-        public MediaPlayer mediaPlayer = new MediaPlayer();
-
         public MainWindow()
         {
             InitializeComponent();
-            Loaded += MainWindow_Loaded;
+            backgroundMusicPlayer.MediaEnded += BackgroundMusicPlayer_MediaEnded;
         }
 
-        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        private void BackgroundMusicPlayer_MediaEnded(object sender, RoutedEventArgs e)
         {
-            string cheminMusique = "Sounds/yoneuve.mp3";
-
-            if (System.IO.File.Exists(cheminMusique))
-            {
-                mediaPlayer.Open(new Uri(cheminMusique, UriKind.RelativeOrAbsolute));
-                mediaPlayer.MediaEnded += MediaPlayer_MediaEnded;
-
-                mediaPlayer.Play();
-            }
-            else
-            {
-                MessageBox.Show("Fichier audio introuvable : " + cheminMusique);
-            }
+            backgroundMusicPlayer.Position = TimeSpan.Zero;
+            backgroundMusicPlayer.Play();
         }
 
-        private void MediaPlayer_MediaEnded(object sender, EventArgs e)
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            mediaPlayer.Position = TimeSpan.Zero;
-            mediaPlayer.Play();
+            this.DragMove();
         }
     }
 }

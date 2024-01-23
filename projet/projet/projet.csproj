@@ -9,16 +9,31 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Sounds\yoneuve.mp3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Sounds\yoneuve.mp3" />
+    <None Remove="Images\fightarea.jpg" />
+    <None Remove="Images\Monsters\Green_Slime_Anim.gif" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Fonts\" />
-    <Folder Include="Images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\fightarea.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Monsters\Green_Slime_Anim.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Sounds\yoneuve.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
