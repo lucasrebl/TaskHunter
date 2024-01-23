@@ -19,7 +19,7 @@
                         <Border.Background>
                             <ImageBrush Stretch="Fill" ImageSource="/Images/fightarea.jpg"/>
                         </Border.Background>
-                        <Image Margin="316,74,120,137" gif:ImageBehavior.AnimatedSource="/Images/Monsters/Green_Slime_Anim.gif" Stretch="Fill"/>
+                        <Image Margin="291,1,73,137" gif:ImageBehavior.AnimatedSource="/Images/Monsters/saka.png" Stretch="Uniform"/>
                     </Border>
 
                     <StackPanel Orientation="Vertical" VerticalAlignment="Center">
@@ -36,7 +36,7 @@
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
 
-                                    <TextBlock Text="Monstre" Foreground="White" FontSize="18" FontWeight="Bold" Margin="0,15,15,81"/>
+                                    <TextBlock Text="Moi" Foreground="White" FontSize="18" FontWeight="Bold" Margin="0,15,15,81"/>
                                 </Grid>
                             </Border>
                         </Border>

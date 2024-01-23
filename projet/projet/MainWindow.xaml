@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:projet"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
         xmlns:viewModel="clr-namespace:projet.MVVM.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="920"
@@ -33,6 +34,7 @@
                 <RowDefinition Height="75"/>
                 <RowDefinition>
                 </RowDefinition>
+                
 
             </Grid.RowDefinitions>
 
@@ -62,6 +64,10 @@
              Height="50"
              Style="{StaticResource MenuButtonTheme}"
              Command="{Binding TaskViewCommand}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="0" Grid.Column="1">
+                <Image gif:ImageBehavior.AnimatedSource="/Images/Monsters/crocmou.gif" Stretch="Uniform" Height="73" Width="91"/>
+
             </StackPanel>
 
             <ContentControl Grid.Row="1"
