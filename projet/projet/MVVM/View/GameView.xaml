@@ -3,11 +3,56 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:gif="http://wpfanimatedgif.codeplex.com"
              xmlns:local="clr-namespace:projet.MVVM.View"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             Background="Blue">
+             Background="#211F2E">
     <Grid>
-            
+
+        <StackPanel Background="#211F2E">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25">
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+
+                    <Border Width="500" Height="275" CornerRadius="8" VerticalAlignment="Top">
+                        <Border.Background>
+                            <ImageBrush Stretch="Fill" ImageSource="/Images/fightarea.jpg"/>
+                        </Border.Background>
+                        <Image Margin="291,1,73,137" gif:ImageBehavior.AnimatedSource="/Images/Monsters/saka.png" Stretch="Uniform"/>
+                    </Border>
+
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+
+                        <Border Width="200" Height="125" Background="#191726" CornerRadius="8" Margin="20,0,0,0">
+                            <TextBlock Text="Monstre" Foreground="White" FontSize="18" FontWeight="Bold" Margin="15"/>
+                        </Border>
+
+                        <Border Width="200" Height="125" Background="#191726" CornerRadius="8" Margin="20,15,0,0">
+                            <Border Width="200" Height="125" Background="#191726" CornerRadius="8" Margin="20,0,0,0">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Text="Moi" Foreground="White" FontSize="18" FontWeight="Bold" Margin="0,15,15,81"/>
+                                </Grid>
+                            </Border>
+                        </Border>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <Border Width="716" Height="101" Margin="0,30,0,0" Background="#191726" CornerRadius="8" VerticalAlignment="Top">
+                        <TextBlock Text="Hahahhaha" Foreground="White" FontSize="18" FontWeight="Bold" Margin="10,15,20,15"/>
+                    </Border>
+
+
+                </StackPanel>
+
+            </StackPanel>
+        </StackPanel>
+
     </Grid>
 </UserControl>

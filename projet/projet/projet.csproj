@@ -9,9 +9,79 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\fightarea.jpg" />
+    <None Remove="Images\Monsters\crocmou.gif" />
+    <None Remove="Images\Monsters\frenchpampa.png" />
+    <None Remove="Images\Monsters\goldenhand.png" />
+    <None Remove="Images\Monsters\isabelle.gif" />
+    <None Remove="Images\Monsters\mewtwo.gif" />
+    <None Remove="Images\Monsters\miku.gif" />
+    <None Remove="Images\Monsters\paimon.gif" />
+    <None Remove="Images\Monsters\pieds.gif" />
+    <None Remove="Images\Monsters\Rayquaza.gif" />
+    <None Remove="Images\Monsters\saka.png" />
+    <None Remove="Images\Monsters\salameche.gif" />
+    <None Remove="Images\Monsters\slime.gif" />
+    <None Remove="Images\Monsters\spoink.gif" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Fonts\" />
-    <Folder Include="Images\" />
-    <Folder Include="MVVM\Model\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\fightarea.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Monsters\crocmou.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Monsters\frenchpampa.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Monsters\goldenhand.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Monsters\isabelle.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Monsters\mewtwo.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Monsters\miku.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Monsters\paimon.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Monsters\pieds.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Monsters\Rayquaza.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Monsters\saka.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Monsters\salameche.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Monsters\slime.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Monsters\spoink.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Sounds\yoneuve.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

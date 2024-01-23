@@ -21,7 +21,7 @@ namespace projet.Core
             _canExecute = canExecute;
         }
 
-        public bool  CanExecute(object parameter)
+        public bool CanExecute(object parameter)
         {
             return _canExecute == null ||  _canExecute(parameter);
         }
@@ -30,9 +30,6 @@ namespace projet.Core
         {
             _execute(parameter);
         }
-
-
     }
-
 
 }
