@@ -1,21 +1,18 @@
 namespace Inventorys
 {
-    class Inventory
+    public class Inventory
     {
-        public int PotionHeal { get; private set; }
+        public int PotionHeal { get; set; }
+        public int PotionMana { get; set; }
+        public int ParchmentMana { get; set; }
+        public int ParchmentPv { get; set; }
 
-        public int PotionMana { get; private set; }
-
-        public int ParchmentMana { get; }
-
-        public int ParchementPv { get; }
-
-        public class Inventory(int potionHeal, int potionMana, int parchmentMana, int parchementPv)
+        public Inventory(int potionHeal, int potionMana, int parchmentMana, int parchmentPv)
         {
             PotionHeal = potionHeal;
-            PotionMan = potionMana;
+            PotionMana = potionMana;
             ParchmentMana = parchmentMana;
-            ParchementPv = parchementPv;
+            ParchmentPv = parchmentPv;
         }
     }
 }

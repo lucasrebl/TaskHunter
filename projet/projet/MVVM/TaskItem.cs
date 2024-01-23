@@ -11,14 +11,12 @@ namespace Task
         public string Title { get; set; }
         public DateTime Date { get; set; }
         public bool IsCompleted { get; set; }
-        public int Reward { get; set; }
 
         public TaskItem(string title, DateTime date)
         {
             Title = title;
             Date = date;
             IsCompleted = false;
-            Reward = 0;
         }
     }
 
