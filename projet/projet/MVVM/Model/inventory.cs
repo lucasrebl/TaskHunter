@@ -10,12 +10,12 @@ namespace Inventorys
 
         public int ParchementPv { get; }
 
-        public class Inventory(int potionHeal, int potionMana, int parchmentMana, int parchementPv)
-        {
-            PotionHeal = potionHeal;
-            PotionMan = potionMana;
-            ParchmentMana = parchmentMana;
-            ParchementPv = parchementPv;
-        }
+        //public class Inventory(int potionHeal, int potionMana, int parchmentMana, int parchementPv)
+        //{
+        //    PotionHeal = potionHeal;
+        //PotionMan = potionMana;
+        //ParchmentMana = parchmentMana;
+        //ParchementPv = parchementPv;
+        // }
     }
 }
