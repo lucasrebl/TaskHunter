@@ -15,6 +15,7 @@
 
     <Window.DataContext>
         <viewModel:MainViewModel/>
+        
     </Window.DataContext>
 
     <Border Background="#0C0715"
@@ -22,7 +23,8 @@
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
-                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="35*"></ColumnDefinition>
+                <ColumnDefinition Width="13*"/>
 
             </Grid.ColumnDefinitions>
 
@@ -63,15 +65,24 @@
 
             <ContentControl Grid.Row="1"
                             Grid.Column="1"
-                            Content="{Binding CurrentView}"/>
+                            Content="{Binding CurrentView}" Grid.ColumnSpan="2"/>
 
+            
 
-
+            <Button Content="X"
+                    Grid.Column="2"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Right"
+                    Width="20"
+                    Height="20"
+                    Margin="0,5,5,0"
+                    Foreground="Black"
+                    FontSize="12"
+                    FontWeight="Bold"
+                    Background="Red"
+                    BorderBrush="Transparent"
+                    Command="{Binding CloseWindowCommand}" />
         </Grid>
-
-
-
-
     </Border>
 
 

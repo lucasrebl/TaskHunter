@@ -1,24 +1,40 @@
-﻿using System.Text;
+﻿using System;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace projet
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
+        public MediaPlayer mediaPlayer = new MediaPlayer();
+
         public MainWindow()
         {
             InitializeComponent();
+            Loaded += MainWindow_Loaded;
+        }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            string cheminMusique = "Sounds/yoneuve.mp3";
+
+            if (System.IO.File.Exists(cheminMusique))
+            {
+                mediaPlayer.Open(new Uri(cheminMusique, UriKind.RelativeOrAbsolute));
+                mediaPlayer.MediaEnded += MediaPlayer_MediaEnded;
+
+                mediaPlayer.Play();
+            }
+            else
+            {
+                MessageBox.Show("Fichier audio introuvable : " + cheminMusique);
+            }
+        }
+
+        private void MediaPlayer_MediaEnded(object sender, EventArgs e)
+        {
+            mediaPlayer.Position = TimeSpan.Zero;
+            mediaPlayer.Play();
         }
     }
 }

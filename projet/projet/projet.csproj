@@ -9,6 +9,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Sounds\yoneuve.mp3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Sounds\yoneuve.mp3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Fonts\" />
     <Folder Include="Images\" />
     <Folder Include="MVVM\Model\" />
