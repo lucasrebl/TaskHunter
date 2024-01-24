@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <None Remove="Images\fightarea.jpg" />
+    <None Remove="Images\fightarea2.png" />
     <None Remove="Images\Monsters\crocmou.gif" />
     <None Remove="Images\Monsters\frenchpampa.png" />
     <None Remove="Images\Monsters\goldenhand.png" />
@@ -23,6 +24,7 @@
     <None Remove="Images\Monsters\salameche.gif" />
     <None Remove="Images\Monsters\slime.gif" />
     <None Remove="Images\Monsters\spoink.gif" />
+    <None Remove="Images\red.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,6 +37,9 @@
 
   <ItemGroup>
     <Resource Include="Images\fightarea.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\fightarea2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\Monsters\crocmou.gif">
@@ -74,6 +79,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\Monsters\spoink.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\red.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
