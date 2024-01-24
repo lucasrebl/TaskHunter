@@ -13,11 +13,11 @@
         <StackPanel Background="#211F2E">
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25">
 
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
 
                     <Grid>
-                        <Border Width="500" Height="275" CornerRadius="8" VerticalAlignment="Top" Background="#191726" Opacity="1"/>
-                        <Border Width="500" Height="275" CornerRadius="8" VerticalAlignment="Top">
+                        <Border Width="450" Height="250" CornerRadius="8" VerticalAlignment="Center" Background="#191726" Opacity="1"/>
+                        <Border Width="450" Height="250" CornerRadius="8" VerticalAlignment="Center">
                             <Border.Background>
                                 <ImageBrush Stretch="Fill" ImageSource="/Images/fightarea2.png"/>
                             </Border.Background>
@@ -30,14 +30,14 @@
                     </Grid>
 
 
-                    <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
 
                         <Border Width="200" Height="125" Background="#191726" CornerRadius="8" Margin="20,0,0,0">
                             <TextBlock Text="Monstre" Foreground="White" FontSize="18" FontWeight="Bold" Margin="15"/>
                         </Border>
 
                         <Border Width="200" Height="125" Background="#191726" CornerRadius="8" Margin="20,15,0,0">
-                            <Border Width="200" Height="125" Background="#191726" CornerRadius="8" Margin="20,0,0,0">
+                            <Border Height="125" Background="#191726" CornerRadius="8" Margin="20,0,0,0">
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto"/>
@@ -52,11 +52,9 @@
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
-                    <Border Width="716" Height="101" Margin="0,30,0,0" Background="#0C0715" CornerRadius="8" VerticalAlignment="Top">
+                    <Border Width="670" Height="101" Margin="0,30,0,0" Background="#0C0715" CornerRadius="8" VerticalAlignment="Top">
                         <TextBlock Text="Vous attaquez les pieds ! Ils perdent 20 PV !" Foreground="White" FontSize="18" Margin="10,15,20,15" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     </Border>
-
-
                 </StackPanel>
 
             </StackPanel>
