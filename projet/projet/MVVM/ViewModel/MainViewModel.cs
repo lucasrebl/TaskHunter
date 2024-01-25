@@ -4,17 +4,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 
 namespace projet.MVVM.ViewModel
 {
     internal class MainViewModel : ObservableObject
     {
-
         public RelayCommand DashboardViewCommand { get; set; }
         public RelayCommand GameViewCommand { get; set; }
         public RelayCommand TaskViewCommand { get; set; }
+        public ICommand CloseWindowCommand { get; }
 
-        public DashboardViewModel DashboardVM {  get; set; }
+        public DashboardViewModel DashboardVM { get; set; }
         public GameViewModel GameVM { get; set; }
         public TaskViewModel TaskVM { get; set; }
 
@@ -30,15 +32,13 @@ namespace projet.MVVM.ViewModel
             }
         }
 
-
-
-
-
         public MainViewModel()
         {
             DashboardVM = new DashboardViewModel();
             GameVM = new GameViewModel();
             TaskVM = new TaskViewModel();
+
+            CloseWindowCommand = new RelayCommand(CloseWindow);
 
             CurrentView = DashboardVM;
 
@@ -56,6 +56,11 @@ namespace projet.MVVM.ViewModel
             {
                 CurrentView = TaskVM;
             });
+        }
+
+        private void CloseWindow(object parameter)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:projet"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
         xmlns:viewModel="clr-namespace:projet.MVVM.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="920"
@@ -11,10 +12,12 @@
         ResizeMode="NoResize"
         Background="Transparent"
         AllowsTransparency="True"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown"
         >
 
     <Window.DataContext>
         <viewModel:MainViewModel/>
+        
     </Window.DataContext>
 
     <Border Background="#0C0715"
@@ -22,7 +25,8 @@
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
-                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="35*"></ColumnDefinition>
+                <ColumnDefinition Width="13*"/>
 
             </Grid.ColumnDefinitions>
 
@@ -30,6 +34,7 @@
                 <RowDefinition Height="75"/>
                 <RowDefinition>
                 </RowDefinition>
+                
 
             </Grid.RowDefinitions>
 
@@ -60,18 +65,30 @@
              Style="{StaticResource MenuButtonTheme}"
              Command="{Binding TaskViewCommand}"/>
             </StackPanel>
+            <StackPanel Grid.Row="0" Grid.Column="1">
+                <Image gif:ImageBehavior.AnimatedSource="/Images/Monsters/crocmou.gif" Stretch="Uniform" Height="73" Width="91"/>
+
+            </StackPanel>
 
             <ContentControl Grid.Row="1"
                             Grid.Column="1"
-                            Content="{Binding CurrentView}"/>
+                            Content="{Binding CurrentView}" Grid.ColumnSpan="2"/>
 
-
-
+            <MediaElement x:Name="BackgroundMusicPlayer" Source="./Sounds/yoneuve.wav"/>
+            <Button Content="X"
+                    Grid.Column="2"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Right"
+                    Width="20"
+                    Height="20"
+                    Margin="0,5,5,0"
+                    Foreground="Black"
+                    FontSize="12"
+                    FontWeight="Bold"
+                    Background="Red"
+                    BorderBrush="Transparent"
+                    Command="{Binding CloseWindowCommand}" />
         </Grid>
-
-
-
-
     </Border>
 
 
