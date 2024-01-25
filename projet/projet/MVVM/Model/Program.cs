@@ -21,7 +21,7 @@ public class Program
 
     static void Game(Player player)
     {
-        int NbWawes = 90;
+        int NbWawes = 0;
         List<Monster> monsters = InitMonster();
         Monster monster = null;
 
