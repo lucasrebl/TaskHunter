@@ -150,7 +150,7 @@ namespace projet.MVVM.ViewModel
                         GameStatus = $"Vague actuelle: {NbWawes}";
                         monster = GetRandomMonster(monsters, NbWawes);
                         monster.ResetStats();
-                        GameStatus = $"Un nouveau monstre apparaît : {monster.Name}, pour certaine raison il n'a pas pu vous attaquer";
+                        GameStatus = $"Un nouveau monstre apparaît : {monster.Name} ! Pour certaines raisons, il n'a pas pu vous attaquer...";
                         MonsterName = $"{monster.Name}";
                         MonsterMana = $"{monster.Mana}";
                         MonsterLife = $"{monster.Health}";
@@ -344,14 +344,14 @@ namespace projet.MVVM.ViewModel
             List<Monster> monsters = new List<Monster>
         {
             // monstres Common
-            new Monster("slime", 20, 15, "common", GetRandomAttacksCommon("common", 4), rand, "/Images/Monsters/slime.gif"),
-            new Monster("sprout", 25, 20, "common", GetRandomAttacksCommon("common", 4), rand, "/Images/Monsters/sprout.gif"),
-            new Monster("spoink", 35, 25, "common", GetRandomAttacksCommon("common", 4), rand, "/Images/Monsters/spoink.gif"),
+            new Monster("Slime", 20, 15, "common", GetRandomAttacksCommon("common", 4), rand, "/Images/Monsters/slime.gif"),
+            new Monster("Sprout", 25, 20, "common", GetRandomAttacksCommon("common", 4), rand, "/Images/Monsters/sprout.gif"),
+            new Monster("Spoink", 35, 25, "common", GetRandomAttacksCommon("common", 4), rand, "/Images/Monsters/spoink.gif"),
 
             // Monstres rare
             new Monster("French Pampa", 45, 60, "rare", GetRandomAttacksRare("rare", 4), rand, "/Images/Monsters/frenchpampa.png"),
             new Monster("Hatsune Miku", 40, 25, "rare", GetRandomAttacksRare("rare", 4), rand, "/Images/Monsters/miku.gif"),
-            new Monster("sakamèche", 50, 50, "rare", GetRandomAttacksRare("rare", 4), rand, "/Images/Monsters/salameche.gif"),
+            new Monster("Sakamèche", 50, 50, "rare", GetRandomAttacksRare("rare", 4), rand, "/Images/Monsters/salameche.gif"),
 
             // Monstres epic
             new Monster("Golden Hand", 80, 40, "epic", GetRandomAttacksEpic("epic", 4), rand, "/Images/Monsters/goldenhand.png"),
@@ -362,7 +362,7 @@ namespace projet.MVVM.ViewModel
             new Monster("Marie", 100, 200, "Legendary", GetRandomAttacksLegendary("Legendary", 4), rand, "/Images/Monsters/isabelle.gif"),
             new Monster("Krokmou", 110, 70, "Legendary", GetRandomAttacksLegendary("Legendary", 4), rand, "/Images/Monsters/crocmou.gif"),
             new Monster("Mewtwo", 150, 150, "Legendary", GetRandomAttacksLegendary("Legendary", 4), rand, "/Images/Monsters/mewtwo.gif"),
-            new Monster("Pieds", 120, 100, "Legendary", GetRandomAttacksLegendary("Legendary", 4), rand, "/Images/Monsters/pieds.gif"),
+            new Monster("Les Pieds", 120, 100, "Legendary", GetRandomAttacksLegendary("Legendary", 4), rand, "/Images/Monsters/pieds.gif"),
 
             // Monstres Boss
             new Monster("Rayquaza Shiny", 300, 150, "Boss", GetAttacksBoss("Boss"), rand, "/Images/Monsters/Rayquaza.gif"),
