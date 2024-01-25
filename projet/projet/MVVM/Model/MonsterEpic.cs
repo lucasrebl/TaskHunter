@@ -34,7 +34,7 @@ namespace MonstersEpic
             Console.WriteLine();
         }
 
-        public static void InitEpic()
+        public static List<MonsterEpic> InitEpic()
         {
             List<MonsterEpic> EpicMonsters = new List<MonsterEpic>
             {
@@ -52,6 +52,8 @@ namespace MonstersEpic
             {
                 monster.DisplayAttacksEpic();
             }
+
+            return EpicMonsters;
         }
     }
 }

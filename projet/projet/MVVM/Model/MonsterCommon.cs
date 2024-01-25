@@ -34,7 +34,7 @@ namespace MonstersCommon
             Console.WriteLine();
         }
 
-        public static void InitCommon()
+        public static List<MonsterCommon> InitCommon()
         {
             List<MonsterCommon> commonMonsters = new List<MonsterCommon>
             {
@@ -52,6 +52,8 @@ namespace MonstersCommon
             {
                 monster.DisplayAttacksCommon();
             }
+
+            return commonMonsters;
         }
     }
 }

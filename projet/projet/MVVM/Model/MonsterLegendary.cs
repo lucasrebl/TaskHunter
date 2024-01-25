@@ -34,7 +34,7 @@ namespace MonstersLegendary
             Console.WriteLine();
         }
 
-        public static void InitLengendary()
+        public static List<MonsterLegendary> InitLengendary()
         {
             // cr�er une listes de monstres l�gendaires
             List<MonsterLegendary> legendaryMonsters = new List<MonsterLegendary>
@@ -54,6 +54,8 @@ namespace MonstersLegendary
             {
                 monster.DisplayAttacksLegendary();
             }
+
+            return legendaryMonsters;
         }
     }
 }

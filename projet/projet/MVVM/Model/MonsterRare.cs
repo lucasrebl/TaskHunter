@@ -34,7 +34,7 @@ namespace MonstersRare
             Console.WriteLine();
         }
 
-        public static  void InitRare()
+        public static List<MonsterRare> InitRare()
         {
             List<MonsterRare> rareMonsters = new List<MonsterRare>
             {
@@ -52,6 +52,8 @@ namespace MonstersRare
             {
                 monster.DisplayAttacksRare();
             }
+
+            return rareMonsters;
         }
     }
 }
