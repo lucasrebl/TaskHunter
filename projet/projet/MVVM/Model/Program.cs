@@ -8,7 +8,7 @@ public class Program
 
     static Random rand = new Random();
 
-    static void Main()
+    /* static void Main()
     {
         Player player = new Player("joueur", 40, 40, 1);
         player.Attack.Add(new AttackPlayer("Coup de pied", 10, 0));
@@ -17,7 +17,7 @@ public class Program
         player.Attack.Add(new AttackPlayer("Thunder", 30, 15));
 
         Game(player);
-    }
+    } */
 
     static void Game(Player player)
     {
