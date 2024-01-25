@@ -1,13 +1,14 @@
 using AttackPlayers;
+using Monsters;
 
 namespace Players
 {
-    class Player
+    public class Player
     {
         public string Name { get; }
 
         public int Pv { get; private set; }
-        
+
         public int Mana { get; private set; }
 
         public int Level { get; private set; }
@@ -25,6 +26,27 @@ namespace Players
         public bool IsAlivePlayer()
         {
             return Pv > 0;
+        }
+
+        public void CastAttack(AttackPlayer attackPlayer, Monster target)
+        {
+            Mana -= attackPlayer.ManaCost;
+            target.ApplyDamage(attackPlayer.Damage);
+        }
+
+        public string GetStatusPlayer()
+        {
+            return $"{Name}: PV = {Pv}, Mana = {Mana}, Level = {Level}";
+        }
+
+        public void ApplyDamage(int damage)
+        {
+            Pv -= damage;
+        }
+
+        public void ApplyStealMana()
+        {
+            Mana -= 20;
         }
     }
 }
