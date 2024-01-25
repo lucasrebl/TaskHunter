@@ -1,4 +1,6 @@
-﻿using projet.Core;
+﻿using AttackPlayers;
+using Players;
+using projet.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,6 +58,14 @@ namespace projet.MVVM.ViewModel
             {
                 CurrentView = TaskVM;
             });
+
+            Player player = new Player("joueur", 40, 40, 1);
+            player.Attack.Add(new AttackPlayer("Coup de pied", 10, 0));
+            player.Attack.Add(new AttackPlayer("Coup de poing", 10, 0));
+            player.Attack.Add(new AttackPlayer("FireBall", 25, 10));
+            player.Attack.Add(new AttackPlayer("Thunder", 30, 15));
+
+            GameVM.InitializeGame(player);
         }
 
         private void CloseWindow(object parameter)

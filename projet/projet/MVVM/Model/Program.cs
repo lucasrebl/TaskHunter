@@ -17,7 +17,7 @@ public class Program
         player.Attack.Add(new AttackPlayer("Thunder", 30, 15));
 
         Game(player);
-    } */
+    }
 
     static void Game(Player player)
     {
@@ -414,5 +414,5 @@ public class Program
         }
         int randomIndex = rand.Next(monsters.Count);
         return monsters[randomIndex];
-    }
+    }*/
 }
