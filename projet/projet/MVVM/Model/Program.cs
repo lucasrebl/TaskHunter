@@ -8,7 +8,7 @@ public class Program
 
     static Random rand = new Random();
 
-    static void Main()
+    /*static void Main()
     {
         Player player = new Player("joueur", 40, 40, 1);
         player.Attack.Add(new AttackPlayer("Coup de pied", 10, 0));
@@ -17,7 +17,7 @@ public class Program
         player.Attack.Add(new AttackPlayer("Thunder", 30, 15));
 
         Game(player);
-    }
+    }*/
 
     static void Game(Player player)
     {
@@ -32,6 +32,7 @@ public class Program
                 if (monster != null)
                 {
                     Console.WriteLine($"vous avez vaincu {monster.Name}");
+                    monster.UpdatePlayerXP(player);
                 }
 
                 if (player.IsAlivePlayer())
@@ -40,6 +41,7 @@ public class Program
                     Console.WriteLine($"Vague actuelle: {NbWawes}");
                     monster = GetRandomMonster(monsters, NbWawes);
                     monster.ResetStats();
+                    player.ResetStatsPlayer();
                     Console.WriteLine($"Un nouveau monstre apparaît : {monster.Name}, pour certaine raison il n'a pas pu vous attaquer");
                 }
             }
@@ -289,7 +291,7 @@ public class Program
     }
 
     // list attacks Epic
-    static List<AttackMonster> GetRandomAttacksEpic(string categoryEpic, int numberOfAttacksEpic) 
+    static List<AttackMonster> GetRandomAttacksEpic(string categoryEpic, int numberOfAttacksEpic)
     {
         List<AttackMonster> allAttacksEpic = new List<AttackMonster>()
         {
@@ -308,7 +310,7 @@ public class Program
     // list attacks Legendary
     static List<AttackMonster> GetRandomAttacksLegendary(string categoryLegendary, int numberOfAttacksLegendary)
     {
-        List<AttackMonster> allAttacksLegendary = new List<AttackMonster>() 
+        List<AttackMonster> allAttacksLegendary = new List<AttackMonster>()
         {
             new AttackMonster("Vol de mana", 0, 0, "vol", categoryLegendary),
             new AttackMonster("Danse endiablée", 55, 40, null, categoryLegendary),
