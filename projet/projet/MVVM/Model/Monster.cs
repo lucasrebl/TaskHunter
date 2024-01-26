@@ -10,13 +10,14 @@ namespace Monsters
         public int Health { get; private set; }
         public int Mana { get; private set; }
         public string Category { get; }
+        public string Img { get; }
 
         private readonly int originalHealth;
         private readonly int originalMana;
 
         public List<AttackMonster> Attacks { get; set; }
 
-        public Monster(string name, int health, int mana, string category, List<AttackMonster> attacks, Random random)
+        public Monster(string name, int health, int mana, string category, List<AttackMonster> attacks, Random random, string img)
         {
             Name = name;
             Health = health;
@@ -27,6 +28,7 @@ namespace Monsters
 
             originalHealth = health;
             originalMana = mana;
+            Img = img;
         }
 
         public void ResetStats()

@@ -24,6 +24,7 @@
     <None Remove="Images\Monsters\salameche.gif" />
     <None Remove="Images\Monsters\slime.gif" />
     <None Remove="Images\Monsters\spoink.gif" />
+    <None Remove="Images\Monsters\sprout.gif" />
     <None Remove="Images\red.png" />
   </ItemGroup>
 
@@ -79,6 +80,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\Monsters\spoink.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Monsters\sprout.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\red.png">

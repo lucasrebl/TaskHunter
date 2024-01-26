@@ -10,8 +10,8 @@
              Background="#211F2E">
     <Grid>
 
-        <StackPanel Background="#211F2E">
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25">
+        <StackPanel Background="#211F2E" Margin="0,0,0,-83">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="25" Height="487">
 
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
 
@@ -23,29 +23,45 @@
                             </Border.Background>
 
                             <Grid>
-                                <Image Margin="328,20,41,131" gif:ImageBehavior.AnimatedSource="/Images/Monsters/pieds.gif" Stretch="Uniform"/>
-                                <Image Margin="75,91,298,10" Source="/Images/red.png" Stretch="Uniform"/>
+                                <Image Margin="312,11,57,140" gif:ImageBehavior.AnimatedSource="{Binding EnemyImgSource}" Stretch="Uniform"/>
+                                <Image Margin="59,26,263,-24" Source="/Images/red.png" Stretch="Uniform"/>
                             </Grid>
                         </Border>
                     </Grid>
 
-
                     <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
 
                         <Border Width="200" Height="125" Background="#191726" CornerRadius="8" Margin="20,0,0,0">
-                            <TextBlock Text="Monstre" Foreground="White" FontSize="18" FontWeight="Bold" Margin="15"/>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="Monstre" Foreground="White" FontSize="18" FontWeight="Bold" Margin="15,15,15,5"/>
+                                <TextBlock Foreground="White" FontSize="16" Margin="15,0,0,0" FontWeight="Bold">
+                                    <Run Text="Nom : "/>
+                                    <Run Text="{Binding MonsterName}"/>
+                                </TextBlock>
+                                <TextBlock Foreground="White" FontSize="16" Margin="15,0,0,0">
+                                    <Run Text="PV : " FontWeight="Bold" />
+                                    <Run Text="{Binding MonsterLife}"/>
+                                </TextBlock>
+                                <TextBlock Foreground="White" FontSize="16" Margin="15,0,0,0">
+                                    <Run Text="Mana : " FontWeight="Bold" />
+                                    <Run Text="{Binding MonsterMana}"/>
+                                </TextBlock>
+                            </StackPanel>
                         </Border>
 
                         <Border Width="200" Height="125" Background="#191726" CornerRadius="8" Margin="20,15,0,0">
-                            <Border Height="125" Background="#191726" CornerRadius="8" Margin="20,0,0,0">
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="*"/>
-                                    </Grid.RowDefinitions>
-
-                                    <TextBlock Text="Moi" Foreground="White" FontSize="18" FontWeight="Bold" Margin="0,15,15,81"/>
-                                </Grid>
+                            <Border Background="#191726" CornerRadius="8" Margin="10,0,10,0">
+                                <StackPanel>
+                                    <TextBlock Text="Moi" Foreground="White" FontSize="18" FontWeight="Bold" Margin="15,15,0,0" Height="29"/>
+                                    <TextBlock Foreground="White" FontSize="16" Margin="15,0,0,0" Height="25" Width="168">
+                                        <Run Text="PV : " FontWeight="Bold" />
+                                        <Run Text="{Binding PlayerLife}"/>
+                                    </TextBlock>
+                                    <TextBlock Foreground="White" FontSize="16" Margin="15,0,0,0" Height="27" Width="168">
+                                        <Run Text="Mana : " FontWeight="Bold" />
+                                        <Run Text="{Binding PlayerMana}"/>
+                                    </TextBlock>
+                                </StackPanel>
                             </Border>
                         </Border>
                     </StackPanel>
@@ -53,9 +69,18 @@
 
                 <StackPanel Orientation="Horizontal">
                     <Border Width="670" Height="101" Margin="0,30,0,0" Background="#0C0715" CornerRadius="8" VerticalAlignment="Top">
-                        <TextBlock Text="Vous attaquez les pieds ! Ils perdent 20 PV !" Foreground="White" FontSize="18" Margin="10,15,20,15" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <TextBlock Text="{Binding GameStatus}" Foreground="White" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" MaxWidth="650" MaxHeight="80"/>
                     </Border>
                 </StackPanel>
+
+                <StackPanel Width="604" Height="50" Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
+                    <Button Content="Coup de poing" Command="{Binding PunchCommand}" Width="100" Margin="5"/>
+                    <Button Content="Coup de pied" Command="{Binding KickCommand}" Width="100" Margin="5"/>
+                    <Button Content="FireBall" Command="{Binding FireballCommand}" Width="100" Margin="5"/>
+                    <Button Content="Thunder" Command="{Binding ThunderCommand}" Width="100" Margin="5"/>
+                    <Button Content="Inventaire" Command="{Binding InventoryCommand}" Width="100" Margin="60,5,5,5"/>
+                </StackPanel>
+
 
             </StackPanel>
         </StackPanel>

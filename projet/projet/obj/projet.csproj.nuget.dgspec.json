@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Gabriel\\source\\repos\\TaskHunter\\projet\\projet\\projet.csproj": {}
+    "C:\\Users\\gaby\\source\\repos\\TaskHunter\\projet\\projet\\projet.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Gabriel\\source\\repos\\TaskHunter\\projet\\projet\\projet.csproj": {
+    "C:\\Users\\gaby\\source\\repos\\TaskHunter\\projet\\projet\\projet.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Gabriel\\source\\repos\\TaskHunter\\projet\\projet\\projet.csproj",
+        "projectUniqueName": "C:\\Users\\gaby\\source\\repos\\TaskHunter\\projet\\projet\\projet.csproj",
         "projectName": "projet",
-        "projectPath": "C:\\Users\\Gabriel\\source\\repos\\TaskHunter\\projet\\projet\\projet.csproj",
-        "packagesPath": "C:\\Users\\Gabriel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Gabriel\\source\\repos\\TaskHunter\\projet\\projet\\obj\\",
+        "projectPath": "C:\\Users\\gaby\\source\\repos\\TaskHunter\\projet\\projet\\projet.csproj",
+        "packagesPath": "C:\\Users\\gaby\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\gaby\\source\\repos\\TaskHunter\\projet\\projet\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Gabriel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\gaby\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -34,6 +34,9 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "default"
         }
       },
       "frameworks": {
