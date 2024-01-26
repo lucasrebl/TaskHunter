@@ -74,11 +74,10 @@
                 </StackPanel>
 
                 <StackPanel Width="604" Height="50" Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
-                    <Button Content="Coup de poing" Command="{Binding PunchCommand}" Width="100" Margin="5"/>
-                    <Button Content="Coup de pied" Command="{Binding KickCommand}" Width="100" Margin="5"/>
-                    <Button Content="FireBall" Command="{Binding FireballCommand}" Width="100" Margin="5"/>
-                    <Button Content="Thunder" Command="{Binding ThunderCommand}" Width="100" Margin="5"/>
-                    <Button Content="Inventaire" Command="{Binding InventoryCommand}" Width="100" Margin="60,5,5,5"/>
+                    <Button Content="Coup de poing" Width="100" Margin="5" Command="{Binding Attack1Command}"/>
+                    <Button Content="Coup de pied" Width="100" Margin="5" Command="{Binding Attack2Command}"/>
+                    <Button Content="FireBall" Width="100" Margin="5" Command="{Binding Attack3Command}"/>
+                    <Button Content="Thunder" Width="100" Margin="5" Command="{Binding Attack4Command}"/>
                 </StackPanel>
 
 

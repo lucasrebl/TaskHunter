@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace projet.MVVM.ViewModel
 {
@@ -14,8 +15,7 @@ namespace projet.MVVM.ViewModel
                 new YourItemModel { ImagePath = "/Images/Monsters/pieds.gif", ItemText = "les pieds", Rarity = "Légendaire" },
                 new YourItemModel { ImagePath = "/Images/Monsters/goldenhand.png", ItemText = "GoldenHand", Rarity = "Epique" },
                 new YourItemModel { ImagePath = "/Images/Monsters/isabelle.gif", ItemText = "Marie", Rarity = "Legendaire" },
-                new YourItemModel { ImagePath = "/Images/Monsters/crocmou.gif", ItemText = "YEAAAHAHAHHA", Rarity = "Legendaire" },
-
+                new YourItemModel { ImagePath = "/Images/Monsters/crocmou.gif", ItemText = "YEAAAHAHAHHA", Rarity = "Legendaire" }
             };
         }
     }

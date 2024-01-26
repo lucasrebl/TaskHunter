@@ -2,17 +2,22 @@
 using AttackPlayers;
 using Monsters;
 using Players;
+using projet.Core;
+using projet.MVVM.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
+
 
 namespace projet.MVVM.ViewModel
 {
-    class GameViewModel
+    class GameViewModel : INotifyPropertyChanged
     {
         private string _gameStatus;
         private string _monsterLife;
@@ -21,6 +26,13 @@ namespace projet.MVVM.ViewModel
         private string _playerLife;
         private string _playerMana;
         private string _enemyImgSource;
+
+        public string UserAction = "1";
+        public ICommand Attack1Command { get; private set; }
+        public ICommand Attack2Command { get; private set; }
+        public ICommand Attack3Command { get; private set; }
+        public ICommand Attack4Command { get; private set; }
+
         public string GameStatus
         {
             get { return _gameStatus; }
@@ -111,17 +123,12 @@ namespace projet.MVVM.ViewModel
             }
         }
 
-        public ICommand PunchCommand { get; set; }
-        public ICommand KickCommand { get; set; }
-        public ICommand FireballCommand { get; set; }
-        public ICommand ThunderCommand { get; set; }
-        public ICommand InventoryCommand { get; set; }
-        
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
         static Random rand = new Random();
 
         public void InitializeGame(Player player)
@@ -134,6 +141,10 @@ namespace projet.MVVM.ViewModel
             int NbWawes = 0;
             List<Monster> monsters = InitMonster();
             Monster monster = null;
+            Attack1Command = new RelayCommand(Attack1Clicked);
+            Attack2Command = new RelayCommand(Attack2Clicked);
+            Attack3Command = new RelayCommand(Attack3Clicked);
+            Attack4Command = new RelayCommand(Attack4Clicked);
 
             while (player.IsAlivePlayer())
             {
@@ -159,16 +170,8 @@ namespace projet.MVVM.ViewModel
                         EnemyImgSource = $"{monster.Img}";
                     }
                 }
-                //GameStatus = $"Etat du joueur: {player.GetStatusPlayer()}";
-                //GameStatus = $"Etat du Monstre: {monster.GetStatusMonster()}";
 
-                Action();
-                string userAction = Console.ReadLine();
-                Console.WriteLine();
-
-                userAction = "1";
-
-                switch (userAction.ToLower())
+                switch (UserAction)
                 {
                     case "1":
                         if (player.Attack.Any(attack => attack.Name == "Coup de poing"))
@@ -177,11 +180,11 @@ namespace projet.MVVM.ViewModel
                             if (player.Mana > punchAttack.ManaCost)
                             {
                                 player.CastAttack(punchAttack, monster);
-                                Console.WriteLine($"Vous avez lancé {punchAttack.Name} et infligé {punchAttack.Damage} points de dégâts au {monster.Name}!");
+                                GameStatus = $"Vous avez lancé {punchAttack.Name} et infligé {punchAttack.Damage} points de dégâts au {monster.Name}!";
                             }
                             else
                             {
-                                Console.WriteLine("pas assez de mana");
+                                GameStatus = "Vous n'avez pas assez de mana !";
                             }
                         }
                         if (monster.IsAliveMonster())
@@ -215,11 +218,11 @@ namespace projet.MVVM.ViewModel
                             if (player.Mana > footAttack.ManaCost)
                             {
                                 player.CastAttack(footAttack, monster);
-                                Console.WriteLine($"Vous avez lancé {footAttack.Name} et infligé {footAttack.Damage} points de dégâts au {monster.Name}!");
+                                GameStatus = $"Vous avez lancé {footAttack.Name} et infligé {footAttack.Damage} points de dégâts au {monster.Name}!";
                             }
                             else
                             {
-                                Console.WriteLine("pas assez de mana");
+                                GameStatus = "Vous n'avez pas assez de mana";
                             }
                         }
                         if (monster.IsAliveMonster())
@@ -253,11 +256,11 @@ namespace projet.MVVM.ViewModel
                             if (player.Mana > fireballAttack.ManaCost)
                             {
                                 player.CastAttack(fireballAttack, monster);
-                                Console.WriteLine($"Vous avez lancé {fireballAttack.Name} et infligé {fireballAttack.Damage} points de dégâts au {monster.Name}!");
+                                GameStatus = $"Vous avez lancé {fireballAttack.Name} et infligé {fireballAttack.Damage} points de dégâts au {monster.Name}!";
                             }
                             else
                             {
-                                Console.WriteLine("pas assez de mana");
+                                GameStatus = "Vous n'avez pas assez de mana !";
                             }
                         }
                         if (monster.IsAliveMonster())
@@ -291,11 +294,11 @@ namespace projet.MVVM.ViewModel
                             if (player.Mana > thunderAttack.ManaCost)
                             {
                                 player.CastAttack(thunderAttack, monster);
-                                Console.WriteLine($"Vous avez lancé {thunderAttack.Name} et infligé {thunderAttack.Damage} points de dégâts au {monster.Name}!");
+                                GameStatus = $"Vous avez lancé {thunderAttack.Name} et infligé {thunderAttack.Damage} points de dégâts au {monster.Name}!";
                             }
                             else
                             {
-                                Console.WriteLine("pas assez de mana");
+                                GameStatus = "Vous n'avez pas assez de mana !";
                             }
                         }
                         if (monster.IsAliveMonster())
@@ -323,20 +326,35 @@ namespace projet.MVVM.ViewModel
                         }
                         break;
                     default:
-                        Console.WriteLine("utilisé une attaque valid");
+                        GameStatus = "Utilisez une attaque valide.";
                         break;
                 }
             }
-            Console.WriteLine("Vous êtes mort");
+            GameStatus = "Vous êtes mort";
         }
 
-        public static void Action()
+        private void Attack1Clicked(object parameter)
         {
-            Console.WriteLine("Attack Possible");
-            Console.WriteLine("1: Cout de poing");
-            Console.WriteLine("2: Cout de pied");
-            Console.WriteLine("3: Fireball");
-            Console.WriteLine("4: Thunder");
+            UserAction = "1";
+            GameStatus = "Attaque 1";
+        }
+
+        private void Attack2Clicked(object parameter)
+        {
+            UserAction = "2";
+            GameStatus = "Attaque 2";
+        }
+
+        private void Attack3Clicked(object parameter)
+        {
+            UserAction = "3";
+            GameStatus = "Attaque 3";
+        }
+
+        private void Attack4Clicked(object parameter)
+        {
+            UserAction = "4";
+            GameStatus = "Attaque 4";
         }
 
         public static List<Monster> InitMonster()
