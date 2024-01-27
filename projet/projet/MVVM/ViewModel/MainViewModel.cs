@@ -21,6 +21,7 @@ namespace projet.MVVM.ViewModel
         public DashboardViewModel DashboardVM { get; set; }
         public GameViewModel GameVM { get; set; }
         public TaskViewModel TaskVM { get; set; }
+        public RelayCommand StartGameCommand { get; set; }
 
         private object _currentView;
 
@@ -52,13 +53,27 @@ namespace projet.MVVM.ViewModel
             GameViewCommand = new RelayCommand(o =>
             {
                 CurrentView = GameVM;
+                // Si on veut que ça relance la fonction chaque fois qu'on quitte et revient sur la fenetre Game :
+                // StartGame(null);
             });
 
             TaskViewCommand = new RelayCommand(o =>
             {
                 CurrentView = TaskVM;
             });
+            StartGame(null);
+            // StartGameCommand = new RelayCommand(StartGame);
 
+            // Player player = new Player("joueur", 40, 40, 1);
+            // player.Attack.Add(new AttackPlayer("Coup de pied", 10, 0));
+            // player.Attack.Add(new AttackPlayer("Coup de poing", 10, 0));
+            // player.Attack.Add(new AttackPlayer("FireBall", 25, 10));
+            // player.Attack.Add(new AttackPlayer("Thunder", 30, 15));
+            // GameVM.InitializeGame(player);
+        }
+
+        private void StartGame(object parameter)
+        {
             Player player = new Player("joueur", 40, 40, 1);
             player.Attack.Add(new AttackPlayer("Coup de pied", 10, 0));
             player.Attack.Add(new AttackPlayer("Coup de poing", 10, 0));
