@@ -74,7 +74,7 @@ namespace projet.MVVM.ViewModel
 
         private void StartGame(object parameter)
         {
-            Player player = new Player("joueur", 40, 40, 1);
+            Player player = new Player("joueur", 40000, 40000, 1);
             player.Attack.Add(new AttackPlayer("Coup de pied", 10, 0));
             player.Attack.Add(new AttackPlayer("Coup de poing", 10, 0));
             player.Attack.Add(new AttackPlayer("FireBall", 25, 10));
