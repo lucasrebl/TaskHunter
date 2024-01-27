@@ -6,6 +6,7 @@ namespace Players
     [Serializable]
     public class Player
     {
+        private static Player _instance;
         public string Name { get; }
 
         public int Pv { get; private set; }
@@ -22,6 +23,21 @@ namespace Players
             Pv = pv;
             Mana = mana;
             Level = level;
+        }
+        public static Player Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new Player("joueur", 40000, 40000, 1);
+                    _instance.Attack.Add(new AttackPlayer("Coup de pied", 10, 0));
+                    _instance.Attack.Add(new AttackPlayer("Coup de poing", 10, 0));
+                    _instance.Attack.Add(new AttackPlayer("FireBall", 25, 10));
+                    _instance.Attack.Add(new AttackPlayer("Thunder", 30, 15));
+                }
+                return _instance;
+            }
         }
 
         public bool IsAlivePlayer()

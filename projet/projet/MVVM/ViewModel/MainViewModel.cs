@@ -43,10 +43,13 @@ namespace projet.MVVM.ViewModel
 
             CloseWindowCommand = new RelayCommand(CloseWindow);
 
+            Player player = Player.Instance;
+            DashboardVM.InitializeDashboard(player);
             CurrentView = DashboardVM;
 
             DashboardViewCommand = new RelayCommand(o =>
             {
+                DashboardVM.InitializeDashboard(player);
                 CurrentView = DashboardVM;
             });
 
@@ -61,15 +64,9 @@ namespace projet.MVVM.ViewModel
             {
                 CurrentView = TaskVM;
             });
-            StartGame(null);
-            // StartGameCommand = new RelayCommand(StartGame);
 
-            // Player player = new Player("joueur", 40, 40, 1);
-            // player.Attack.Add(new AttackPlayer("Coup de pied", 10, 0));
-            // player.Attack.Add(new AttackPlayer("Coup de poing", 10, 0));
-            // player.Attack.Add(new AttackPlayer("FireBall", 25, 10));
-            // player.Attack.Add(new AttackPlayer("Thunder", 30, 15));
-            // GameVM.InitializeGame(player);
+            GameVM.InitializeGame(player);
+            // StartGame(null);
         }
 
         private void StartGame(object parameter)
