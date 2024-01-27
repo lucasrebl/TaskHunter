@@ -150,6 +150,10 @@ namespace projet.MVVM.ViewModel
             SaveCommand = new RelayCommand(SaveGameCommand);
             LoadCommand = new RelayCommand(LoadGameCommand);
             actualPlayer = player;
+
+            DashboardViewModel dashboardViewModel = new DashboardViewModel();
+            dashboardViewModel.ActualPlayer = actualPlayer;
+
             monster = GetRandomMonster(monsters, NbWawes);
             monster.ResetStats();
             GameStatus = $"Un nouveau monstre apparaît : {monster.Name} ! Pour certaines raisons, il n'a pas pu vous attaquer...";

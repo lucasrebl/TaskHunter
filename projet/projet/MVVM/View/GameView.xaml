@@ -11,7 +11,7 @@
     <Grid>
 
         <StackPanel Background="#211F2E" Margin="0,0,0,-83">
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="25" Height="487">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="25" Height="490">
 
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
 
@@ -23,7 +23,7 @@
                             </Border.Background>
 
                             <Grid>
-                                <Image Margin="312,11,57,140" gif:ImageBehavior.AnimatedSource="{Binding EnemyImgSource}" Stretch="Uniform"/>
+                                <Image Margin="312,25,57,126" gif:ImageBehavior.AnimatedSource="{Binding EnemyImgSource}" Stretch="Uniform"/>
                                 <Image Margin="59,26,263,-24" Source="/Images/red.png" Stretch="Uniform"/>
                             </Grid>
                         </Border>
@@ -73,14 +73,17 @@
                     </Border>
                 </StackPanel>
 
-                <StackPanel Width="604" Height="50" Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
+                <StackPanel Width="604" Height="50" Orientation="Horizontal" HorizontalAlignment="Center" Margin="15,15,15,0">
                     <Button Content="Coup de poing" Width="100" Margin="5" Command="{Binding Attack1Command}"/>
                     <Button Content="Coup de pied" Width="100" Margin="5" Command="{Binding Attack2Command}"/>
                     <Button Content="FireBall" Width="100" Margin="5" Command="{Binding Attack3Command}"/>
                     <Button Content="Thunder" Width="100" Margin="5" Command="{Binding Attack4Command}"/>
 
-                    <Button Content="Save" Command="{Binding SaveCommand}" />
-                    <Button Content="Load" Command="{Binding LoadCommand}" />
+                    
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Height="26">
+                    <Button Content="Sauvegarder" Command="{Binding SaveCommand}" Margin="38,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="10" Width="75"/>
+                    <Button Content="Charger" Command="{Binding LoadCommand}" Margin="0,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="10" Width="75"/>
                 </StackPanel>
 
 

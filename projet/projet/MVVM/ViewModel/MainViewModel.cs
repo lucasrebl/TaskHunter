@@ -79,7 +79,7 @@ namespace projet.MVVM.ViewModel
             player.Attack.Add(new AttackPlayer("Coup de poing", 10, 0));
             player.Attack.Add(new AttackPlayer("FireBall", 25, 10));
             player.Attack.Add(new AttackPlayer("Thunder", 30, 15));
-
+            DashboardVM.InitializeDashboard(player);
             GameVM.InitializeGame(player);
         }
 
