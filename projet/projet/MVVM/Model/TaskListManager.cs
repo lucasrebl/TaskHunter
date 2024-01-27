@@ -1,27 +1,27 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 
-namespace Task
+namespace projet.MVVM.Model
 {
     public class TaskListManager
     {
-        private Inventorys.Inventory inventory;
-        public ObservableCollection<TaskItem> Tasks { get; }
-        public int TotalReward { get; private set; } 
+        private InventoryManager inventoryManager;
 
-        private Random random = new Random(); 
+        public ObservableCollection<TaskItem> Tasks { get; }
+        public int TotalReward { get; private set; }
+
+        private Random random = new Random();
 
         public int GetRandomReward()
         {
-            
             return random.Next(1, 3);
         }
 
-        public TaskListManager(Inventorys.Inventory inventory)
+        public TaskListManager()
         {
-            this.inventory = inventory;
+            inventoryManager = InventoryManager.Instance;
             Tasks = new ObservableCollection<TaskItem>();
-            TotalReward = 0; 
+            TotalReward = 0;
         }
 
         public void AddTask(string title, DateTime date)
@@ -34,7 +34,7 @@ namespace Task
 
         public void CompleteTask(TaskItem task)
         {
-            task.IsCompleted = true;        
+            task.IsCompleted = true;
             int rewardAmount = GetRandomReward();
             ApplyRewardToInventory(rewardAmount);
             TotalReward += rewardAmount;
@@ -58,24 +58,28 @@ namespace Task
             }
         }
 
-
         private void ApplyRewardToInventory(int rewardAmount)
         {
-            switch (rewardAmount)
+            if (inventoryManager != null && inventoryManager.Inventory != null)
             {
-                case 1:
-                    inventory.PotionHeal++;
-                    break;
-                case 2:
-                    inventory.PotionMana++;
-                    break;
-                case 3:
-                    inventory.ParchmentPv++;
-                    break;
-                case 4:
-                    inventory.ParchmentMana++;
-                    break;
-            }
+                switch (rewardAmount)
+                {
+                    case 1:
+                        inventoryManager.Inventory.PotionPv += TotalReward;
+                        break;
+                    case 2:
+                        inventoryManager.Inventory.PotionMana += TotalReward;
+                        break;
+                    case 3:
+                        inventoryManager.Inventory.ParchmentPv += TotalReward;
+                        break;
+                    case 4:
+                        inventoryManager.Inventory.ParchmentMana += TotalReward;
+                        break;
+                }
+                inventoryManager.OnPropertyChanged(nameof(InventoryManager.Inventory));
+            }   
         }
+
     }
 }

@@ -7,6 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              Background="#FF0C0715">
+
     <Grid UseLayoutRounding="True" Margin="0,38,28,4" >
 
 
@@ -44,10 +45,6 @@
                 <TextBlock x:Name="statusLabel" Foreground="White" />
             </StatusBarItem>
         </StatusBar>
-
-
-
-
 
     </Grid>
 </UserControl>

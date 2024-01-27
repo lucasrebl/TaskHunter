@@ -36,9 +36,19 @@ namespace projet.MVVM.ViewModel
 
         public MainViewModel()
         {
+
+
+            Player player = new Player("joueur", 40, 40, 1);
+            player.Attack.Add(new AttackPlayer("Coup de pied", 10, 0));
+            player.Attack.Add(new AttackPlayer("Coup de poing", 10, 0));
+            player.Attack.Add(new AttackPlayer("FireBall", 25, 10));
+            player.Attack.Add(new AttackPlayer("Thunder", 30, 15));
+
+
             DashboardVM = new DashboardViewModel();
             GameVM = new GameViewModel();
-            TaskVM = new TaskViewModel();
+            TaskVM = new TaskViewModel() ;
+
 
             CloseWindowCommand = new RelayCommand(CloseWindow);
 
@@ -58,12 +68,6 @@ namespace projet.MVVM.ViewModel
             {
                 CurrentView = TaskVM;
             });
-
-            Player player = new Player("joueur", 40, 40, 1);
-            player.Attack.Add(new AttackPlayer("Coup de pied", 10, 0));
-            player.Attack.Add(new AttackPlayer("Coup de poing", 10, 0));
-            player.Attack.Add(new AttackPlayer("FireBall", 25, 10));
-            player.Attack.Add(new AttackPlayer("Thunder", 30, 15));
 
             GameVM.InitializeGame(player);
         }

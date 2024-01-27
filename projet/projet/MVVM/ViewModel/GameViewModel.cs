@@ -1,14 +1,16 @@
-﻿using AttackMonsters;
-using AttackPlayers;
-using Monsters;
-using Players;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using AttackMonsters;
+using AttackPlayers;
+using Monsters;
+using Players;
+using Inventorys;
+using projet.MVVM.Model;
 
 namespace projet.MVVM.ViewModel
 {
@@ -21,6 +23,15 @@ namespace projet.MVVM.ViewModel
         private string _playerLife;
         private string _playerMana;
         private string _enemyImgSource;
+        private string _parchmentMana;
+        private string _parchmentPv;
+        private string _potionMana;
+        private string _potionPv;
+        private InventoryManager inventoryManager;
+
+
+        
+
         public string GameStatus
         {
             get { return _gameStatus; }
@@ -111,29 +122,87 @@ namespace projet.MVVM.ViewModel
             }
         }
 
+        public string ParchmentMana
+        {
+            get { return _parchmentMana; }
+            set
+            {
+                if (_parchmentMana != value)
+                {
+                    _parchmentMana = value;
+                    OnPropertyChanged(nameof(ParchmentMana));
+                }
+            }
+        }
+
+        public string ParchmentPv
+        {
+            get { return _parchmentPv; }
+            set
+            {
+                if (_parchmentPv != value)
+                {
+                    _parchmentPv = value;
+                    OnPropertyChanged(nameof(ParchmentPv));
+                }
+            }
+        }
+
+        public string PotionMana
+        {
+            get { return _potionMana; }
+            set
+            {
+                if (_potionMana != value)
+                {
+                    _potionMana = value;
+                    OnPropertyChanged(nameof(PotionMana));
+                }
+            }
+        }
+
+        public string PotionPv
+        {
+            get { return _potionPv; }
+            set
+            {
+                if (_potionPv != value)
+                {
+                    _potionPv = value;
+                    OnPropertyChanged(nameof(PotionPv));
+                }
+            }
+        }
+
         public ICommand PunchCommand { get; set; }
         public ICommand KickCommand { get; set; }
         public ICommand FireballCommand { get; set; }
         public ICommand ThunderCommand { get; set; }
         public ICommand InventoryCommand { get; set; }
-        
+
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
         static Random rand = new Random();
 
         public void InitializeGame(Player player)
         {
+            player.InitializeInventory(); // Assuming you have a method like this to initialize the inventory
+            this.inventoryManager = InventoryManager.Instance;
             Game(player);
         }
+
 
         public void Game(Player player)
         {
             int NbWawes = 0;
             List<Monster> monsters = InitMonster();
             Monster monster = null;
+            Inventory inventory = player.Inventory;
 
             while (player.IsAlivePlayer())
             {
@@ -157,6 +226,13 @@ namespace projet.MVVM.ViewModel
                         PlayerMana = $"{player.Mana}";
                         PlayerLife = $"{player.Pv}";
                         EnemyImgSource = $"{monster.Img}";
+                        ParchmentMana = $"{inventory.ParchmentMana}";
+                        ParchmentPv = $"{inventory.ParchmentPv}";
+                        PotionMana = $"{inventory.PotionMana}";
+                        PotionPv = $"{inventory.PotionPv}";
+
+
+
                     }
                 }
                 //GameStatus = $"Etat du joueur: {player.GetStatusPlayer()}";
@@ -534,4 +610,6 @@ namespace projet.MVVM.ViewModel
             return monsters[randomIndex];
         }
     }
+
+
 }

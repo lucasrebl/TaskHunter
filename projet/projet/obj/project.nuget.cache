@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "8VUJcchwV3JCBJ+I+US3l7/4adn4o1Iyb/kUZ/ab+aL4HC2z+YJQ3Dh1yDaPBymin/5L0qx7vSIseMhwMmlyMw==",
+  "dgSpecHash": "iOHRnnNMRCDQ2yhH7cbllf6h8XEibNfF3og1D7itQ9Kf9IllGUmMImh5kkrX60Il6auk5cSzrLqak0mxZcKX+w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\gaby\\source\\repos\\TaskHunter\\projet\\projet\\projet.csproj",
+  "projectFilePath": "D:\\C#\\TaskHunter\\projet\\projet\\projet.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\gaby\\.nuget\\packages\\wpfanimatedgif\\2.0.2\\wpfanimatedgif.2.0.2.nupkg.sha512"
+    "C:\\Users\\M1603Q_Doria\\.nuget\\packages\\wpfanimatedgif\\2.0.2\\wpfanimatedgif.2.0.2.nupkg.sha512"
   ],
   "logs": []
 }

@@ -48,19 +48,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\gaby\\.nuget\\packages\\": {}
+    "C:\\Users\\M1603Q_Doria\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\gaby\\source\\repos\\TaskHunter\\projet\\projet\\projet.csproj",
+      "projectUniqueName": "D:\\C#\\TaskHunter\\projet\\projet\\projet.csproj",
       "projectName": "projet",
-      "projectPath": "C:\\Users\\gaby\\source\\repos\\TaskHunter\\projet\\projet\\projet.csproj",
-      "packagesPath": "C:\\Users\\gaby\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\gaby\\source\\repos\\TaskHunter\\projet\\projet\\obj\\",
+      "projectPath": "D:\\C#\\TaskHunter\\projet\\projet\\projet.csproj",
+      "packagesPath": "C:\\Users\\M1603Q_Doria\\.nuget\\packages\\",
+      "outputPath": "D:\\C#\\TaskHunter\\projet\\projet\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\gaby\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\M1603Q_Doria\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -80,9 +85,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "default"
       }
     },
     "frameworks": {

@@ -10,8 +10,8 @@
              Background="#211F2E">
     <Grid>
 
-        <StackPanel Background="#211F2E" Margin="0,0,0,-83">
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="25" Height="487">
+        <StackPanel Background="#211F2E" Margin="0,0,0,-65">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="25" Height="493">
 
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
 
@@ -68,20 +68,41 @@
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
-                    <Border Width="670" Height="101" Margin="0,30,0,0" Background="#0C0715" CornerRadius="8" VerticalAlignment="Top">
+                    <Border Width="670" Height="65" Background="#0C0715" CornerRadius="8">
                         <TextBlock Text="{Binding GameStatus}" Foreground="White" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" MaxWidth="650" MaxHeight="80"/>
                     </Border>
                 </StackPanel>
 
-                <StackPanel Width="604" Height="50" Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
+                <StackPanel Width="446" Height="50" Orientation="Horizontal">
+                    <Button Content="Parchemin de vie" Width="100" Margin="5" />
+                    <TextBlock Width="100" Margin="5">
+                        <Run Text="Quantité: " Foreground="White"/>
+                        <Run Text="{Binding ParchmentPv}" Foreground="White"/>
+                    </TextBlock>
+                    <Button Content="Parchemin de mana" Width="100" Margin="5"/>
+                    <TextBlock Width="100" Margin="5">
+                        <Run Text="Quantité: " Foreground="White"/>
+                        <Run Text="{Binding ParchmentMana}" Foreground="White"/>
+
+                    </TextBlock>
+                </StackPanel>
+                <StackPanel Width="438" Height="50" Orientation="Horizontal">
+                    <Button Content="Potion de vie" Width="100" Margin="5"/>
+                    <TextBlock Text="Quantité : " Width="100" Margin="5" Foreground="White">
+                        <Run Text="{Binding PotionPv}" Foreground="White"/>
+                    </TextBlock>
+                    <Button Content="Potion de mana" Width="100" Margin="5"/>
+                    <TextBlock Width="100" Margin="5" Foreground="White">
+                        <Run Text="Quantité: " Foreground="White"/>
+                        <Run Text="{Binding PotionMana}"/>
+                    </TextBlock>
+                </StackPanel>
+                <StackPanel Width="438" Height="50" Orientation="Horizontal">
                     <Button Content="Coup de poing" Command="{Binding PunchCommand}" Width="100" Margin="5"/>
                     <Button Content="Coup de pied" Command="{Binding KickCommand}" Width="100" Margin="5"/>
                     <Button Content="FireBall" Command="{Binding FireballCommand}" Width="100" Margin="5"/>
                     <Button Content="Thunder" Command="{Binding ThunderCommand}" Width="100" Margin="5"/>
-                    <Button Content="Inventaire" Command="{Binding InventoryCommand}" Width="100" Margin="60,5,5,5"/>
                 </StackPanel>
-
-
             </StackPanel>
         </StackPanel>
 

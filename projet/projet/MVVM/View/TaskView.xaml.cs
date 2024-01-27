@@ -1,4 +1,6 @@
-﻿using System;
+﻿using projet.MVVM.Model;
+using projet.MVVM.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,18 +15,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Task;
 
 namespace projet.MVVM.View
 {
     public partial class TaskView : UserControl
     {
         private TaskListManager taskListManager;
+
         public TaskView()
         {
             InitializeComponent();
-            taskListManager = new TaskListManager(new Inventorys.Inventory(0, 0, 0, 0));
 
+            // Utilisez le singleton de l'InventoryManager pour initialiser le TaskListManager
+            this.taskListManager = InventoryManager.Instance.TaskListManager;
             taskListBox.ItemsSource = taskListManager.Tasks;
         }
 
@@ -77,3 +80,4 @@ namespace projet.MVVM.View
         }
     }
 }
+

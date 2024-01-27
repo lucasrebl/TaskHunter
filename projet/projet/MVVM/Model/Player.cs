@@ -1,5 +1,7 @@
 using AttackPlayers;
+using Inventorys;
 using Monsters;
+using projet.MVVM.Model;
 
 namespace Players
 {
@@ -15,12 +17,19 @@ namespace Players
 
         public List<AttackPlayer> Attack { get; } = new List<AttackPlayer>();
 
+        public Inventory Inventory { get; set; }
+
         public Player(string name, int pv, int mana, int level)
         {
             Name = name;
             Pv = pv;
             Mana = mana;
             Level = level;
+        }
+
+        public void InitializeInventory()
+        {
+            this.Inventory = InventoryManager.Instance.Inventory;
         }
 
         public bool IsAlivePlayer()

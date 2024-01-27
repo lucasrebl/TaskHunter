@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Task
+namespace projet.MVVM.Model
 {
     public class TaskItem
     {
