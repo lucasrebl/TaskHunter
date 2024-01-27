@@ -91,7 +91,7 @@ namespace Monsters
                     Health -= Health;
                     Console.WriteLine($"{Name} attaque avec {chosenAttack.Name} et inflige {chosenAttack.Damage} points de dégâts à {player.Name}!");
                     Console.WriteLine($"{Name} c'est suicider en utilisant {chosenAttack.Name}");
-                } 
+                }
                 else
                 {
                     player.ApplyDamage(chosenAttack.Damage);
