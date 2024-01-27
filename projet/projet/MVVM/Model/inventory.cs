@@ -1,5 +1,6 @@
 namespace Inventorys
 {
+    [Serializable]
     public class Inventory
     {
         public int PotionHeal { get; set; }

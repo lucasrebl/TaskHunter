@@ -3,6 +3,7 @@ using Monsters;
 
 namespace Players
 {
+    [Serializable]
     public class Player
     {
         public string Name { get; }

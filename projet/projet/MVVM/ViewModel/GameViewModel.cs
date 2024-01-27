@@ -14,6 +14,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using Newtonsoft.Json;
+using projet.MVVM.Model;
 
 
 namespace projet.MVVM.ViewModel
@@ -31,6 +33,9 @@ namespace projet.MVVM.ViewModel
         public ICommand Attack2Command { get; private set; }
         public ICommand Attack3Command { get; private set; }
         public ICommand Attack4Command { get; private set; }
+
+        public ICommand SaveCommand { get; private set; }
+        public ICommand LoadCommand { get; private set; }
 
         public string GameStatus
         {
@@ -142,6 +147,8 @@ namespace projet.MVVM.ViewModel
             Attack2Command = new RelayCommand(Attack2Clicked);
             Attack3Command = new RelayCommand(Attack3Clicked);
             Attack4Command = new RelayCommand(Attack4Clicked);
+            SaveCommand = new RelayCommand(SaveGameCommand);
+            LoadCommand = new RelayCommand(LoadGameCommand);
             actualPlayer = player;
             monster = GetRandomMonster(monsters, NbWawes);
             monster.ResetStats();
@@ -153,201 +160,6 @@ namespace projet.MVVM.ViewModel
             PlayerLife = $"{actualPlayer.Pv}";
             EnemyImgSource = $"{monster.Img}";
         }
-
-        /*public void Game(Player player)
-        {
-
-            while (player.IsAlivePlayer())
-            {
-                if (monster == null || !monster.IsAliveMonster())
-                {
-                    if (monster != null)
-                    {
-                        GameStatus = $"Vous avez vaincu {monster.Name}";
-                    }
-
-                    if (player.IsAlivePlayer())
-                    {
-                        NbWawes++;
-                        GameStatus = $"Vague actuelle: {NbWawes}";
-                        monster = GetRandomMonster(monsters, NbWawes);
-                        monster.ResetStats();
-                        GameStatus = $"Un nouveau monstre apparaît : {monster.Name} ! Pour certaines raisons, il n'a pas pu vous attaquer...";
-                        MonsterName = $"{monster.Name}";
-                        MonsterMana = $"{monster.Mana}";
-                        MonsterLife = $"{monster.Health}";
-                        PlayerMana = $"{player.Mana}";
-                        PlayerLife = $"{player.Pv}";
-                        EnemyImgSource = $"{monster.Img}";
-                    }
-                }
-
-                switch (UserAction)
-                {
-                    case "1":
-                        if (player.Attack.Any(attack => attack.Name == "Coup de poing"))
-                        {
-                            AttackPlayer punchAttack = player.Attack.First(attack => attack.Name == "Coup de poing");
-                            if (player.Mana > punchAttack.ManaCost)
-                            {
-                                player.CastAttack(punchAttack, monster);
-                                GameStatus = $"Vous avez lancé {punchAttack.Name} et infligé {punchAttack.Damage} points de dégâts au {monster.Name}!";
-                            }
-                            else
-                            {
-                                GameStatus = "Vous n'avez pas assez de mana !";
-                            }
-                        }
-                        if (monster.IsAliveMonster())
-                        {
-                            if (monster.Category == "common")
-                            {
-                                monster.PerformAttackCommon(player);
-                            }
-                            else if (monster.Category == "rare")
-                            {
-                                monster.PerformAttackRare(player);
-                            }
-                            else if (monster.Category == "epic")
-                            {
-                                monster.PerformAttackEpic(player);
-                            }
-                            else if (monster.Category == "Legendary")
-                            {
-                                monster.PerformAttackLegendary(player);
-                            }
-                            else if (monster.Category == "Boss")
-                            {
-                                monster.PerformAttackBoss(player);
-                            }
-                        }
-                        break;
-                    case "2":
-                        if (player.Attack.Any(attack => attack.Name == "Coup de pied"))
-                        {
-                            AttackPlayer footAttack = player.Attack.First(attack => attack.Name == "Coup de pied");
-                            if (player.Mana > footAttack.ManaCost)
-                            {
-                                player.CastAttack(footAttack, monster);
-                                GameStatus = $"Vous avez lancé {footAttack.Name} et infligé {footAttack.Damage} points de dégâts au {monster.Name}!";
-                            }
-                            else
-                            {
-                                GameStatus = "Vous n'avez pas assez de mana";
-                            }
-                        }
-                        if (monster.IsAliveMonster())
-                        {
-                            if (monster.Category == "common")
-                            {
-                                monster.PerformAttackCommon(player);
-                            }
-                            else if (monster.Category == "rare")
-                            {
-                                monster.PerformAttackRare(player);
-                            }
-                            else if (monster.Category == "epic")
-                            {
-                                monster.PerformAttackEpic(player);
-                            }
-                            else if (monster.Category == "Legendary")
-                            {
-                                monster.PerformAttackLegendary(player);
-                            }
-                            else if (monster.Category == "Boss")
-                            {
-                                monster.PerformAttackBoss(player);
-                            }
-                        }
-                        break;
-                    case "3":
-                        if (player.Attack.Any(attack => attack.Name == "FireBall"))
-                        {
-                            AttackPlayer fireballAttack = player.Attack.First(attack => attack.Name == "FireBall");
-                            if (player.Mana > fireballAttack.ManaCost)
-                            {
-                                player.CastAttack(fireballAttack, monster);
-                                GameStatus = $"Vous avez lancé {fireballAttack.Name} et infligé {fireballAttack.Damage} points de dégâts au {monster.Name}!";
-                            }
-                            else
-                            {
-                                GameStatus = "Vous n'avez pas assez de mana !";
-                            }
-                        }
-                        if (monster.IsAliveMonster())
-                        {
-                            if (monster.Category == "common")
-                            {
-                                monster.PerformAttackCommon(player);
-                            }
-                            else if (monster.Category == "rare")
-                            {
-                                monster.PerformAttackRare(player);
-                            }
-                            else if (monster.Category == "epic")
-                            {
-                                monster.PerformAttackEpic(player);
-                            }
-                            else if (monster.Category == "Legendary")
-                            {
-                                monster.PerformAttackLegendary(player);
-                            }
-                            else if (monster.Category == "Boss")
-                            {
-                                monster.PerformAttackBoss(player);
-                            }
-                        }
-                        break;
-                    case "4":
-                        if (player.Attack.Any(attack => attack.Name == "Thunder"))
-                        {
-                            AttackPlayer thunderAttack = player.Attack.First(attack => attack.Name == "Thunder");
-                            if (player.Mana > thunderAttack.ManaCost)
-                            {
-                                player.CastAttack(thunderAttack, monster);
-                                GameStatus = $"Vous avez lancé {thunderAttack.Name} et infligé {thunderAttack.Damage} points de dégâts au {monster.Name}!";
-                            }
-                            else
-                            {
-                                GameStatus = "Vous n'avez pas assez de mana !";
-                            }
-                        }
-                        if (monster.IsAliveMonster())
-                        {
-                            if (monster.Category == "common")
-                            {
-                                monster.PerformAttackCommon(player);
-                            }
-                            else if (monster.Category == "rare")
-                            {
-                                monster.PerformAttackRare(player);
-                            }
-                            else if (monster.Category == "epic")
-                            {
-                                monster.PerformAttackEpic(player);
-                            }
-                            else if (monster.Category == "Legendary")
-                            {
-                                monster.PerformAttackLegendary(player);
-                            }
-                            else if (monster.Category == "Boss")
-                            {
-                                monster.PerformAttackBoss(player);
-                            }
-                        }
-                        break;
-                    default:
-                        GameStatus = "Utilisez une attaque valide.";
-                        break;
-                }
-            }
-            GameStatus = "Vous êtes mort";
-            MonsterName = $"{monster.Name}";
-            MonsterMana = $"{monster.Mana}";
-            MonsterLife = $"{monster.Health}";
-            PlayerMana = $"{player.Mana}";
-            PlayerLife = "MORT";
-        }*/
 
         private void Attack1Clicked(object parameter)
         {
@@ -848,6 +660,54 @@ namespace projet.MVVM.ViewModel
             }
             int randomIndex = rand.Next(monsters.Count);
             return monsters[randomIndex];
+        }
+
+        public void SaveGame(string fileName)
+        {
+            SaveData saveData = new SaveData
+            {
+                Player = actualPlayer,
+                Monster = monster
+            };
+
+            string json = JsonConvert.SerializeObject(saveData);
+            System.IO.File.WriteAllText(fileName, json);
+        }
+
+        public void LoadGame(string fileName)
+        {
+            if (System.IO.File.Exists(fileName))
+            {
+                string json = System.IO.File.ReadAllText(fileName);
+                SaveData saveData = JsonConvert.DeserializeObject<SaveData>(json);
+
+                if (saveData != null)
+                {
+                    actualPlayer = saveData.Player;
+                    monster = saveData.Monster;
+
+                    UpdateStats();
+                    GameStatus = "La partie a été chargée avec succès !";
+                }
+                else
+                {
+                    GameStatus = "Il y a eu une erreur lors du chargement de la sauvegarde.";
+                }
+            }
+            else
+            {
+                GameStatus = "Aucune sauvegarde trouvée.";
+            }
+        }
+
+        private void SaveGameCommand(object parameter)
+        {
+            SaveGame("save.json");
+        }
+
+        private void LoadGameCommand(object parameter)
+        {
+            LoadGame("save.json");
         }
     }
 }

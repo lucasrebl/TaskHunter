@@ -78,6 +78,9 @@
                     <Button Content="Coup de pied" Width="100" Margin="5" Command="{Binding Attack2Command}"/>
                     <Button Content="FireBall" Width="100" Margin="5" Command="{Binding Attack3Command}"/>
                     <Button Content="Thunder" Width="100" Margin="5" Command="{Binding Attack4Command}"/>
+
+                    <Button Content="Save" Command="{Binding SaveCommand}" />
+                    <Button Content="Load" Command="{Binding LoadCommand}" />
                 </StackPanel>
 
 

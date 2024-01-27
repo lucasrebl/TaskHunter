@@ -3,6 +3,7 @@ using AttackMonsters;
 
 namespace Monsters
 {
+    [Serializable]
     public class Monster
     {
         private Random rand;
