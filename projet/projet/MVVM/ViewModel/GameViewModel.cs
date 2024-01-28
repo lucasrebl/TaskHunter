@@ -14,7 +14,7 @@ using projet.MVVM.Model;
 
 namespace projet.MVVM.ViewModel
 {
-    class GameViewModel
+    class GameViewModel : INotifyPropertyChanged
     {
         private string _gameStatus;
         private string _monsterLife;
@@ -28,9 +28,31 @@ namespace projet.MVVM.ViewModel
         private string _potionMana;
         private string _potionPv;
         private InventoryManager inventoryManager;
+        private Player player;
 
+        public Player Player
+        {
+            get { return player; }
+            set
+            {
+                if (player != value)
+                {
+                    if (player != null)
+                    {
+                        player.PropertyChanged -= Player_PropertyChanged;
+                    }
 
-        
+                    player = value;
+
+                    if (player != null)
+                    {
+                        player.PropertyChanged += Player_PropertyChanged;
+                    }
+
+                    OnPropertyChanged(nameof(Player));
+                }
+            }
+        }
 
         public string GameStatus
         {
@@ -122,7 +144,63 @@ namespace projet.MVVM.ViewModel
             }
         }
 
+        private string parchmentPv;
+        public string ParchmentPv
+        {
+            get { return parchmentPv; }
+            set
+            {
+                if (parchmentPv != value)
+                {
+                    parchmentPv = value;
+                    OnPropertyChanged(nameof(ParchmentPv));
+                }
+            }
+        }
+
+        private string parchmentMana;
         public string ParchmentMana
+        {
+            get { return parchmentMana; }
+            set
+            {
+                if (parchmentMana != value)
+                {
+                    parchmentMana = value;
+                    OnPropertyChanged(nameof(ParchmentMana));
+                }
+            }
+        }
+
+        private string potionPv;
+        public string PotionPv
+        {
+            get { return potionPv; }
+            set
+            {
+                if (potionPv != value)
+                {
+                    potionPv = value;
+                    OnPropertyChanged(nameof(PotionPv));
+                }
+            }
+        }
+
+        private string potionMana;
+        public string PotionMana
+        {
+            get { return potionMana; }
+            set
+            {
+                if (potionMana != value)
+                {
+                    potionMana = value;
+                    OnPropertyChanged(nameof(PotionMana));
+                }
+            }
+        }
+
+        /*public string ParchmentMana
         {
             get { return _parchmentMana; }
             set
@@ -172,13 +250,21 @@ namespace projet.MVVM.ViewModel
                     OnPropertyChanged(nameof(PotionPv));
                 }
             }
-        }
+        }*/
 
         public ICommand PunchCommand { get; set; }
         public ICommand KickCommand { get; set; }
         public ICommand FireballCommand { get; set; }
         public ICommand ThunderCommand { get; set; }
         public ICommand InventoryCommand { get; set; }
+
+        private void Player_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            ParchmentPv = $"{player.Inventory.ParchmentPv}";
+            ParchmentMana = $"{player.Inventory.ParchmentMana}";
+            PotionPv = $"{player.Inventory.PotionPv}";
+            PotionMana = $"{player.Inventory.PotionMana}";
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

@@ -13,7 +13,7 @@ namespace projet.MVVM.Model
 
         private InventoryManager()
         {
-            Inventory = new Inventory(0, 0, 0, 0);
+            Inventory = new Inventory();
             TaskListManager = new TaskListManager();
         }
         

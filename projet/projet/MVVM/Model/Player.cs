@@ -2,10 +2,11 @@ using AttackPlayers;
 using Inventorys;
 using Monsters;
 using projet.MVVM.Model;
+using System.ComponentModel;
 
 namespace Players
 {
-    public class Player
+    public class Player : INotifyPropertyChanged
     {
         public string Name { get; }
 
@@ -17,7 +18,31 @@ namespace Players
 
         public List<AttackPlayer> Attack { get; } = new List<AttackPlayer>();
 
-        public Inventory Inventory { get; set; }
+        private Inventory inventory;
+
+        public Inventory Inventory
+        {
+            get { return inventory; }
+            set
+            {
+                if (inventory != value)
+                {
+                    if (inventory != null)
+                    {
+                        inventory.PropertyChanged -= Inventory_PropertyChanged;
+                    }
+
+                    inventory = value;
+
+                    if (inventory != null)
+                    {
+                        inventory.PropertyChanged += Inventory_PropertyChanged;
+                    }
+
+                    OnPropertyChanged(nameof(Inventory));
+                }
+            }
+        }
 
         public Player(string name, int pv, int mana, int level)
         {
@@ -56,6 +81,18 @@ namespace Players
         public void ApplyStealMana()
         {
             Mana -= 20;
+        }
+
+        private void Inventory_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            OnPropertyChanged(nameof(Inventory));
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
