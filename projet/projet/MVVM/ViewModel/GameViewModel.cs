@@ -29,6 +29,7 @@ namespace projet.MVVM.ViewModel
         private string _playerLife;
         private string _playerMana;
         private string _enemyImgSource;
+        private Player _actualPlayer;
         public ICommand Attack1Command { get; private set; }
         public ICommand Attack2Command { get; private set; }
         public ICommand Attack3Command { get; private set; }
@@ -127,6 +128,19 @@ namespace projet.MVVM.ViewModel
             }
         }
 
+        public Player ActualPlayer
+        {
+            get { return _actualPlayer; }
+            set
+            {
+                if (_actualPlayer != value)
+                {
+                    _actualPlayer = value;
+                    OnPropertyChanged(nameof(ActualPlayer));
+                }
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName)
         {
@@ -136,7 +150,6 @@ namespace projet.MVVM.ViewModel
         static Random rand = new Random();
         Monster monster = null;
         List<Monster> monsters = InitMonster();
-        Player actualPlayer = null;
         int NbWawes = 0;
 
         public void InitializeGame(Player player)
@@ -149,10 +162,7 @@ namespace projet.MVVM.ViewModel
             Attack4Command = new RelayCommand(Attack4Clicked);
             SaveCommand = new RelayCommand(SaveGameCommand);
             LoadCommand = new RelayCommand(LoadGameCommand);
-            actualPlayer = player;
-
-            DashboardViewModel dashboardViewModel = new DashboardViewModel();
-            dashboardViewModel.ActualPlayer = actualPlayer;
+            ActualPlayer = player;
 
             monster = GetRandomMonster(monsters, NbWawes);
             monster.ResetStats();
@@ -160,8 +170,8 @@ namespace projet.MVVM.ViewModel
             MonsterName = $"{monster.Name}";
             MonsterMana = $"{monster.Mana}";
             MonsterLife = $"{monster.Health}";
-            PlayerMana = $"{actualPlayer.Mana}";
-            PlayerLife = $"{actualPlayer.Pv}";
+            PlayerMana = $"{ActualPlayer.Mana}";
+            PlayerLife = $"{ActualPlayer.Pv}";
             EnemyImgSource = $"{monster.Img}";
         }
 
@@ -169,15 +179,14 @@ namespace projet.MVVM.ViewModel
         {
             GameStatus = "Attaque 1";
 
-            if (actualPlayer.IsAlivePlayer())
+            if (ActualPlayer.IsAlivePlayer())
             {
-
-                if (actualPlayer.Attack.Any(attack => attack.Name == "Coup de poing"))
+                if (ActualPlayer.Attack.Any(attack => attack.Name == "Coup de poing"))
                 {
-                    AttackPlayer punchAttack = actualPlayer.Attack.First(attack => attack.Name == "Coup de poing");
-                    if (actualPlayer.Mana > punchAttack.ManaCost)
+                    AttackPlayer punchAttack = ActualPlayer.Attack.First(attack => attack.Name == "Coup de poing");
+                    if (ActualPlayer.Mana > punchAttack.ManaCost)
                     {
-                        actualPlayer.CastAttack(punchAttack, monster);
+                        ActualPlayer.CastAttack(punchAttack, monster);
                         GameStatus = $"Vous avez lancé {punchAttack.Name} et infligé {punchAttack.Damage} points de dégâts au {monster.Name}!";
                         UpdateStats();
                     }
@@ -190,23 +199,23 @@ namespace projet.MVVM.ViewModel
                 {
                     if (monster.Category == "common")
                     {
-                        monster.PerformAttackCommon(actualPlayer);
+                        monster.PerformAttackCommon(ActualPlayer);
                     }
                     else if (monster.Category == "rare")
                     {
-                        monster.PerformAttackRare(actualPlayer);
+                        monster.PerformAttackRare(ActualPlayer);
                     }
                     else if (monster.Category == "epic")
                     {
-                        monster.PerformAttackEpic(actualPlayer);
+                        monster.PerformAttackEpic(ActualPlayer);
                     }
                     else if (monster.Category == "Legendary")
                     {
-                        monster.PerformAttackLegendary(actualPlayer);
+                        monster.PerformAttackLegendary(ActualPlayer);
                     }
                     else if (monster.Category == "Boss")
                     {
-                        monster.PerformAttackBoss(actualPlayer);
+                        monster.PerformAttackBoss(ActualPlayer);
                     }
                     UpdateStats();
                 }
@@ -216,14 +225,15 @@ namespace projet.MVVM.ViewModel
                     if (monster != null)
                     {
                         GameStatus = $"Vous avez vaincu {monster.Name}";
+                        monster.UpdatePlayerXP(ActualPlayer);
                     }
-
-                    if (actualPlayer.IsAlivePlayer())
+                    if (ActualPlayer.IsAlivePlayer())
                     {
                         NbWawes++;
                         GameStatus = $"Vague actuelle: {NbWawes}";
                         monster = GetRandomMonster(monsters, NbWawes);
                         monster.ResetStats();
+                        ActualPlayer.ResetStatsPlayer();
                         GameStatus = $"Un nouveau monstre apparaît : {monster.Name} ! Pour certaines raisons, il n'a pas pu vous attaquer...";
                         UpdateStats();
                     }
@@ -235,7 +245,7 @@ namespace projet.MVVM.ViewModel
                 MonsterName = $"{monster.Name}";
                 MonsterMana = $"{monster.Mana}";
                 MonsterLife = $"{monster.Health}";
-                PlayerMana = $"{actualPlayer.Mana}";
+                PlayerMana = $"{ActualPlayer.Mana}";
                 PlayerLife = "MORT";
             }
 
@@ -245,15 +255,15 @@ namespace projet.MVVM.ViewModel
         {
             GameStatus = "Attaque 2";
 
-            if (actualPlayer.IsAlivePlayer())
+            if (ActualPlayer.IsAlivePlayer())
             {
 
-                if (actualPlayer.Attack.Any(attack => attack.Name == "Coup de pied"))
+                if (ActualPlayer.Attack.Any(attack => attack.Name == "Coup de pied"))
                 {
-                    AttackPlayer footAttack = actualPlayer.Attack.First(attack => attack.Name == "Coup de pied");
-                    if (actualPlayer.Mana > footAttack.ManaCost)
+                    AttackPlayer footAttack = ActualPlayer.Attack.First(attack => attack.Name == "Coup de pied");
+                    if (ActualPlayer.Mana > footAttack.ManaCost)
                     {
-                        actualPlayer.CastAttack(footAttack, monster);
+                        ActualPlayer.CastAttack(footAttack, monster);
                         GameStatus = $"Vous avez lancé {footAttack.Name} et infligé {footAttack.Damage} points de dégâts au {monster.Name}!";
                     }
                     else
@@ -265,23 +275,23 @@ namespace projet.MVVM.ViewModel
                 {
                     if (monster.Category == "common")
                     {
-                        monster.PerformAttackCommon(actualPlayer);
+                        monster.PerformAttackCommon(ActualPlayer);
                     }
                     else if (monster.Category == "rare")
                     {
-                        monster.PerformAttackRare(actualPlayer);
+                        monster.PerformAttackRare(ActualPlayer);
                     }
                     else if (monster.Category == "epic")
                     {
-                        monster.PerformAttackEpic(actualPlayer);
+                        monster.PerformAttackEpic(ActualPlayer);
                     }
                     else if (monster.Category == "Legendary")
                     {
-                        monster.PerformAttackLegendary(actualPlayer);
+                        monster.PerformAttackLegendary(ActualPlayer);
                     }
                     else if (monster.Category == "Boss")
                     {
-                        monster.PerformAttackBoss(actualPlayer);
+                        monster.PerformAttackBoss(ActualPlayer);
                     }
                     UpdateStats();
                 }
@@ -291,14 +301,16 @@ namespace projet.MVVM.ViewModel
                     if (monster != null)
                     {
                         GameStatus = $"Vous avez vaincu {monster.Name}";
+                        monster.UpdatePlayerXP(ActualPlayer);
                     }
 
-                    if (actualPlayer.IsAlivePlayer())
+                    if (ActualPlayer.IsAlivePlayer())
                     {
                         NbWawes++;
                         GameStatus = $"Vague actuelle: {NbWawes}";
                         monster = GetRandomMonster(monsters, NbWawes);
                         monster.ResetStats();
+                        ActualPlayer.ResetStatsPlayer();
                         GameStatus = $"Un nouveau monstre apparaît : {monster.Name} ! Pour certaines raisons, il n'a pas pu vous attaquer...";
                         UpdateStats();
                     }
@@ -310,7 +322,7 @@ namespace projet.MVVM.ViewModel
                 MonsterName = $"{monster.Name}";
                 MonsterMana = $"{monster.Mana}";
                 MonsterLife = $"{monster.Health}";
-                PlayerMana = $"{actualPlayer.Mana}";
+                PlayerMana = $"{ActualPlayer.Mana}";
                 PlayerLife = "MORT";
             }
         }
@@ -319,14 +331,14 @@ namespace projet.MVVM.ViewModel
         {
             GameStatus = "Attaque 3";
 
-            if (actualPlayer.IsAlivePlayer())
+            if (ActualPlayer.IsAlivePlayer())
             {
-                if (actualPlayer.Attack.Any(attack => attack.Name == "FireBall"))
+                if (ActualPlayer.Attack.Any(attack => attack.Name == "FireBall"))
                 {
-                    AttackPlayer fireballAttack = actualPlayer.Attack.First(attack => attack.Name == "FireBall");
-                    if (actualPlayer.Mana > fireballAttack.ManaCost)
+                    AttackPlayer fireballAttack = ActualPlayer.Attack.First(attack => attack.Name == "FireBall");
+                    if (ActualPlayer.Mana > fireballAttack.ManaCost)
                     {
-                        actualPlayer.CastAttack(fireballAttack, monster);
+                        ActualPlayer.CastAttack(fireballAttack, monster);
                         GameStatus = $"Vous avez lancé {fireballAttack.Name} et infligé {fireballAttack.Damage} points de dégâts au {monster.Name}!";
                     }
                     else
@@ -338,23 +350,23 @@ namespace projet.MVVM.ViewModel
                 {
                     if (monster.Category == "common")
                     {
-                        monster.PerformAttackCommon(actualPlayer);
+                        monster.PerformAttackCommon(ActualPlayer);
                     }
                     else if (monster.Category == "rare")
                     {
-                        monster.PerformAttackRare(actualPlayer);
+                        monster.PerformAttackRare(ActualPlayer);
                     }
                     else if (monster.Category == "epic")
                     {
-                        monster.PerformAttackEpic(actualPlayer);
+                        monster.PerformAttackEpic(ActualPlayer);
                     }
                     else if (monster.Category == "Legendary")
                     {
-                        monster.PerformAttackLegendary(actualPlayer);
+                        monster.PerformAttackLegendary(ActualPlayer);
                     }
                     else if (monster.Category == "Boss")
                     {
-                        monster.PerformAttackBoss(actualPlayer);
+                        monster.PerformAttackBoss(ActualPlayer);
                     }
                     UpdateStats();
                 }
@@ -364,14 +376,16 @@ namespace projet.MVVM.ViewModel
                     if (monster != null)
                     {
                         GameStatus = $"Vous avez vaincu {monster.Name}";
+                        monster.UpdatePlayerXP(ActualPlayer);
                     }
 
-                    if (actualPlayer.IsAlivePlayer())
+                    if (ActualPlayer.IsAlivePlayer())
                     {
                         NbWawes++;
                         GameStatus = $"Vague actuelle: {NbWawes}";
                         monster = GetRandomMonster(monsters, NbWawes);
                         monster.ResetStats();
+                        ActualPlayer.ResetStatsPlayer();
                         GameStatus = $"Un nouveau monstre apparaît : {monster.Name} ! Pour certaines raisons, il n'a pas pu vous attaquer...";
                         UpdateStats();
                     }
@@ -383,7 +397,7 @@ namespace projet.MVVM.ViewModel
                 MonsterName = $"{monster.Name}";
                 MonsterMana = $"{monster.Mana}";
                 MonsterLife = $"{monster.Health}";
-                PlayerMana = $"{actualPlayer.Mana}";
+                PlayerMana = $"{ActualPlayer.Mana}";
                 PlayerLife = "MORT";
             }
         }
@@ -392,14 +406,14 @@ namespace projet.MVVM.ViewModel
         {
             GameStatus = "Attaque 4";
 
-            if (actualPlayer.IsAlivePlayer())
+            if (ActualPlayer.IsAlivePlayer())
             {
-                if (actualPlayer.Attack.Any(attack => attack.Name == "Thunder"))
+                if (ActualPlayer.Attack.Any(attack => attack.Name == "Thunder"))
                 {
-                    AttackPlayer thunderAttack = actualPlayer.Attack.First(attack => attack.Name == "Thunder");
-                    if (actualPlayer.Mana > thunderAttack.ManaCost)
+                    AttackPlayer thunderAttack = ActualPlayer.Attack.First(attack => attack.Name == "Thunder");
+                    if (ActualPlayer.Mana > thunderAttack.ManaCost)
                     {
-                        actualPlayer.CastAttack(thunderAttack, monster);
+                        ActualPlayer.CastAttack(thunderAttack, monster);
                         GameStatus = $"Vous avez lancé {thunderAttack.Name} et infligé {thunderAttack.Damage} points de dégâts au {monster.Name}!";
                     }
                     else
@@ -411,23 +425,23 @@ namespace projet.MVVM.ViewModel
                 {
                     if (monster.Category == "common")
                     {
-                        monster.PerformAttackCommon(actualPlayer);
+                        monster.PerformAttackCommon(ActualPlayer);
                     }
                     else if (monster.Category == "rare")
                     {
-                        monster.PerformAttackRare(actualPlayer);
+                        monster.PerformAttackRare(ActualPlayer);
                     }
                     else if (monster.Category == "epic")
                     {
-                        monster.PerformAttackEpic(actualPlayer);
+                        monster.PerformAttackEpic(ActualPlayer);
                     }
                     else if (monster.Category == "Legendary")
                     {
-                        monster.PerformAttackLegendary(actualPlayer);
+                        monster.PerformAttackLegendary(ActualPlayer);
                     }
                     else if (monster.Category == "Boss")
                     {
-                        monster.PerformAttackBoss(actualPlayer);
+                        monster.PerformAttackBoss(ActualPlayer);
                     }
                     UpdateStats();
                 }
@@ -437,14 +451,16 @@ namespace projet.MVVM.ViewModel
                     if (monster != null)
                     {
                         GameStatus = $"Vous avez vaincu {monster.Name}";
+                        monster.UpdatePlayerXP(ActualPlayer);
                     }
 
-                    if (actualPlayer.IsAlivePlayer())
+                    if (ActualPlayer.IsAlivePlayer())
                     {
                         NbWawes++;
                         GameStatus = $"Vague actuelle: {NbWawes}";
                         monster = GetRandomMonster(monsters, NbWawes);
                         monster.ResetStats();
+                        ActualPlayer.ResetStatsPlayer();
                         GameStatus = $"Un nouveau monstre apparaît : {monster.Name} ! Pour certaines raisons, il n'a pas pu vous attaquer...";
                         UpdateStats();
                     }
@@ -456,7 +472,7 @@ namespace projet.MVVM.ViewModel
                 MonsterName = $"{monster.Name}";
                 MonsterMana = $"{monster.Mana}";
                 MonsterLife = $"{monster.Health}";
-                PlayerMana = $"{actualPlayer.Mana}";
+                PlayerMana = $"{ActualPlayer.Mana}";
                 PlayerLife = "MORT";
             }
         }
@@ -466,8 +482,8 @@ namespace projet.MVVM.ViewModel
             MonsterName = $"{monster.Name}";
             MonsterMana = $"{monster.Mana}";
             MonsterLife = $"{monster.Health}";
-            PlayerMana = $"{actualPlayer.Mana}";
-            PlayerLife = $"{actualPlayer.Pv}";
+            PlayerMana = $"{ActualPlayer.Mana}";
+            PlayerLife = $"{ActualPlayer.Pv}";
             EnemyImgSource = $"{monster.Img}";
         }
 
@@ -670,7 +686,7 @@ namespace projet.MVVM.ViewModel
         {
             SaveData saveData = new SaveData
             {
-                Player = actualPlayer,
+                Player = ActualPlayer,
                 Monster = monster
             };
 
@@ -687,9 +703,7 @@ namespace projet.MVVM.ViewModel
 
                 if (saveData != null)
                 {
-                    actualPlayer = saveData.Player;
-                    monster = saveData.Monster;
-
+                    ActualPlayer.UpdatePlayerProperties(saveData.Player.Pv, saveData.Player.Mana, saveData.Player.Level, saveData.Player.ExperiencePoints, saveData.Player.XpRequiredForNextLevel, saveData.Player.originalHealth, saveData.Player.originalMana);
                     UpdateStats();
                     GameStatus = "La partie a été chargée avec succès !";
                 }
