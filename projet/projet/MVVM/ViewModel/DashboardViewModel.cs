@@ -15,6 +15,7 @@ namespace projet.MVVM.ViewModel
         private string _playerLevel;
         private string _playerXpNeeded;
         private string _playerXp;
+        private string _playerWins;
 
         public string PlayerLife
         {
@@ -78,6 +79,19 @@ namespace projet.MVVM.ViewModel
             }
         }
 
+        public string PlayerWins
+        {
+            get { return _playerWins; }
+            set
+            {
+                if (_playerWins != value)
+                {
+                    _playerWins = value;
+                    OnPropertyChanged(nameof(PlayerWins));
+                }
+            }
+        }
+
         public Player ActualPlayer
         {
             get { return _actualPlayer; }
@@ -113,6 +127,7 @@ namespace projet.MVVM.ViewModel
             PlayerXpNeeded = $"{player.XpRequiredForNextLevel}";
             PlayerXp = $"{player.ExperiencePoints}";
             PlayerLevel = $"{player.Level}";
+            PlayerWins = $"{player.Wins}";
         }
     }
 

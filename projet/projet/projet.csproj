@@ -11,6 +11,9 @@
   <ItemGroup>
     <None Remove="Images\fightarea.jpg" />
     <None Remove="Images\fightarea2.png" />
+    <None Remove="Images\fist.png" />
+    <None Remove="Images\flame.png" />
+    <None Remove="Images\foothit.png" />
     <None Remove="Images\Monsters\crocmou.gif" />
     <None Remove="Images\Monsters\frenchpampa.png" />
     <None Remove="Images\Monsters\goldenhand.png" />
@@ -25,7 +28,12 @@
     <None Remove="Images\Monsters\slime.gif" />
     <None Remove="Images\Monsters\spoink.gif" />
     <None Remove="Images\Monsters\sprout.gif" />
+    <None Remove="Images\potion.png" />
     <None Remove="Images\red.png" />
+    <None Remove="Images\TaskHunterlogo.png" />
+    <None Remove="Images\TaskHunterlogogros.png" />
+    <None Remove="Images\TaskHunterlogoshadowgrosgros.png" />
+    <None Remove="Images\thunder.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -42,6 +50,15 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\fightarea2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\fist.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\flame.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\foothit.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\Monsters\crocmou.gif">
@@ -86,7 +103,22 @@
     <Resource Include="Images\Monsters\sprout.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\potion.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\red.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\TaskHunterlogo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\TaskHunterlogogros.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\TaskHunterlogoshadowgrosgros.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\thunder.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

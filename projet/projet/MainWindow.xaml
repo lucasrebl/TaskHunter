@@ -38,12 +38,10 @@
 
             </Grid.RowDefinitions>
 
-            <TextBlock Text="TaskHunter"
+            <Image Source="/Images/TaskHunterlogoshadowgrosgros.png"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
-                   Foreground="Red"
-                   FontSize="22"
-                   FontWeight="Bold"/>
+                   Margin="10"/>
 
             <StackPanel Grid.Row="1">
                 <RadioButton Content="Dashboard"

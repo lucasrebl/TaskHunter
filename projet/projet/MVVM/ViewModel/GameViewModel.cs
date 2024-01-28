@@ -703,7 +703,7 @@ namespace projet.MVVM.ViewModel
 
                 if (saveData != null)
                 {
-                    ActualPlayer.UpdatePlayerProperties(saveData.Player.Pv, saveData.Player.Mana, saveData.Player.Level, saveData.Player.ExperiencePoints, saveData.Player.XpRequiredForNextLevel, saveData.Player.originalHealth, saveData.Player.originalMana);
+                    ActualPlayer.UpdatePlayerProperties(saveData.Player.Pv, saveData.Player.Mana, saveData.Player.Level, saveData.Player.ExperiencePoints, saveData.Player.XpRequiredForNextLevel, saveData.Player.originalHealth, saveData.Player.originalMana, saveData.Player.Wins);
                     UpdateStats();
                     GameStatus = "La partie a été chargée avec succès !";
                 }

@@ -19,6 +19,7 @@ namespace Players
         public bool IsFrozen { get; private set; } = false;
         public bool IsDepressed { get; private set; } = false;
         public bool PossessedByTheDevil { get; private set; } = false;
+        public int Wins { get; private set; }
 
         public int originalHealth;
         public int originalMana;
@@ -51,7 +52,7 @@ namespace Players
             }
         }
 
-        public void UpdatePlayerProperties(int newPv, int newMana,int level, int XP, int XPRequired, int originalhealth, int originalmana)
+        public void UpdatePlayerProperties(int newPv, int newMana,int level, int XP, int XPRequired, int originalhealth, int originalmana, int wins)
         {
             Pv = newPv;
             Mana = newMana;
@@ -59,6 +60,7 @@ namespace Players
             originalHealth = originalhealth;
             originalMana = originalmana;
             XpRequiredForNextLevel = XPRequired;
+            Wins = wins;
         }
 
         public bool IsAlivePlayer()
@@ -147,6 +149,7 @@ namespace Players
         {
             Pv = originalHealth;
             Mana = originalMana;
+            Wins++;
         }
     }
 }
