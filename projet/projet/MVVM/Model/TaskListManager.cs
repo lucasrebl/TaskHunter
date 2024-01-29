@@ -17,6 +17,8 @@ namespace projet.MVVM.Model
             return random.Next(1, 3);
         }
 
+
+
         public TaskListManager()
         {
             inventoryManager = InventoryManager.Instance;

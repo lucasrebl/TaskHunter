@@ -5,7 +5,7 @@ namespace projet.MVVM.Model
 {
     public class InventoryManager : INotifyPropertyChanged
     {
-        private static readonly InventoryManager instance = new InventoryManager();
+        private static InventoryManager instance = new InventoryManager();
 
         public Inventory Inventory { get; private set; }
 
@@ -13,10 +13,11 @@ namespace projet.MVVM.Model
 
         private InventoryManager()
         {
+            InventoryManager.instance = this;
             Inventory = new Inventory();
             TaskListManager = new TaskListManager();
         }
-        
+
         public static InventoryManager Instance
         {
             get { return instance; }
