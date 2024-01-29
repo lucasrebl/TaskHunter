@@ -98,24 +98,18 @@
                     </TextBlock>
                 </StackPanel>
                 <StackPanel Width="438" Height="50" Orientation="Horizontal">
-                    <Button Content="Coup de poing" Command="{Binding PunchCommand}" Width="100" Margin="5"/>
-                    <Button Content="Coup de pied" Command="{Binding KickCommand}" Width="100" Margin="5"/>
-                    <Button Content="FireBall" Command="{Binding FireballCommand}" Width="100" Margin="5"/>
-                    <Button Content="Thunder" Command="{Binding ThunderCommand}" Width="100" Margin="5"/>
-                <StackPanel Width="604" Height="50" Orientation="Horizontal" HorizontalAlignment="Center" Margin="15,15,15,0">
-                    <Button Content="Coup de poing" Width="100" Margin="5" Command="{Binding Attack1Command}"/>
-                    <Button Content="Coup de pied" Width="100" Margin="5" Command="{Binding Attack2Command}"/>
-                    <Button Content="FireBall" Width="100" Margin="5" Command="{Binding Attack3Command}"/>
-                    <Button Content="Thunder" Width="100" Margin="5" Command="{Binding Attack4Command}"/>
-
-                    
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Height="26">
-                    <Button Content="Sauvegarder" Command="{Binding SaveCommand}" Margin="38,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="10" Width="75"/>
-                    <Button Content="Charger" Command="{Binding LoadCommand}" Margin="0,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="10" Width="75"/>
+                    <StackPanel Width="604" Height="50" Orientation="Horizontal" HorizontalAlignment="Center" Margin="15,15,15,0">
+                        <Button Content="Coup de poing" Width="100" Margin="5" Command="{Binding Attack1Command}"/>
+                        <Button Content="Coup de pied" Width="100" Margin="5" Command="{Binding Attack2Command}"/>
+                        <Button Content="FireBall" Width="100" Margin="5" Command="{Binding Attack3Command}"/>
+                        <Button Content="Thunder" Width="100" Margin="5" Command="{Binding Attack4Command}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Height="26">
+                        <Button Content="Sauvegarder" Command="{Binding SaveCommand}" Margin="38,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="10" Width="75"/>
+                        <Button Content="Charger" Command="{Binding LoadCommand}" Margin="0,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="10" Width="75"/>
+                    </StackPanel>
                 </StackPanel>
             </StackPanel>
         </StackPanel>
-
     </Grid>
 </UserControl>

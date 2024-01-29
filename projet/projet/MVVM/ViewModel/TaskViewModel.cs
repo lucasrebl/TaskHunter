@@ -1,22 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Players;
-using System.Threading.Tasks;
+﻿using Players;
+using projet.Core;
+using projet.MVVM.Model;
+using System;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Windows.Input;
 
 namespace projet.MVVM.ViewModel
 {
-    class TaskViewModel
+    public class TaskViewModel : INotifyPropertyChanged
     {
-        /*public Player player;
-
-        public TaskViewModel() 
-        {
-      
-
-        }*/
+        
     }
-
-
 }

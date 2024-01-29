@@ -14,6 +14,8 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using Newtonsoft.Json;
 using projet.MVVM.Model;
+using Inventorys;
+using projet.Core;
 
 
 namespace projet.MVVM.ViewModel
@@ -213,70 +215,9 @@ namespace projet.MVVM.ViewModel
             }
         }
 
-        /*public string ParchmentMana
-        {
-            get { return _parchmentMana; }
-            set
-            {
-                if (_parchmentMana != value)
-                {
-                    _parchmentMana = value;
-                    OnPropertyChanged(nameof(ParchmentMana));
-                }
-            }
-        }
-
-        public string ParchmentPv
-        {
-            get { return _parchmentPv; }
-            set
-            {
-                if (_parchmentPv != value)
-                {
-                    _parchmentPv = value;
-                    OnPropertyChanged(nameof(ParchmentPv));
-                }
-            }
-        }
-
-        public string PotionMana
-        {
-            get { return _potionMana; }
-            set
-            {
-                if (_potionMana != value)
-                {
-                    _potionMana = value;
-                    OnPropertyChanged(nameof(PotionMana));
-                }
-            }
-        }
-
-        public string PotionPv
-        {
-            get { return _potionPv; }
-            set
-            {
-                if (_potionPv != value)
-                {
-                    _potionPv = value;
-                    OnPropertyChanged(nameof(PotionPv));
-                }
-            }
-        }*/
-
-        public ICommand PunchCommand { get; set; }
-        public ICommand KickCommand { get; set; }
-        public ICommand FireballCommand { get; set; }
-        public ICommand ThunderCommand { get; set; }
-        public ICommand InventoryCommand { get; set; }
-
         private void Player_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            ParchmentPv = $"{player.Inventory.ParchmentPv}";
-            ParchmentMana = $"{player.Inventory.ParchmentMana}";
-            PotionPv = $"{player.Inventory.PotionPv}";
-            PotionMana = $"{player.Inventory.PotionMana}";
+            
         }
 
         public Player ActualPlayer
@@ -306,8 +247,6 @@ namespace projet.MVVM.ViewModel
 
         public void InitializeGame(Player player)
         {
-            //Game(player);
-
             Attack1Command = new RelayCommand(Attack1Clicked);
             Attack2Command = new RelayCommand(Attack2Clicked);
             Attack3Command = new RelayCommand(Attack3Clicked);
@@ -315,13 +254,6 @@ namespace projet.MVVM.ViewModel
             SaveCommand = new RelayCommand(SaveGameCommand);
             LoadCommand = new RelayCommand(LoadGameCommand);
             ActualPlayer = player;
-
-        public void Game(Player player)
-        {
-            int NbWawes = 0;
-            List<Monster> monsters = InitMonster();
-            Monster monster = null;
-            Inventory inventory = player.Inventory;
 
             monster = GetRandomMonster(monsters, NbWawes);
             monster.ResetStats();
@@ -332,6 +264,10 @@ namespace projet.MVVM.ViewModel
             PlayerMana = $"{ActualPlayer.Mana}";
             PlayerLife = $"{ActualPlayer.Pv}";
             EnemyImgSource = $"{monster.Img}";
+            ParchmentPv = $"{ActualPlayer.Inventory.ParchmentPv}";
+            ParchmentMana = $"{ActualPlayer.Inventory.ParchmentMana}";
+            PotionPv = $"{ActualPlayer.Inventory.PotionPv}";
+            PotionMana = $"{ActualPlayer.Inventory.PotionMana}";
         }
 
         private void Attack1Clicked(object parameter)
@@ -887,6 +823,5 @@ namespace projet.MVVM.ViewModel
             LoadGame("save.json");
         }
     }
-
 
 }

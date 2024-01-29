@@ -16,7 +16,6 @@ namespace projet.MVVM.ViewModel
         private string _playerXpNeeded;
         private string _playerXp;
         private string _playerWins;
-
         public string PlayerLife
         {
             get { return _playerLife; }

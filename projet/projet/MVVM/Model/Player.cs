@@ -11,7 +11,6 @@ namespace Players
     {
         private static Player _instance;
         public string Name { get; }
-
         public int Pv { get; private set; }
 
         public int Mana { get; private set; }
@@ -23,13 +22,11 @@ namespace Players
         public bool IsDepressed { get; private set; } = false;
         public bool PossessedByTheDevil { get; private set; } = false;
         public int Wins { get; private set; }
-
         public int originalHealth;
         public int originalMana;
         public int ExperiencePoints { get; private set; }
         public List<AttackPlayer> Attack { get; } = new List<AttackPlayer>();
-
-        private Inventory inventory;
+        private static Inventory inventory;
 
         public Inventory Inventory
         {
@@ -55,7 +52,7 @@ namespace Players
             }
         }
 
-        public Player(string name, int pv, int mana, int level)
+        public Player(string name, int pv, int mana, int level, int xpRequiredForNextLevel)
         {
             Name = name;
             Pv = pv;
@@ -76,6 +73,7 @@ namespace Players
                     _instance.Attack.Add(new AttackPlayer("Coup de poing", 10, 0));
                     _instance.Attack.Add(new AttackPlayer("FireBall", 25, 10));
                     _instance.Attack.Add(new AttackPlayer("Thunder", 30, 15));
+                    _instance.Inventory = new Inventory();
                 }
                 return _instance;
             }
