@@ -1,4 +1,5 @@
 using AttackPlayers;
+using Inventorys;
 using Monsters;
 
 namespace Players
@@ -24,6 +25,10 @@ namespace Players
         public int originalHealth;
         public int originalMana;
         public int ExperiencePoints { get; private set; }
+
+        private bool hasUsedParchmentMana = false;
+        private bool hasUsedParchmentPv = false;
+
         public List<AttackPlayer> Attack { get; } = new List<AttackPlayer>();
 
         public Player(string name, int pv, int mana, int level, int xpRequiredForNextLevel)
@@ -70,8 +75,13 @@ namespace Players
 
         public void CastAttack(AttackPlayer attackPlayer, Monster target)
         {
-            Mana -= attackPlayer.ManaCost;
+            if (!hasUsedParchmentMana)
+            {
+                Mana -= attackPlayer.ManaCost;
+            }
             target.ApplyDamage(attackPlayer.Damage);
+
+            hasUsedParchmentMana = false;
         }
 
         public string GetStatusPlayer()
@@ -81,7 +91,12 @@ namespace Players
 
         public void ApplyDamage(int damage)
         {
-            Pv -= damage;
+            if (!hasUsedParchmentPv)
+            {
+                Pv -= damage;
+            }
+
+            hasUsedParchmentPv = false;
         }
 
         public void ApplyStealMana()
@@ -150,6 +165,29 @@ namespace Players
             Pv = originalHealth;
             Mana = originalMana;
             Wins++;
+        }
+        public void PotionPv(Inventory inventory)
+        {
+            inventory.PotionHeal -= 1;
+            Pv += 20;
+        }
+
+        public void PotionMana(Inventory inventory)
+        {
+            inventory.PotionMana -= 1;
+            Mana += 20;
+        }
+
+        public void ParchmentMana(Inventory inventory)
+        {
+            inventory.ParchmentMana -= 1;
+            hasUsedParchmentMana = true;
+        }
+
+        public void ParchmentPv(Inventory inventory)
+        {
+            inventory.ParchmentPv -= 1;
+            hasUsedParchmentPv = true;
         }
     }
 }

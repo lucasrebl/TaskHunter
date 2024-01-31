@@ -16,6 +16,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using Newtonsoft.Json;
 using projet.MVVM.Model;
+using Inventorys;
 
 
 namespace projet.MVVM.ViewModel
