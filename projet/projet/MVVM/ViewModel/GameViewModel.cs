@@ -610,6 +610,35 @@ namespace projet.MVVM.ViewModel
                 ActualPlayer.addPlayerPv(20);
                 UpdateStats();
             }
+            if (monster.IsAliveMonster())
+            {
+                if (monster.Category == "common")
+                {
+                    string monsterAttackResult = monster.PerformAttackCommon(ActualPlayer);
+                    GameStatus += $" \n{monsterAttackResult}";
+                }
+                else if (monster.Category == "rare")
+                {
+                    string monsterAttackResult = monster.PerformAttackRare(ActualPlayer);
+                    GameStatus += $" \n{monsterAttackResult}";
+                }
+                else if (monster.Category == "epic")
+                {
+                    string monsterAttackResult = monster.PerformAttackEpic(ActualPlayer);
+                    GameStatus += $" \n{monsterAttackResult}";
+                }
+                else if (monster.Category == "Legendary")
+                {
+                    string monsterAttackResult = monster.PerformAttackLegendary(ActualPlayer);
+                    GameStatus += $" \n{monsterAttackResult}";
+                }
+                else if (monster.Category == "Boss")
+                {
+                    string monsterAttackResult = monster.PerformAttackBoss(ActualPlayer);
+                    GameStatus += $" \n{monsterAttackResult}";
+                }
+                UpdateStats();
+            }
         }
 
         public void UsePotionMana(object parameter)
@@ -618,6 +647,35 @@ namespace projet.MVVM.ViewModel
             {
                 ActualPlayer.Inventory.PotionMana -= 1;
                 ActualPlayer.addPlayerMana(20);
+                UpdateStats();
+            }
+            if (monster.IsAliveMonster())
+            {
+                if (monster.Category == "common")
+                {
+                    string monsterAttackResult = monster.PerformAttackCommon(ActualPlayer);
+                    GameStatus += $" \n{monsterAttackResult}";
+                }
+                else if (monster.Category == "rare")
+                {
+                    string monsterAttackResult = monster.PerformAttackRare(ActualPlayer);
+                    GameStatus += $" \n{monsterAttackResult}";
+                }
+                else if (monster.Category == "epic")
+                {
+                    string monsterAttackResult = monster.PerformAttackEpic(ActualPlayer);
+                    GameStatus += $" \n{monsterAttackResult}";
+                }
+                else if (monster.Category == "Legendary")
+                {
+                    string monsterAttackResult = monster.PerformAttackLegendary(ActualPlayer);
+                    GameStatus += $" \n{monsterAttackResult}";
+                }
+                else if (monster.Category == "Boss")
+                {
+                    string monsterAttackResult = monster.PerformAttackBoss(ActualPlayer);
+                    GameStatus += $" \n{monsterAttackResult}";
+                }
                 UpdateStats();
             }
         }
@@ -630,6 +688,35 @@ namespace projet.MVVM.ViewModel
                 ActualPlayer.hasUsedParchmentMana = true;
                 UpdateStats();
             }
+            if (monster.IsAliveMonster())
+            {
+                if (monster.Category == "common")
+                {
+                    string monsterAttackResult = monster.PerformAttackCommon(ActualPlayer);
+                    GameStatus += $" \n{monsterAttackResult}";
+                }
+                else if (monster.Category == "rare")
+                {
+                    string monsterAttackResult = monster.PerformAttackRare(ActualPlayer);
+                    GameStatus += $" \n{monsterAttackResult}";
+                }
+                else if (monster.Category == "epic")
+                {
+                    string monsterAttackResult = monster.PerformAttackEpic(ActualPlayer);
+                    GameStatus += $" \n{monsterAttackResult}";
+                }
+                else if (monster.Category == "Legendary")
+                {
+                    string monsterAttackResult = monster.PerformAttackLegendary(ActualPlayer);
+                    GameStatus += $" \n{monsterAttackResult}";
+                }
+                else if (monster.Category == "Boss")
+                {
+                    string monsterAttackResult = monster.PerformAttackBoss(ActualPlayer);
+                    GameStatus += $" \n{monsterAttackResult}";
+                }
+                UpdateStats();
+            }
         }
 
         public void UseParchmentPv(object parameter)
@@ -638,6 +725,35 @@ namespace projet.MVVM.ViewModel
             {
                 ActualPlayer.Inventory.ParchmentPv -= 1;
                 ActualPlayer.hasUsedParchmentPv = true;
+                UpdateStats();
+            }
+            if (monster.IsAliveMonster())
+            {
+                if (monster.Category == "common")
+                {
+                    string monsterAttackResult = monster.PerformAttackCommon(ActualPlayer);
+                    GameStatus += $" \n{monsterAttackResult}";
+                }
+                else if (monster.Category == "rare")
+                {
+                    string monsterAttackResult = monster.PerformAttackRare(ActualPlayer);
+                    GameStatus += $" \n{monsterAttackResult}";
+                }
+                else if (monster.Category == "epic")
+                {
+                    string monsterAttackResult = monster.PerformAttackEpic(ActualPlayer);
+                    GameStatus += $" \n{monsterAttackResult}";
+                }
+                else if (monster.Category == "Legendary")
+                {
+                    string monsterAttackResult = monster.PerformAttackLegendary(ActualPlayer);
+                    GameStatus += $" \n{monsterAttackResult}";
+                }
+                else if (monster.Category == "Boss")
+                {
+                    string monsterAttackResult = monster.PerformAttackBoss(ActualPlayer);
+                    GameStatus += $" \n{monsterAttackResult}";
+                }
                 UpdateStats();
             }
         }
