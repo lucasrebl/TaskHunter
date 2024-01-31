@@ -74,7 +74,7 @@ namespace Monsters
             }
         }
 
-        public void PerformAttackCommon(Player player)
+        public string PerformAttackCommon(Player player)
         {
             if (IsAliveMonster() && Attacks != null && Attacks.Count > 0)
             {
@@ -89,12 +89,15 @@ namespace Monsters
                         ApplyBurnEffect(player);
                     }
 
-                    Console.WriteLine($"{Name} attaque avec {chosenAttack.Name} et inflige {chosenAttack.Damage} points de dégâts à {player.Name}!");
+                    return $"{Name} attaque avec {chosenAttack.Name} et inflige {chosenAttack.Damage} points de dégâts à {player.Name}!";
                 }
             }
+
+            return string.Empty;
         }
 
-        public void PerformAttackRare(Player player)
+
+        public string PerformAttackRare(Player player)
         {
             if (IsAliveMonster() && Attacks != null && Attacks.Count > 0)
             {
@@ -103,51 +106,52 @@ namespace Monsters
                 {
                     player.ApplyDamage(chosenAttack.Damage);
                     Health -= Health;
-                    Console.WriteLine($"{Name} attaque avec {chosenAttack.Name} et inflige {chosenAttack.Damage} points de dégâts à {player.Name}!");
-                    Console.WriteLine($"{Name} c'est suicider en utilisant {chosenAttack.Name}");
+                    return $"{Name} attaque avec {chosenAttack.Name} et inflige {chosenAttack.Damage} points de dégâts à {player.Name}!\n{Name} s'est suicidé en utilisant {chosenAttack.Name}";
                 }
                 else if (chosenAttack != null && chosenAttack.Name == "Boule de neige")
                 {
                     ApplyFrozenEffect(player);
                     player.ApplyDamage(chosenAttack.Damage);
                     Mana -= chosenAttack.ManaCost;
-                    Console.WriteLine($"{Name} attaque avec {chosenAttack.Name} et inflige {chosenAttack.Damage} points de dégâts à {player.Name}!");
+                    return $"{Name} attaque avec {chosenAttack.Name} et inflige {chosenAttack.Damage} points de dégâts à {player.Name}!\n{player.Name} est gelé!";
                 }
                 else
                 {
                     player.ApplyDamage(chosenAttack.Damage);
                     Mana -= chosenAttack.ManaCost;
-                    Console.WriteLine($"{Name} attaque avec {chosenAttack.Name} et inflige {chosenAttack.Damage} points de dégâts à {player.Name}!");
+                    return $"{Name} attaque avec {chosenAttack.Name} et inflige {chosenAttack.Damage} points de dégâts à {player.Name}!";
                 }
             }
+            return string.Empty;
         }
 
-        public void PerformAttackEpic(Player player)
+        public string PerformAttackEpic(Player player)
         {
             if (IsAliveMonster() && Attacks != null && Attacks.Count > 0)
             {
                 AttackMonster chosenAttack = ChooseAttack();
                 if (chosenAttack != null && chosenAttack.OtherEffect == "esquive")
                 {
-                    Console.WriteLine("test");
+                    return "L'attaque de " + Name + " a été esquivée!";
                 }
                 else if (chosenAttack != null && chosenAttack.Name == "Insulte")
                 {
                     ApplyDepressedEffect(player);
                     player.ApplyDamage(chosenAttack.Damage);
                     Mana -= chosenAttack.ManaCost;
-                    Console.WriteLine($"{Name} attaque avec {chosenAttack.Name} et inflige {chosenAttack.Damage} points de dégâts à {player.Name}!");
+                    return $"{Name} attaque avec {chosenAttack.Name} et inflige {chosenAttack.Damage} points de dégâts à {player.Name}!";
                 }
                 else
                 {
                     player.ApplyDamage(chosenAttack.Damage);
                     Mana -= chosenAttack.ManaCost;
-                    Console.WriteLine($"{Name} attaque avec {chosenAttack.Name} et inflige {chosenAttack.Damage} points de dégâts à {player.Name}!");
+                    return $"{Name} attaque avec {chosenAttack.Name} et inflige {chosenAttack.Damage} points de dégâts à {player.Name}!";
                 }
             }
+            return string.Empty;
         }
 
-        public void PerformAttackLegendary(Player player)
+        public string PerformAttackLegendary(Player player)
         {
             if (IsAliveMonster() && Attacks != null && Attacks.Count > 0)
             {
@@ -157,30 +161,31 @@ namespace Monsters
                     Mana += 20;
                     Health -= 40;
                     player.ApplyStealMana();
-                    Console.WriteLine($"{Name} attaque avec {chosenAttack.Name} et vole 20 de mana à {player.Name}!");
+                    return $"{Name} attaque avec {chosenAttack.Name} et vole 20 de mana à {player.Name}!";
                 }
                 else if (chosenAttack != null && chosenAttack.OtherEffect == "heal")
                 {
                     Health += 10;
                     Mana -= chosenAttack.ManaCost;
-                    Console.WriteLine($"{Name} utilise {chosenAttack.Name} et ce soigne de 10 PV!");
+                    return $"{Name} utilise {chosenAttack.Name} et se soigne de 10 PV!";
                 }
                 else if (chosenAttack != null && chosenAttack.Name == "Danse endiablée")
                 {
                     ApplyPossessedByTheDevilEffect(player);
                     player.ApplyDamage(chosenAttack.Damage);
                     Mana -= chosenAttack.ManaCost;
-                    Console.WriteLine($"{Name} attaque avec {chosenAttack.Name} et inflige {chosenAttack.Damage} points de dégâts à {player.Name}!");
+                    return $"{Name} attaque avec {chosenAttack.Name} et inflige {chosenAttack.Damage} points de dégâts à {player.Name}!";
                 }
                 else
                 {
                     player.ApplyDamage(chosenAttack.Damage);
                     Mana -= chosenAttack.ManaCost;
-                    Console.WriteLine($"{Name} attaque avec {chosenAttack.Name} et inflige {chosenAttack.Damage} points de dégâts à {player.Name}!");
+                    return $"{Name} attaque avec {chosenAttack.Name} et inflige {chosenAttack.Damage} points de dégâts à {player.Name}!";
                 }
             }
+            return string.Empty;
         }
-        public void PerformAttackBoss(Player player)
+        public string PerformAttackBoss(Player player)
         {
             if (IsAliveMonster() && Attacks != null && Attacks.Count > 0)
             {
@@ -189,15 +194,16 @@ namespace Monsters
                 {
                     Health += 10;
                     Mana += 10;
-                    Console.WriteLine($"{Name} utilise {chosenAttack.Name} et ce soigne de 10 PV et augmente son mana de 10!");
+                    return $"{Name} utilise {chosenAttack.Name} et se soigne de 10 PV et augmente son mana de 10!";
                 }
                 else
                 {
                     player.ApplyDamage(chosenAttack.Damage);
                     Mana -= chosenAttack.ManaCost;
-                    Console.WriteLine($"{Name} attaque avec {chosenAttack.Name} et inflige {chosenAttack.Damage} points de dégâts à {player.Name}!");
+                    return $"{Name} attaque avec {chosenAttack.Name} et inflige {chosenAttack.Damage} points de dégâts à {player.Name}!";
                 }
             }
+            return string.Empty;
         }
         public void UpdatePlayerXP(Player player)
         {

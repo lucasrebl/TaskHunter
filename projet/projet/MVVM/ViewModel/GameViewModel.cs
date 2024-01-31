@@ -17,6 +17,7 @@ using System.Windows.Input;
 using Newtonsoft.Json;
 using projet.MVVM.Model;
 using Inventorys;
+using System.Xml.Linq;
 
 
 namespace projet.MVVM.ViewModel
@@ -200,23 +201,28 @@ namespace projet.MVVM.ViewModel
                 {
                     if (monster.Category == "common")
                     {
-                        monster.PerformAttackCommon(ActualPlayer);
+                        string monsterAttackResult = monster.PerformAttackCommon(ActualPlayer);
+                        GameStatus += $" \n{monsterAttackResult}";
                     }
                     else if (monster.Category == "rare")
                     {
-                        monster.PerformAttackRare(ActualPlayer);
+                        string monsterAttackResult = monster.PerformAttackRare(ActualPlayer);
+                        GameStatus += $" \n{monsterAttackResult}";
                     }
                     else if (monster.Category == "epic")
                     {
-                        monster.PerformAttackEpic(ActualPlayer);
+                        string monsterAttackResult = monster.PerformAttackEpic(ActualPlayer);
+                        GameStatus += $" \n{monsterAttackResult}";
                     }
                     else if (monster.Category == "Legendary")
                     {
-                        monster.PerformAttackLegendary(ActualPlayer);
+                        string monsterAttackResult = monster.PerformAttackLegendary(ActualPlayer);
+                        GameStatus += $" \n{monsterAttackResult}";
                     }
                     else if (monster.Category == "Boss")
                     {
-                        monster.PerformAttackBoss(ActualPlayer);
+                        string monsterAttackResult = monster.PerformAttackBoss(ActualPlayer);
+                        GameStatus += $" \n{monsterAttackResult}";
                     }
                     UpdateStats();
                 }
@@ -231,11 +237,11 @@ namespace projet.MVVM.ViewModel
                     if (ActualPlayer.IsAlivePlayer())
                     {
                         NbWawes++;
-                        GameStatus = $"Vague actuelle: {NbWawes}";
+                        GameStatus += $"\n Vague actuelle: {NbWawes}";
                         monster = GetRandomMonster(monsters, NbWawes);
                         monster.ResetStats();
                         ActualPlayer.ResetStatsPlayer();
-                        GameStatus = $"Un nouveau monstre apparaît : {monster.Name} ! Pour certaines raisons, il n'a pas pu vous attaquer...";
+                        GameStatus += $"\n Un nouveau monstre apparaît : {monster.Name} ! Pour certaines raisons, il n'a pas pu vous attaquer...";
                         UpdateStats();
                     }
                 }
@@ -276,23 +282,28 @@ namespace projet.MVVM.ViewModel
                 {
                     if (monster.Category == "common")
                     {
-                        monster.PerformAttackCommon(ActualPlayer);
+                        string monsterAttackResult = monster.PerformAttackCommon(ActualPlayer);
+                        GameStatus += $" \n{monsterAttackResult}";
                     }
                     else if (monster.Category == "rare")
                     {
-                        monster.PerformAttackRare(ActualPlayer);
+                        string monsterAttackResult = monster.PerformAttackRare(ActualPlayer);
+                        GameStatus += $" \n{monsterAttackResult}";
                     }
                     else if (monster.Category == "epic")
                     {
-                        monster.PerformAttackEpic(ActualPlayer);
+                        string monsterAttackResult = monster.PerformAttackEpic(ActualPlayer);
+                        GameStatus += $" \n{monsterAttackResult}";
                     }
                     else if (monster.Category == "Legendary")
                     {
-                        monster.PerformAttackLegendary(ActualPlayer);
+                        string monsterAttackResult = monster.PerformAttackLegendary(ActualPlayer);
+                        GameStatus += $" \n{monsterAttackResult}";
                     }
                     else if (monster.Category == "Boss")
                     {
-                        monster.PerformAttackBoss(ActualPlayer);
+                        string monsterAttackResult = monster.PerformAttackBoss(ActualPlayer);
+                        GameStatus += $" \n{monsterAttackResult}";
                     }
                     UpdateStats();
                 }
@@ -308,11 +319,11 @@ namespace projet.MVVM.ViewModel
                     if (ActualPlayer.IsAlivePlayer())
                     {
                         NbWawes++;
-                        GameStatus = $"Vague actuelle: {NbWawes}";
+                        GameStatus += $"\n Vague actuelle: {NbWawes}";
                         monster = GetRandomMonster(monsters, NbWawes);
                         monster.ResetStats();
                         ActualPlayer.ResetStatsPlayer();
-                        GameStatus = $"Un nouveau monstre apparaît : {monster.Name} ! Pour certaines raisons, il n'a pas pu vous attaquer...";
+                        GameStatus += $"\n Un nouveau monstre apparaît : {monster.Name} ! Pour certaines raisons, il n'a pas pu vous attaquer...";
                         UpdateStats();
                     }
                 }
@@ -351,23 +362,28 @@ namespace projet.MVVM.ViewModel
                 {
                     if (monster.Category == "common")
                     {
-                        monster.PerformAttackCommon(ActualPlayer);
+                        string monsterAttackResult = monster.PerformAttackCommon(ActualPlayer);
+                        GameStatus += $" \n{monsterAttackResult}";
                     }
                     else if (monster.Category == "rare")
                     {
-                        monster.PerformAttackRare(ActualPlayer);
+                        string monsterAttackResult = monster.PerformAttackRare(ActualPlayer);
+                        GameStatus += $" \n{monsterAttackResult}";
                     }
                     else if (monster.Category == "epic")
                     {
-                        monster.PerformAttackEpic(ActualPlayer);
+                        string monsterAttackResult = monster.PerformAttackEpic(ActualPlayer);
+                        GameStatus += $" \n{monsterAttackResult}";
                     }
                     else if (monster.Category == "Legendary")
                     {
-                        monster.PerformAttackLegendary(ActualPlayer);
+                        string monsterAttackResult = monster.PerformAttackLegendary(ActualPlayer);
+                        GameStatus += $" \n{monsterAttackResult}";
                     }
                     else if (monster.Category == "Boss")
                     {
-                        monster.PerformAttackBoss(ActualPlayer);
+                        string monsterAttackResult = monster.PerformAttackBoss(ActualPlayer);
+                        GameStatus += $" \n{monsterAttackResult}";
                     }
                     UpdateStats();
                 }
@@ -383,11 +399,11 @@ namespace projet.MVVM.ViewModel
                     if (ActualPlayer.IsAlivePlayer())
                     {
                         NbWawes++;
-                        GameStatus = $"Vague actuelle: {NbWawes}";
+                        GameStatus += $"\n Vague actuelle: {NbWawes}";
                         monster = GetRandomMonster(monsters, NbWawes);
                         monster.ResetStats();
                         ActualPlayer.ResetStatsPlayer();
-                        GameStatus = $"Un nouveau monstre apparaît : {monster.Name} ! Pour certaines raisons, il n'a pas pu vous attaquer...";
+                        GameStatus += $"\n Un nouveau monstre apparaît : {monster.Name} ! Pour certaines raisons, il n'a pas pu vous attaquer...";
                         UpdateStats();
                     }
                 }
@@ -426,23 +442,28 @@ namespace projet.MVVM.ViewModel
                 {
                     if (monster.Category == "common")
                     {
-                        monster.PerformAttackCommon(ActualPlayer);
+                        string monsterAttackResult = monster.PerformAttackCommon(ActualPlayer);
+                        GameStatus += $" \n{monsterAttackResult}";
                     }
                     else if (monster.Category == "rare")
                     {
-                        monster.PerformAttackRare(ActualPlayer);
+                        string monsterAttackResult = monster.PerformAttackRare(ActualPlayer);
+                        GameStatus += $" \n{monsterAttackResult}";
                     }
                     else if (monster.Category == "epic")
                     {
-                        monster.PerformAttackEpic(ActualPlayer);
+                        string monsterAttackResult = monster.PerformAttackEpic(ActualPlayer);
+                        GameStatus += $" \n{monsterAttackResult}";
                     }
                     else if (monster.Category == "Legendary")
                     {
-                        monster.PerformAttackLegendary(ActualPlayer);
+                        string monsterAttackResult = monster.PerformAttackLegendary(ActualPlayer);
+                        GameStatus += $" \n{monsterAttackResult}";
                     }
                     else if (monster.Category == "Boss")
                     {
-                        monster.PerformAttackBoss(ActualPlayer);
+                        string monsterAttackResult = monster.PerformAttackBoss(ActualPlayer);
+                        GameStatus += $" \n{monsterAttackResult}";
                     }
                     UpdateStats();
                 }
@@ -458,11 +479,11 @@ namespace projet.MVVM.ViewModel
                     if (ActualPlayer.IsAlivePlayer())
                     {
                         NbWawes++;
-                        GameStatus = $"Vague actuelle: {NbWawes}";
+                        GameStatus += $"\n Vague actuelle: {NbWawes}";
                         monster = GetRandomMonster(monsters, NbWawes);
                         monster.ResetStats();
                         ActualPlayer.ResetStatsPlayer();
-                        GameStatus = $"Un nouveau monstre apparaît : {monster.Name} ! Pour certaines raisons, il n'a pas pu vous attaquer...";
+                        GameStatus += $"\n Un nouveau monstre apparaît : {monster.Name} ! Pour certaines raisons, il n'a pas pu vous attaquer...";
                         UpdateStats();
                     }
                 }
