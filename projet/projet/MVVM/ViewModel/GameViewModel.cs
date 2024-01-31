@@ -2,8 +2,6 @@
 using AttackPlayers;
 using Monsters;
 using Players;
-using projet.Core;
-using projet.MVVM.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +14,8 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using Newtonsoft.Json;
 using projet.MVVM.Model;
+using Inventorys;
+using projet.Core;
 using Inventorys;
 using System.Xml.Linq;
 
@@ -31,11 +31,46 @@ namespace projet.MVVM.ViewModel
         private string _playerLife;
         private string _playerMana;
         private string _enemyImgSource;
+        private string _parchmentMana;
+        private string _parchmentPv;
+        private string _potionMana;
+        private string _potionPv;
+        private Player player;
+
+        public Player Player
+        {
+            get { return player; }
+            set
+            {
+                if (player != value)
+                {
+                    if (player != null)
+                    {
+                        player.PropertyChanged -= Player_PropertyChanged;
+                    }
+
+                    player = value;
+
+                    if (player != null)
+                    {
+                        player.PropertyChanged += Player_PropertyChanged;
+                    }
+
+                    OnPropertyChanged(nameof(Player));
+                }
+            }
+        }
+
         private Player _actualPlayer;
         public ICommand Attack1Command { get; private set; }
         public ICommand Attack2Command { get; private set; }
         public ICommand Attack3Command { get; private set; }
         public ICommand Attack4Command { get; private set; }
+        public ICommand ParchmentPvCommand { get; private set; }
+        public ICommand ParchmentManaCommand { get; private set; }
+        public ICommand PotionPvCommand { get; private set; }
+        public ICommand PotionManaCommand { get; private set; }
+
 
         public ICommand SaveCommand { get; private set; }
         public ICommand LoadCommand { get; private set; }
@@ -130,6 +165,67 @@ namespace projet.MVVM.ViewModel
             }
         }
 
+        private string parchmentPv;
+        public string ParchmentPv
+        {
+            get { return parchmentPv; }
+            set
+            {
+                if (parchmentPv != value)
+                {
+                    parchmentPv = value;
+                    OnPropertyChanged(nameof(ParchmentPv));
+                }
+            }
+        }
+
+        private string parchmentMana;
+        public string ParchmentMana
+        {
+            get { return parchmentMana; }
+            set
+            {
+                if (parchmentMana != value)
+                {
+                    parchmentMana = value;
+                    OnPropertyChanged(nameof(ParchmentMana));
+                }
+            }
+        }
+
+        private string potionPv;
+        public string PotionPv
+        {
+            get { return potionPv; }
+            set
+            {
+                if (potionPv != value)
+                {
+                    potionPv = value;
+                    OnPropertyChanged(nameof(PotionPv));
+                }
+            }
+        }
+
+        private string potionMana;
+        public string PotionMana
+        {
+            get { return potionMana; }
+            set
+            {
+                if (potionMana != value)
+                {
+                    potionMana = value;
+                    OnPropertyChanged(nameof(PotionMana));
+                }
+            }
+        }
+
+        private void Player_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+
+        }
+
         public Player ActualPlayer
         {
             get { return _actualPlayer; }
@@ -144,6 +240,7 @@ namespace projet.MVVM.ViewModel
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -156,12 +253,14 @@ namespace projet.MVVM.ViewModel
 
         public void InitializeGame(Player player)
         {
-            //Game(player);
-
             Attack1Command = new RelayCommand(Attack1Clicked);
             Attack2Command = new RelayCommand(Attack2Clicked);
             Attack3Command = new RelayCommand(Attack3Clicked);
             Attack4Command = new RelayCommand(Attack4Clicked);
+            ParchmentPvCommand = new RelayCommand(UseParchmentPv);
+            ParchmentManaCommand = new RelayCommand(UseParchmentMana);
+            PotionManaCommand = new RelayCommand(UsePotionMana);
+            PotionPvCommand = new RelayCommand(UsePotionPv);
             SaveCommand = new RelayCommand(SaveGameCommand);
             LoadCommand = new RelayCommand(LoadGameCommand);
             ActualPlayer = player;
@@ -175,6 +274,10 @@ namespace projet.MVVM.ViewModel
             PlayerMana = $"{ActualPlayer.Mana}";
             PlayerLife = $"{ActualPlayer.Pv}";
             EnemyImgSource = $"{monster.Img}";
+            ParchmentPv = $"{ActualPlayer.Inventory.ParchmentPv}";
+            ParchmentMana = $"{ActualPlayer.Inventory.ParchmentMana}";
+            PotionPv = $"{ActualPlayer.Inventory.PotionPv}";
+            PotionMana = $"{ActualPlayer.Inventory.PotionMana}";
         }
 
         private void Attack1Clicked(object parameter)
@@ -499,7 +602,47 @@ namespace projet.MVVM.ViewModel
             }
         }
 
-        private void UpdateStats()
+        public void UsePotionPv(object parameter)
+        {
+            if (ActualPlayer.Inventory.PotionPv >= 1)
+            {
+                ActualPlayer.Inventory.PotionPv -= 1;
+                ActualPlayer.addPlayerPv(20);
+                UpdateStats();
+            }
+        }
+
+        public void UsePotionMana(object parameter)
+        {
+            if (ActualPlayer.Inventory.PotionMana >= 1)
+            {
+                ActualPlayer.Inventory.PotionMana -= 1;
+                ActualPlayer.addPlayerMana(20);
+                UpdateStats();
+            }
+        }
+
+        public void UseParchmentMana(object parameter)
+        {
+            if (ActualPlayer.Inventory.ParchmentMana >= 1)
+            {
+                ActualPlayer.Inventory.ParchmentMana -= 1;
+                ActualPlayer.hasUsedParchmentMana = true;
+                UpdateStats();
+            }
+        }
+
+        public void UseParchmentPv(object parameter)
+        {
+            if (ActualPlayer.Inventory.ParchmentPv >= 1)
+            {
+                ActualPlayer.Inventory.ParchmentPv -= 1;
+                ActualPlayer.hasUsedParchmentPv = true;
+                UpdateStats();
+            }
+        }
+
+        public void UpdateStats()
         {
             MonsterName = $"{monster.Name}";
             MonsterMana = $"{monster.Mana}";
@@ -507,6 +650,10 @@ namespace projet.MVVM.ViewModel
             PlayerMana = $"{ActualPlayer.Mana}";
             PlayerLife = $"{ActualPlayer.Pv}";
             EnemyImgSource = $"{monster.Img}";
+            PotionPv = $"{ActualPlayer.Inventory.PotionPv}";
+            PotionMana = $"{ActualPlayer.Inventory.PotionMana}";
+            ParchmentMana = $"{ActualPlayer.Inventory.ParchmentMana}";
+            ParchmentPv = $"{ActualPlayer.Inventory.ParchmentPv}";
         }
 
         public static List<Monster> InitMonster()
@@ -750,4 +897,5 @@ namespace projet.MVVM.ViewModel
             LoadGame("save.json");
         }
     }
+
 }

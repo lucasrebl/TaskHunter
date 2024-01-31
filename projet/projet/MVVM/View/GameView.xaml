@@ -73,38 +73,37 @@
                     </Border>
                 </StackPanel>
 
-                <StackPanel Width="446" Height="50" Orientation="Horizontal">
-                    <Button Content="Parchemin de vie" Width="100" Margin="5" />
+                <StackPanel Width="446" Height="30" Orientation="Horizontal">
+                    <Button Content="Parchemin de vie" Width="100" Margin="5"  Command="{Binding ParchmentPvCommand}"/>
                     <TextBlock Width="100" Margin="5">
                         <Run Text="Quantité: " Foreground="White"/>
                         <Run Text="{Binding ParchmentPv}" Foreground="White"/>
                     </TextBlock>
-                    <Button Content="Parchemin de mana" Width="100" Margin="5"/>
+                    <Button Content="Parchemin de mana" Width="114" Margin="5" Command="{Binding ParchmentManaCommand}"/>
                     <TextBlock Width="100" Margin="5">
                         <Run Text="Quantité: " Foreground="White"/>
                         <Run Text="{Binding ParchmentMana}" Foreground="White"/>
-
                     </TextBlock>
                 </StackPanel>
-                <StackPanel Width="438" Height="50" Orientation="Horizontal">
-                    <Button Content="Potion de vie" Width="100" Margin="5"/>
-                    <TextBlock Text="Quantité : " Width="100" Margin="5" Foreground="White">
+                <StackPanel Width="445" Height="29" Orientation="Horizontal">
+                    <Button Content="Potion de vie" Width="100" Margin="5" Command="{Binding PotionPvCommand}"/>
+                    <TextBlock Width="100" Margin="5" Foreground="White">
+                        <Run Text="Quantité : " Foreground="White"/>
                         <Run Text="{Binding PotionPv}" Foreground="White"/>
                     </TextBlock>
-                    <Button Content="Potion de mana" Width="100" Margin="5"/>
+                    <Button Content="Potion de mana" Width="113" Margin="5" Command="{Binding PotionManaCommand}"/>
                     <TextBlock Width="100" Margin="5" Foreground="White">
                         <Run Text="Quantité: " Foreground="White"/>
-                        <Run Text="{Binding PotionMana}"/>
-                    </TextBlock>
+                        <Run Text="{Binding PotionMana}"/></TextBlock>
                 </StackPanel>
-                <StackPanel Width="438" Height="50" Orientation="Horizontal">
-                    <StackPanel Width="604" Height="50" Orientation="Horizontal" HorizontalAlignment="Center" Margin="15,15,15,0">
+                <StackPanel Width="670" Height="101" Orientation="Vertical">
+                    <StackPanel Width="435" Height="50" Orientation="Horizontal" Margin="15,15,15,0">
                         <Button Content="Coup de poing" Width="100" Margin="5" Command="{Binding Attack1Command}"/>
                         <Button Content="Coup de pied" Width="100" Margin="5" Command="{Binding Attack2Command}"/>
                         <Button Content="FireBall" Width="100" Margin="5" Command="{Binding Attack3Command}"/>
                         <Button Content="Thunder" Width="100" Margin="5" Command="{Binding Attack4Command}"/>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" Height="26">
+                    <StackPanel Orientation="Horizontal" Height="26" Width="230" HorizontalAlignment="Center">
                         <Button Content="Sauvegarder" Command="{Binding SaveCommand}" Margin="38,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="10" Width="75"/>
                         <Button Content="Charger" Command="{Binding LoadCommand}" Margin="0,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="10" Width="75"/>
                     </StackPanel>
