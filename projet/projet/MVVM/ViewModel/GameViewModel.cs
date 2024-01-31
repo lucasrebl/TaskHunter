@@ -33,7 +33,6 @@ namespace projet.MVVM.ViewModel
         private string _parchmentPv;
         private string _potionMana;
         private string _potionPv;
-        private InventoryManager inventoryManager;
         private Player player;
 
         public Player Player
@@ -572,7 +571,7 @@ namespace projet.MVVM.ViewModel
             }
         }
 
-        private void UpdateStats()
+        public void UpdateStats()
         {
             MonsterName = $"{monster.Name}";
             MonsterMana = $"{monster.Mana}";
@@ -580,6 +579,10 @@ namespace projet.MVVM.ViewModel
             PlayerMana = $"{ActualPlayer.Mana}";
             PlayerLife = $"{ActualPlayer.Pv}";
             EnemyImgSource = $"{monster.Img}";
+            PotionPv = $"{ActualPlayer.Inventory.PotionPv}";
+            PotionMana = $"{ActualPlayer.Inventory.PotionMana}";
+            ParchmentMana = $"{ActualPlayer.Inventory.ParchmentMana}";
+            ParchmentPv = $"{ActualPlayer.Inventory.ParchmentPv}";
         }
 
         public static List<Monster> InitMonster()

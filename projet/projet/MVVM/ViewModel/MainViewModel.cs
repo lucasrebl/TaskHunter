@@ -57,9 +57,8 @@ namespace projet.MVVM.ViewModel
 
             GameViewCommand = new RelayCommand(o =>
             {
+                GameVM.UpdateStats();
                 CurrentView = GameVM;
-                // Si on veut que ça relance la fonction chaque fois qu'on quitte et revient sur la fenetre Game :
-                // StartGame(null);
             });
 
             TaskViewCommand = new RelayCommand(o =>
@@ -69,7 +68,6 @@ namespace projet.MVVM.ViewModel
             });
 
             GameVM.InitializeGame(player);
-            // StartGame(null);
         }
         private void CloseWindow(object parameter)
         {

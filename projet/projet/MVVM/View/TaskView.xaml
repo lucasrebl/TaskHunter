@@ -11,14 +11,14 @@
     <Grid UseLayoutRounding="True" Margin="0,38,28,4" >
 
 
-        <TextBox x:Name="ToDoListTitle" HorizontalAlignment="Left" Height="39" Margin="179,-21,0,0" TextWrapping="Wrap" Text="Nom de la tâche" VerticalAlignment="Top" Width="472" Background="#FF0C0715" Foreground="White" FontSize="20" FontWeight="SemiBold" TextAlignment="Center" />
-        <Button x:Name="addButton" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="200,-12,0,0">
+        <TextBox x:Name="ToDoListTitle" Text="{Binding NewTaskTitle, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="39" Margin="179,-21,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="472" Background="#FF0C0715" Foreground="White" FontSize="20" FontWeight="SemiBold" TextAlignment="Center" />
+        <Button x:Name="addButton" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="200,-12,0,0" Command="{Binding AddTaskCommand}">
             <TextBlock Text="Ajouter" Foreground="Black" Width="51" Height="20" RenderTransformOrigin="-6.045,1.127" />
         </Button>
 
-        <DatePicker x:Name="calendarDatePicker" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="542,-12,0,0" Visibility="Visible" Width="95" FirstDayOfWeek="Monday" Background="Black" SelectedDateFormat="Short" DisplayDate="{Binding Date, StringFormat=dd/MM/yyyy}"/>
+        <DatePicker x:Name="calendarDatePicker" SelectedDate="{Binding NewTaskDate, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="542,-12,0,0" Visibility="Visible" Width="95" FirstDayOfWeek="Monday" Background="Black" SelectedDateFormat="Short" DisplayDate="{Binding Date, StringFormat=dd/MM/yyyy}"/>
 
-        <ListBox x:Name="taskListBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="180,43,0,0" Width="471" Height="278" Background="Transparent">
+        <ListBox x:Name="taskListBox" ItemsSource="{Binding Tasks}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="180,43,0,0" Width="471" Height="278" Background="Transparent">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -31,8 +31,8 @@
 
                         <TextBlock Grid.Column="0" Text="{Binding Title}" Foreground="White" Margin="20"/>
                         <TextBlock Grid.Column="1" Text="{Binding Date, StringFormat=dd/MM/yyyy}" Foreground="White" Margin="20"/>
-                        <Button Grid.Column="2" Name="completeButton" Content="OK"  Margin="20,20,40,20"/>
-                        <Button Grid.Column="3" Name="deleteButton" Content="Poubelle" Margin="20,20,40,20"/>
+                        <Button Grid.Column="2" Name="completeButton" Content="OK"  Margin="20,20,40,20" Command="{Binding DataContext.CompleteTaskCommand, RelativeSource={RelativeSource AncestorType=ListBox}}" CommandParameter="{Binding}"/>
+                        <Button Grid.Column="3" Name="deleteButton" Content="Poubelle" Margin="20,20,40,20" Command="{Binding DataContext.DeleteTaskCommand, RelativeSource={RelativeSource AncestorType=ListBox}}" CommandParameter="{Binding}"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>

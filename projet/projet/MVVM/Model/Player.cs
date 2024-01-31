@@ -90,6 +90,25 @@ namespace Players
             Wins = wins;
         }
 
+        public void UpdateInventory(int rewardAmount, int type)
+        {
+            switch (type)
+            {
+                case 1:
+                    this.Inventory.PotionPv += rewardAmount;
+                    break;
+                case 2:
+                    this.Inventory.PotionMana += rewardAmount;
+                    break;
+                case 3:
+                    this.Inventory.ParchmentPv += rewardAmount;
+                    break;
+                case 4:
+                    this.Inventory.ParchmentMana += rewardAmount;
+                    break;
+            }
+        }
+
         public void InitializeInventory()
         {
             this.Inventory = InventoryManager.Instance.Inventory;

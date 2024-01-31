@@ -1,86 +1,66 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace projet.MVVM.Model
 {
-    public class TaskListManager
+    public class TaskListManager : INotifyPropertyChanged
     {
-        private InventoryManager inventoryManager;
+        private bool _isCompleted;
 
-        public ObservableCollection<TaskItem> Tasks { get; }
-        public int TotalReward { get; private set; }
-
-        private Random random = new Random();
-
-        public int GetRandomReward()
+        public bool IsCompleted
         {
-            return random.Next(1, 3);
-        }
-
-
-
-        public TaskListManager()
-        {
-            inventoryManager = InventoryManager.Instance;
-            Tasks = new ObservableCollection<TaskItem>();
-            TotalReward = 0;
-        }
-
-        public void AddTask(string title, DateTime date)
-        {
-            if (!string.IsNullOrWhiteSpace(title))
+            get { return _isCompleted; }
+            set
             {
-                Tasks.Add(new TaskItem(title, date));
-            }
-        }
-
-        public void CompleteTask(TaskItem task)
-        {
-            task.IsCompleted = true;
-            int rewardAmount = GetRandomReward();
-            ApplyRewardToInventory(rewardAmount);
-            TotalReward += rewardAmount;
-
-        }
-
-        public string GetRewardType(int rewardAmount)
-        {
-            switch (rewardAmount)
-            {
-                case 1:
-                    return "Potion de Vie";
-                case 2:
-                    return "Potion de Mana";
-                case 3:
-                    return "Parchemin de Vie";
-                case 4:
-                    return "Parchemin de Mana";
-                default:
-                    return "Récompense non spécifiée";
-            }
-        }
-
-        private void ApplyRewardToInventory(int rewardAmount)
-        {
-            if (inventoryManager != null && inventoryManager.Inventory != null)
-            {
-                switch (rewardAmount)
+                if (_isCompleted != value)
                 {
-                    case 1:
-                        inventoryManager.Inventory.PotionPv += TotalReward;
-                        break;
-                    case 2:
-                        inventoryManager.Inventory.PotionMana += TotalReward;
-                        break;
-                    case 3:
-                        inventoryManager.Inventory.ParchmentPv += TotalReward;
-                        break;
-                    case 4:
-                        inventoryManager.Inventory.ParchmentMana += TotalReward;
-                        break;
+                    _isCompleted = value;
+                    OnPropertyChanged(nameof(IsCompleted));
+
+                    if (_isCompleted)
+                    {
+                        GenerateRandomPotions();
+                    }
                 }
-                inventoryManager.OnPropertyChanged(nameof(InventoryManager.Inventory));
-            }   
+            }
+        }
+
+        private string _title;
+        public string Title
+        {
+            get { return _title; }
+            set
+            {
+                if (_title != value)
+                {
+                    _title = value;
+                    OnPropertyChanged(nameof(Title));
+                }
+            }
+        }
+
+        private DateTime _date;
+        public DateTime Date
+        {
+            get { return _date; }
+            set
+            {
+                if (_date != value)
+                {
+                    _date = value;
+                    OnPropertyChanged(nameof(Date));
+                }
+            }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        private void GenerateRandomPotions()
+        {
         }
 
     }
