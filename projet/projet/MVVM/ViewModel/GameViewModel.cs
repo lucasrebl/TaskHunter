@@ -607,38 +607,39 @@ namespace projet.MVVM.ViewModel
         {
             if (ActualPlayer.Inventory.PotionPv >= 1)
             {
+                GameStatus = $"\n vous avez utilisé une potion de Vie, \n votre vie est restaurer de 20";
                 ActualPlayer.Inventory.PotionPv -= 1;
                 ActualPlayer.addPlayerPv(20);
                 UpdateStats();
-            }
-            if (monster.IsAliveMonster())
-            {
-                if (monster.Category == "common")
+                if (monster.IsAliveMonster())
                 {
-                    string monsterAttackResult = monster.PerformAttackCommon(ActualPlayer);
-                    GameStatus += $" \n{monsterAttackResult}";
+                    if (monster.Category == "common")
+                    {
+                        string monsterAttackResult = monster.PerformAttackCommon(ActualPlayer);
+                        GameStatus += $" \n{monsterAttackResult}";
+                    }
+                    else if (monster.Category == "rare")
+                    {
+                        string monsterAttackResult = monster.PerformAttackRare(ActualPlayer);
+                        GameStatus += $" \n{monsterAttackResult}";
+                    }
+                    else if (monster.Category == "epic")
+                    {
+                        string monsterAttackResult = monster.PerformAttackEpic(ActualPlayer);
+                        GameStatus += $" \n{monsterAttackResult}";
+                    }
+                    else if (monster.Category == "Legendary")
+                    {
+                        string monsterAttackResult = monster.PerformAttackLegendary(ActualPlayer);
+                        GameStatus += $" \n{monsterAttackResult}";
+                    }
+                    else if (monster.Category == "Boss")
+                    {
+                        string monsterAttackResult = monster.PerformAttackBoss(ActualPlayer);
+                        GameStatus += $" \n{monsterAttackResult}";
+                    }
+                    UpdateStats();
                 }
-                else if (monster.Category == "rare")
-                {
-                    string monsterAttackResult = monster.PerformAttackRare(ActualPlayer);
-                    GameStatus += $" \n{monsterAttackResult}";
-                }
-                else if (monster.Category == "epic")
-                {
-                    string monsterAttackResult = monster.PerformAttackEpic(ActualPlayer);
-                    GameStatus += $" \n{monsterAttackResult}";
-                }
-                else if (monster.Category == "Legendary")
-                {
-                    string monsterAttackResult = monster.PerformAttackLegendary(ActualPlayer);
-                    GameStatus += $" \n{monsterAttackResult}";
-                }
-                else if (monster.Category == "Boss")
-                {
-                    string monsterAttackResult = monster.PerformAttackBoss(ActualPlayer);
-                    GameStatus += $" \n{monsterAttackResult}";
-                }
-                UpdateStats();
             }
         }
 
@@ -646,38 +647,39 @@ namespace projet.MVVM.ViewModel
         {
             if (ActualPlayer.Inventory.PotionMana >= 1)
             {
+                GameStatus = $"\n vous avez utilisé une potion de Mana, \n votre Mana est restaurer de 20";
                 ActualPlayer.Inventory.PotionMana -= 1;
                 ActualPlayer.addPlayerMana(20);
                 UpdateStats();
-            }
-            if (monster.IsAliveMonster())
-            {
-                if (monster.Category == "common")
+                if (monster.IsAliveMonster())
                 {
-                    string monsterAttackResult = monster.PerformAttackCommon(ActualPlayer);
-                    GameStatus += $" \n{monsterAttackResult}";
+                    if (monster.Category == "common")
+                    {
+                        string monsterAttackResult = monster.PerformAttackCommon(ActualPlayer);
+                        GameStatus += $" \n{monsterAttackResult}";
+                    }
+                    else if (monster.Category == "rare")
+                    {
+                        string monsterAttackResult = monster.PerformAttackRare(ActualPlayer);
+                        GameStatus += $" \n{monsterAttackResult}";
+                    }
+                    else if (monster.Category == "epic")
+                    {
+                        string monsterAttackResult = monster.PerformAttackEpic(ActualPlayer);
+                        GameStatus += $" \n{monsterAttackResult}";
+                    }
+                    else if (monster.Category == "Legendary")
+                    {
+                        string monsterAttackResult = monster.PerformAttackLegendary(ActualPlayer);
+                        GameStatus += $" \n{monsterAttackResult}";
+                    }
+                    else if (monster.Category == "Boss")
+                    {
+                        string monsterAttackResult = monster.PerformAttackBoss(ActualPlayer);
+                        GameStatus += $" \n{monsterAttackResult}";
+                    }
+                    UpdateStats();
                 }
-                else if (monster.Category == "rare")
-                {
-                    string monsterAttackResult = monster.PerformAttackRare(ActualPlayer);
-                    GameStatus += $" \n{monsterAttackResult}";
-                }
-                else if (monster.Category == "epic")
-                {
-                    string monsterAttackResult = monster.PerformAttackEpic(ActualPlayer);
-                    GameStatus += $" \n{monsterAttackResult}";
-                }
-                else if (monster.Category == "Legendary")
-                {
-                    string monsterAttackResult = monster.PerformAttackLegendary(ActualPlayer);
-                    GameStatus += $" \n{monsterAttackResult}";
-                }
-                else if (monster.Category == "Boss")
-                {
-                    string monsterAttackResult = monster.PerformAttackBoss(ActualPlayer);
-                    GameStatus += $" \n{monsterAttackResult}";
-                }
-                UpdateStats();
             }
         }
 
@@ -685,38 +687,39 @@ namespace projet.MVVM.ViewModel
         {
             if (ActualPlayer.Inventory.ParchmentMana >= 1)
             {
+                GameStatus = $"\n vous avez utilisé un parchemin de Mana, \n vous ne dépenserrait pas de mana lors de votre prochain attaque";
                 ActualPlayer.Inventory.ParchmentMana -= 1;
                 ActualPlayer.hasUsedParchmentMana = true;
                 UpdateStats();
-            }
-            if (monster.IsAliveMonster())
-            {
-                if (monster.Category == "common")
+                if (monster.IsAliveMonster())
                 {
-                    string monsterAttackResult = monster.PerformAttackCommon(ActualPlayer);
-                    GameStatus += $" \n{monsterAttackResult}";
+                    if (monster.Category == "common")
+                    {
+                        string monsterAttackResult = monster.PerformAttackCommon(ActualPlayer);
+                        GameStatus += $" \n{monsterAttackResult}";
+                    }
+                    else if (monster.Category == "rare")
+                    {
+                        string monsterAttackResult = monster.PerformAttackRare(ActualPlayer);
+                        GameStatus += $" \n{monsterAttackResult}";
+                    }
+                    else if (monster.Category == "epic")
+                    {
+                        string monsterAttackResult = monster.PerformAttackEpic(ActualPlayer);
+                        GameStatus += $" \n{monsterAttackResult}";
+                    }
+                    else if (monster.Category == "Legendary")
+                    {
+                        string monsterAttackResult = monster.PerformAttackLegendary(ActualPlayer);
+                        GameStatus += $" \n{monsterAttackResult}";
+                    }
+                    else if (monster.Category == "Boss")
+                    {
+                        string monsterAttackResult = monster.PerformAttackBoss(ActualPlayer);
+                        GameStatus += $" \n{monsterAttackResult}";
+                    }
+                    UpdateStats();
                 }
-                else if (monster.Category == "rare")
-                {
-                    string monsterAttackResult = monster.PerformAttackRare(ActualPlayer);
-                    GameStatus += $" \n{monsterAttackResult}";
-                }
-                else if (monster.Category == "epic")
-                {
-                    string monsterAttackResult = monster.PerformAttackEpic(ActualPlayer);
-                    GameStatus += $" \n{monsterAttackResult}";
-                }
-                else if (monster.Category == "Legendary")
-                {
-                    string monsterAttackResult = monster.PerformAttackLegendary(ActualPlayer);
-                    GameStatus += $" \n{monsterAttackResult}";
-                }
-                else if (monster.Category == "Boss")
-                {
-                    string monsterAttackResult = monster.PerformAttackBoss(ActualPlayer);
-                    GameStatus += $" \n{monsterAttackResult}";
-                }
-                UpdateStats();
             }
         }
 
@@ -724,38 +727,39 @@ namespace projet.MVVM.ViewModel
         {
             if (ActualPlayer.Inventory.ParchmentPv >= 1)
             {
+                GameStatus = $"\n vous avez utilisé un parchemin de vie, \n vous ne perdrait pas de vie lors de la prochain attaque du monstre";
                 ActualPlayer.Inventory.ParchmentPv -= 1;
                 ActualPlayer.hasUsedParchmentPv = true;
                 UpdateStats();
-            }
-            if (monster.IsAliveMonster())
-            {
-                if (monster.Category == "common")
+                if (monster.IsAliveMonster())
                 {
-                    string monsterAttackResult = monster.PerformAttackCommon(ActualPlayer);
-                    GameStatus += $" \n{monsterAttackResult}";
+                    if (monster.Category == "common")
+                    {
+                        string monsterAttackResult = monster.PerformAttackCommon(ActualPlayer);
+                        GameStatus += $" \n{monsterAttackResult}";
+                    }
+                    else if (monster.Category == "rare")
+                    {
+                        string monsterAttackResult = monster.PerformAttackRare(ActualPlayer);
+                        GameStatus += $" \n{monsterAttackResult}";
+                    }
+                    else if (monster.Category == "epic")
+                    {
+                        string monsterAttackResult = monster.PerformAttackEpic(ActualPlayer);
+                        GameStatus += $" \n{monsterAttackResult}";
+                    }
+                    else if (monster.Category == "Legendary")
+                    {
+                        string monsterAttackResult = monster.PerformAttackLegendary(ActualPlayer);
+                        GameStatus += $" \n{monsterAttackResult}";
+                    }
+                    else if (monster.Category == "Boss")
+                    {
+                        string monsterAttackResult = monster.PerformAttackBoss(ActualPlayer);
+                        GameStatus += $" \n{monsterAttackResult}";
+                    }
+                    UpdateStats();
                 }
-                else if (monster.Category == "rare")
-                {
-                    string monsterAttackResult = monster.PerformAttackRare(ActualPlayer);
-                    GameStatus += $" \n{monsterAttackResult}";
-                }
-                else if (monster.Category == "epic")
-                {
-                    string monsterAttackResult = monster.PerformAttackEpic(ActualPlayer);
-                    GameStatus += $" \n{monsterAttackResult}";
-                }
-                else if (monster.Category == "Legendary")
-                {
-                    string monsterAttackResult = monster.PerformAttackLegendary(ActualPlayer);
-                    GameStatus += $" \n{monsterAttackResult}";
-                }
-                else if (monster.Category == "Boss")
-                {
-                    string monsterAttackResult = monster.PerformAttackBoss(ActualPlayer);
-                    GameStatus += $" \n{monsterAttackResult}";
-                }
-                UpdateStats();
             }
         }
 
