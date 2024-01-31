@@ -31,10 +31,6 @@ namespace projet.MVVM.ViewModel
         private string _playerLife;
         private string _playerMana;
         private string _enemyImgSource;
-        private string _parchmentMana;
-        private string _parchmentPv;
-        private string _potionMana;
-        private string _potionPv;
         private Player player;
 
         public Player Player
@@ -267,7 +263,7 @@ namespace projet.MVVM.ViewModel
 
             monster = GetRandomMonster(monsters, NbWawes);
             monster.ResetStats();
-            GameStatus = $"Un nouveau monstre apparaît : {monster.Name} ! Pour certaines raisons, il n'a pas pu vous attaquer...";
+            GameStatus += $"\nUn nouveau monstre apparaît : {monster.Name} ! Pour certaines raisons, il n'a pas pu vous attaquer...";
             MonsterName = $"{monster.Name}";
             MonsterMana = $"{monster.Mana}";
             MonsterLife = $"{monster.Health}";
@@ -278,6 +274,20 @@ namespace projet.MVVM.ViewModel
             ParchmentMana = $"{ActualPlayer.Inventory.ParchmentMana}";
             PotionPv = $"{ActualPlayer.Inventory.PotionPv}";
             PotionMana = $"{ActualPlayer.Inventory.PotionMana}";
+        }
+
+        public void Death()
+        {
+            GameStatus = "Vous êtes mort, vos stats et le nombre vagues seront réinitialisés.";
+            MonsterName = $"{monster.Name}";
+            MonsterMana = $"{monster.Mana}";
+            MonsterLife = $"{monster.Health}";
+            PlayerMana = $"{ActualPlayer.Mana}";
+            PlayerLife = "MORT";
+            ActualPlayer.Reset();
+            NbWawes = 0;
+            ActualPlayer.Wins = 0;
+            InitializeGame(ActualPlayer);
         }
 
         private void Attack1Clicked(object parameter)
@@ -352,12 +362,7 @@ namespace projet.MVVM.ViewModel
             }
             else
             {
-                GameStatus = "Vous êtes mort";
-                MonsterName = $"{monster.Name}";
-                MonsterMana = $"{monster.Mana}";
-                MonsterLife = $"{monster.Health}";
-                PlayerMana = $"{ActualPlayer.Mana}";
-                PlayerLife = "MORT";
+                Death();
             }
 
         }
@@ -418,6 +423,7 @@ namespace projet.MVVM.ViewModel
                     {
                         GameStatus = $"Vous avez vaincu {monster.Name}";
                         monster.UpdatePlayerXP(ActualPlayer);
+                        ActualPlayer.AddToPokedex(monster);
                     }
 
                     if (ActualPlayer.IsAlivePlayer())
@@ -434,12 +440,7 @@ namespace projet.MVVM.ViewModel
             }
             else
             {
-                GameStatus = "Vous êtes mort";
-                MonsterName = $"{monster.Name}";
-                MonsterMana = $"{monster.Mana}";
-                MonsterLife = $"{monster.Health}";
-                PlayerMana = $"{ActualPlayer.Mana}";
-                PlayerLife = "MORT";
+                Death();
             }
         }
 
@@ -498,6 +499,7 @@ namespace projet.MVVM.ViewModel
                     {
                         GameStatus = $"Vous avez vaincu {monster.Name}";
                         monster.UpdatePlayerXP(ActualPlayer);
+                        ActualPlayer.AddToPokedex(monster);
                     }
 
                     if (ActualPlayer.IsAlivePlayer())
@@ -514,12 +516,7 @@ namespace projet.MVVM.ViewModel
             }
             else
             {
-                GameStatus = "Vous êtes mort";
-                MonsterName = $"{monster.Name}";
-                MonsterMana = $"{monster.Mana}";
-                MonsterLife = $"{monster.Health}";
-                PlayerMana = $"{ActualPlayer.Mana}";
-                PlayerLife = "MORT";
+                Death();
             }
         }
 
@@ -578,6 +575,7 @@ namespace projet.MVVM.ViewModel
                     {
                         GameStatus = $"Vous avez vaincu {monster.Name}";
                         monster.UpdatePlayerXP(ActualPlayer);
+                        ActualPlayer.AddToPokedex(monster);
                     }
 
                     if (ActualPlayer.IsAlivePlayer())
@@ -594,12 +592,7 @@ namespace projet.MVVM.ViewModel
             }
             else
             {
-                GameStatus = "Vous êtes mort";
-                MonsterName = $"{monster.Name}";
-                MonsterMana = $"{monster.Mana}";
-                MonsterLife = $"{monster.Health}";
-                PlayerMana = $"{ActualPlayer.Mana}";
-                PlayerLife = "MORT";
+                Death();
             }
         }
 
@@ -993,7 +986,7 @@ namespace projet.MVVM.ViewModel
 
                 if (saveData != null)
                 {
-                    ActualPlayer.UpdatePlayerProperties(saveData.Player.Pv, saveData.Player.Mana, saveData.Player.Level, saveData.Player.ExperiencePoints, saveData.Player.XpRequiredForNextLevel, saveData.Player.originalHealth, saveData.Player.originalMana, saveData.Player.Wins);
+                    ActualPlayer.UpdatePlayerProperties(saveData.Player.Pv, saveData.Player.Mana, saveData.Player.Level, saveData.Player.ExperiencePoints, saveData.Player.XpRequiredForNextLevel, saveData.Player.originalHealth, saveData.Player.originalMana, saveData.Player.Wins, saveData.Player.Inventory, saveData.Player.Pokedex);
                     UpdateStats();
                     GameStatus = "La partie a été chargée avec succès !";
                 }
