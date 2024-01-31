@@ -336,6 +336,7 @@ namespace projet.MVVM.ViewModel
                     {
                         GameStatus = $"Vous avez vaincu {monster.Name}";
                         monster.UpdatePlayerXP(ActualPlayer);
+                        ActualPlayer.AddToPokedex(monster);
                     }
                     if (ActualPlayer.IsAlivePlayer())
                     {

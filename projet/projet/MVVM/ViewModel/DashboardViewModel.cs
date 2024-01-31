@@ -7,8 +7,6 @@ namespace projet.MVVM.ViewModel
 {
     class DashboardViewModel : INotifyPropertyChanged
     {
-        public ObservableCollection<PokedexItem> Pokedex { get; set; }
-
         private Player _actualPlayer;
         private string _playerLife;
         private string _playerMana;
@@ -16,6 +14,75 @@ namespace projet.MVVM.ViewModel
         private string _playerXpNeeded;
         private string _playerXp;
         private string _playerWins;
+        private string _potionMana;
+        private string _parchmentPv;
+        private string _parchmentMana;
+        private string _potionPv;
+        private ObservableCollection<PokedexItem> _pokedex;
+
+        public ObservableCollection<PokedexItem> Pokedex
+        {
+            get { return _pokedex; }
+            set
+            {
+                if (_pokedex != value)
+                {
+                    _pokedex = value;
+                    OnPropertyChanged(nameof(Pokedex));
+                }
+            }
+        }
+        public string ParchmentPv
+        {
+            get { return _parchmentPv; }
+            set
+            {
+                if (_parchmentPv != value)
+                {
+                    _parchmentPv = value;
+                    OnPropertyChanged(nameof(ParchmentPv));
+                }
+            }
+        }
+
+        public string ParchmentMana
+        {
+            get { return _parchmentMana; }
+            set
+            {
+                if (_parchmentMana != value)
+                {
+                    _parchmentMana = value;
+                    OnPropertyChanged(nameof(ParchmentMana));
+                }
+            }
+        }
+
+        public string PotionPv
+        {
+            get { return _potionPv; }
+            set
+            {
+                if (_potionPv != value)
+                {
+                    _potionPv = value;
+                    OnPropertyChanged(nameof(PotionPv));
+                }
+            }
+        }
+
+        public string PotionMana
+        {
+            get { return _potionMana; }
+            set
+            {
+                if (_potionMana != value)
+                {
+                    _potionMana = value;
+                    OnPropertyChanged(nameof(PotionMana));
+                }
+            }
+        }
         public string PlayerLife
         {
             get { return _playerLife; }
@@ -113,27 +180,17 @@ namespace projet.MVVM.ViewModel
 
         public void InitializeDashboard(Player player)
         {
-            Pokedex = new ObservableCollection<PokedexItem>
-            {
-                new PokedexItem { ImagePath = "/Images/Monsters/mewtwo.gif", ItemText = "Mewtwo", Rarity = "Epique" },
-                new PokedexItem { ImagePath = "/Images/Monsters/pieds.gif", ItemText = "les pieds", Rarity = "Légendaire" },
-                new PokedexItem { ImagePath = "/Images/Monsters/goldenhand.png", ItemText = "GoldenHand", Rarity = "Epique" },
-                new PokedexItem { ImagePath = "/Images/Monsters/isabelle.gif", ItemText = "Marie", Rarity = "Legendaire" },
-                new PokedexItem { ImagePath = "/Images/Monsters/crocmou.gif", ItemText = "YEAAAHAHAHHA", Rarity = "Legendaire" }
-            };
+            Pokedex = player.Pokedex;
             PlayerLife = $"{player.Pv}";
             PlayerMana = $"{player.Mana}";
             PlayerXpNeeded = $"{player.XpRequiredForNextLevel}";
             PlayerXp = $"{player.ExperiencePoints}";
             PlayerLevel = $"{player.Level}";
             PlayerWins = $"{player.Wins}";
+            PotionMana = $"{player.Inventory.PotionMana}";
+            PotionPv = $"{player.Inventory.PotionPv}";
+            ParchmentPv = $"{player.Inventory.ParchmentPv}";
+            ParchmentMana = $"{player.Inventory.ParchmentMana}";
         }
-    }
-
-    public class PokedexItem
-    {
-        public string ImagePath { get; set; }
-        public string ItemText { get; set; }
-        public string Rarity { get; set; }
     }
 }

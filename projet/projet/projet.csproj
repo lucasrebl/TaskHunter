@@ -28,7 +28,11 @@
     <None Remove="Images\Monsters\slime.gif" />
     <None Remove="Images\Monsters\spoink.gif" />
     <None Remove="Images\Monsters\sprout.gif" />
+    <None Remove="Images\parcheminMana.png" />
+    <None Remove="Images\parcheminPv.png" />
     <None Remove="Images\potion.png" />
+    <None Remove="Images\potionMana.gif" />
+    <None Remove="Images\potionPv.png" />
     <None Remove="Images\red.png" />
     <None Remove="Images\TaskHunterlogo.png" />
     <None Remove="Images\TaskHunterlogogros.png" />
@@ -103,7 +107,19 @@
     <Resource Include="Images\Monsters\sprout.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\parcheminMana.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\parcheminPv.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\potion.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\potionMana.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\potionPv.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\red.png">

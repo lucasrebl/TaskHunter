@@ -2,6 +2,8 @@ using AttackPlayers;
 using Inventorys;
 using Monsters;
 using projet.MVVM.Model;
+using projet.MVVM.ViewModel;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 
 namespace Players
@@ -30,8 +32,8 @@ namespace Players
         public bool hasUsedParchmentPv = false;
 
         public List<AttackPlayer> Attack { get; } = new List<AttackPlayer>();
+        public ObservableCollection<PokedexItem> Pokedex { get; set; }
         private static Inventory inventory;
-
         public Inventory Inventory
         {
             get { return inventory; }
@@ -78,6 +80,9 @@ namespace Players
                     _instance.Attack.Add(new AttackPlayer("FireBall", 25, 10));
                     _instance.Attack.Add(new AttackPlayer("Thunder", 30, 15));
                     _instance.Inventory = new Inventory();
+                    _instance.Pokedex = new ObservableCollection<PokedexItem> {
+                        //new PokedexItem { ImagePath = "/Images/Monsters/mewtwo.gif", ItemText = "Mewtwo", Rarity = "Epique" },
+                    };
                 }
                 return _instance;
             }
@@ -92,7 +97,7 @@ namespace Players
             Pv += pv;
         }
 
-        public void UpdatePlayerProperties(int newPv, int newMana,int level, int XP, int XPRequired, int originalhealth, int originalmana, int wins)
+        public void UpdatePlayerProperties(int newPv, int newMana, int level, int XP, int XPRequired, int originalhealth, int originalmana, int wins)
         {
             Pv = newPv;
             Mana = newMana;
@@ -125,6 +130,18 @@ namespace Players
         public void InitializeInventory()
         {
             this.Inventory = InventoryManager.Instance.Inventory;
+        }
+
+        public void AddToPokedex(Monster monster)
+        {
+            if (!Pokedex.Any(p => p.ItemText == monster.Name))
+            {
+                PokedexItem addedPokemon = new PokedexItem();
+                addedPokemon.Rarity = monster.Category;
+                addedPokemon.ImagePath = monster.Img;
+                addedPokemon.ItemText = monster.Name;
+                Pokedex.Add(addedPokemon);
+            }
         }
 
         public bool IsAlivePlayer()
