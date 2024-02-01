@@ -11,7 +11,7 @@
     <Grid>
 
         <StackPanel Background="#211F2E">
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="25" Height="490">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="25" Height="492">
 
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
 
@@ -61,6 +61,10 @@
                                         <Run Text="Mana : " FontWeight="Bold" />
                                         <Run Text="{Binding PlayerMana}"/>
                                     </TextBlock>
+                                    <TextBlock Foreground="White" FontSize="13" Margin="15,0,0,0" Height="27" Width="168" VerticalAlignment="Center">
+                                        <Run Text="Vague n° "/>
+                                        <Run Text="{Binding NbWavesStr}"/>
+                                    </TextBlock>
                                 </StackPanel>
                             </Border>
                         </Border>
@@ -68,7 +72,7 @@
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
-                    <Border Width="670" Height="65" Background="#0C0715" CornerRadius="8">
+                    <Border Width="670" Height="65" Background="#0C0715" CornerRadius="8" Margin="10">
                         <TextBlock Text="{Binding GameStatus}" Foreground="White" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" MaxWidth="650" MaxHeight="80"/>
                     </Border>
                 </StackPanel>
@@ -96,16 +100,18 @@
                         <Run Text="Quantité: " Foreground="White"/>
                         <Run Text="{Binding PotionMana}"/></TextBlock>
                 </StackPanel>
-                <StackPanel Width="670" Height="101" Orientation="Vertical">
-                    <StackPanel Width="435" Height="50" Orientation="Horizontal" Margin="15,15,15,0">
+                <StackPanel Width="472" Height="100" Orientation="Vertical">
+                    <StackPanel Width="435" Height="50" Orientation="Horizontal" Margin="15,5,15,0">
                         <Button Content="Coup de poing" Width="100" Margin="5" Command="{Binding Attack1Command}"/>
                         <Button Content="Coup de pied" Width="100" Margin="5" Command="{Binding Attack2Command}"/>
                         <Button Content="FireBall" Width="100" Margin="5" Command="{Binding Attack3Command}"/>
                         <Button Content="Thunder" Width="100" Margin="5" Command="{Binding Attack4Command}"/>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" Height="26" Width="230" HorizontalAlignment="Center">
-                        <Button Content="Sauvegarder" Command="{Binding SaveCommand}" Margin="38,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="10" Width="75"/>
-                        <Button Content="Charger" Command="{Binding LoadCommand}" Margin="0,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="10" Width="75"/>
+                    <StackPanel Orientation="Horizontal" Height="26" Width="432" HorizontalAlignment="Center">
+                        <Button Content="Sauvegarder" Command="{Binding SaveCommand}" Margin="38,0,10,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" Width="75"/>
+                        <Button Content="Charger" Command="{Binding LoadCommand}" Margin="0,0,10,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" Width="75"/>
+                        <TextBlock Text="Mode :" Foreground="White" FontSize="14" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="60,0,0,0"/>
+                        <Button Content="{Binding ModeButtonText}" Command="{Binding ChangeModeCommand}" Foreground="{Binding ModeButtonColor}" FontWeight="Bold" Margin="10,0,10,0" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="10" Width="75" Height="20"/>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>

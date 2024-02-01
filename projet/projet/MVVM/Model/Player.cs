@@ -26,6 +26,7 @@ namespace Players
         public int Wins { get; set; }
         public int originalHealth;
         public int originalMana;
+        public bool HardcoreMode = false;
         public int ExperiencePoints { get; private set; }
 
         public bool hasUsedParchmentMana = false;

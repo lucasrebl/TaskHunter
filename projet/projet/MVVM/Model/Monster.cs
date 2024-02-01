@@ -81,6 +81,10 @@ namespace Monsters
                 AttackMonster chosenAttack = ChooseAttack();
                 if (chosenAttack != null)
                 {
+                    if (Mana - chosenAttack.ManaCost < 0)
+                    {
+                        return $"{Name} n'a pas pu attaquer avec {chosenAttack.Name} car il n'a pas assez de mana !";
+                    }
                     player.ApplyDamage(chosenAttack.Damage);
                     Mana -= chosenAttack.ManaCost;
 
@@ -110,6 +114,10 @@ namespace Monsters
                 }
                 else if (chosenAttack != null && chosenAttack.Name == "Boule de neige")
                 {
+                    if (Mana - chosenAttack.ManaCost < 0)
+                    {
+                        return $"{Name} n'a pas pu attaquer avec {chosenAttack.Name} car il n'a pas assez de mana !";
+                    }
                     ApplyFrozenEffect(player);
                     player.ApplyDamage(chosenAttack.Damage);
                     Mana -= chosenAttack.ManaCost;
@@ -117,6 +125,10 @@ namespace Monsters
                 }
                 else
                 {
+                    if (Mana - chosenAttack.ManaCost < 0)
+                    {
+                        return $"{Name} n'a pas pu attaquer avec {chosenAttack.Name} car il n'a pas assez de mana !";
+                    }
                     player.ApplyDamage(chosenAttack.Damage);
                     Mana -= chosenAttack.ManaCost;
                     return $"{Name} attaque avec {chosenAttack.Name} et inflige {chosenAttack.Damage} points de dégâts à {player.Name}!";
@@ -136,6 +148,10 @@ namespace Monsters
                 }
                 else if (chosenAttack != null && chosenAttack.Name == "Insulte")
                 {
+                    if (Mana - chosenAttack.ManaCost < 0)
+                    {
+                        return $"{Name} n'a pas pu attaquer avec {chosenAttack.Name} car il n'a pas assez de mana !";
+                    }
                     ApplyDepressedEffect(player);
                     player.ApplyDamage(chosenAttack.Damage);
                     Mana -= chosenAttack.ManaCost;
@@ -143,6 +159,10 @@ namespace Monsters
                 }
                 else
                 {
+                    if (Mana - chosenAttack.ManaCost < 0)
+                    {
+                        return $"{Name} n'a pas pu attaquer avec {chosenAttack.Name} car il n'a pas assez de mana !";
+                    }
                     player.ApplyDamage(chosenAttack.Damage);
                     Mana -= chosenAttack.ManaCost;
                     return $"{Name} attaque avec {chosenAttack.Name} et inflige {chosenAttack.Damage} points de dégâts à {player.Name}!";
@@ -165,12 +185,20 @@ namespace Monsters
                 }
                 else if (chosenAttack != null && chosenAttack.OtherEffect == "heal")
                 {
+                    if (Mana - chosenAttack.ManaCost < 0)
+                    {
+                        return $"{Name} n'a pas pu attaquer avec {chosenAttack.Name} car il n'a pas assez de mana !";
+                    }
                     Health += 10;
                     Mana -= chosenAttack.ManaCost;
                     return $"{Name} utilise {chosenAttack.Name} et se soigne de 10 PV!";
                 }
                 else if (chosenAttack != null && chosenAttack.Name == "Danse endiablée")
                 {
+                    if (Mana - chosenAttack.ManaCost < 0)
+                    {
+                        return $"{Name} n'a pas pu attaquer avec {chosenAttack.Name} car il n'a pas assez de mana !";
+                    }
                     ApplyPossessedByTheDevilEffect(player);
                     player.ApplyDamage(chosenAttack.Damage);
                     Mana -= chosenAttack.ManaCost;
@@ -178,6 +206,10 @@ namespace Monsters
                 }
                 else
                 {
+                    if (Mana - chosenAttack.ManaCost < 0)
+                    {
+                        return $"{Name} n'a pas pu attaquer avec {chosenAttack.Name} car il n'a pas assez de mana !";
+                    }
                     player.ApplyDamage(chosenAttack.Damage);
                     Mana -= chosenAttack.ManaCost;
                     return $"{Name} attaque avec {chosenAttack.Name} et inflige {chosenAttack.Damage} points de dégâts à {player.Name}!";
@@ -198,6 +230,10 @@ namespace Monsters
                 }
                 else
                 {
+                    if (Mana - chosenAttack.ManaCost < 0)
+                    {
+                        return $"{Name} n'a pas pu attaquer avec {chosenAttack.Name} car il n'a pas assez de mana !";
+                    }
                     player.ApplyDamage(chosenAttack.Damage);
                     Mana -= chosenAttack.ManaCost;
                     return $"{Name} attaque avec {chosenAttack.Name} et inflige {chosenAttack.Damage} points de dégâts à {player.Name}!";

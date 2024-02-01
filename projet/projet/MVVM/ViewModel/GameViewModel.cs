@@ -19,7 +19,6 @@ using projet.Core;
 using Inventorys;
 using System.Xml.Linq;
 
-
 namespace projet.MVVM.ViewModel
 {
     class GameViewModel : INotifyPropertyChanged
@@ -31,25 +30,26 @@ namespace projet.MVVM.ViewModel
         private string _playerLife;
         private string _playerMana;
         private string _enemyImgSource;
-        private Player player;
-
+        private Player _player;
+        private string _modeButtonText;
+        private string _modeButtonColor;
         public Player Player
         {
-            get { return player; }
+            get { return _player; }
             set
             {
-                if (player != value)
+                if (_player != value)
                 {
-                    if (player != null)
+                    if (_player != null)
                     {
-                        player.PropertyChanged -= Player_PropertyChanged;
+                        _player.PropertyChanged -= Player_PropertyChanged;
                     }
 
-                    player = value;
+                    _player = value;
 
-                    if (player != null)
+                    if (_player != null)
                     {
-                        player.PropertyChanged += Player_PropertyChanged;
+                        _player.PropertyChanged += Player_PropertyChanged;
                     }
 
                     OnPropertyChanged(nameof(Player));
@@ -66,7 +66,7 @@ namespace projet.MVVM.ViewModel
         public ICommand ParchmentManaCommand { get; private set; }
         public ICommand PotionPvCommand { get; private set; }
         public ICommand PotionManaCommand { get; private set; }
-
+        public ICommand ChangeModeCommand { get; private set; }
 
         public ICommand SaveCommand { get; private set; }
         public ICommand LoadCommand { get; private set; }
@@ -80,6 +80,32 @@ namespace projet.MVVM.ViewModel
                 {
                     _gameStatus = value;
                     OnPropertyChanged(nameof(GameStatus));
+                }
+            }
+        }
+
+        public string ModeButtonText
+        {
+            get { return _modeButtonText; }
+            set
+            {
+                if (_modeButtonText != value)
+                {
+                    _modeButtonText = value;
+                    OnPropertyChanged(nameof(ModeButtonText));
+                }
+            }
+        }
+
+        public string ModeButtonColor
+        {
+            get { return _modeButtonColor; }
+            set
+            {
+                if (_modeButtonColor != value)
+                {
+                    _modeButtonColor = value;
+                    OnPropertyChanged(nameof(ModeButtonColor));
                 }
             }
         }
@@ -161,57 +187,70 @@ namespace projet.MVVM.ViewModel
             }
         }
 
-        private string parchmentPv;
+        private string _parchmentPv;
         public string ParchmentPv
         {
-            get { return parchmentPv; }
+            get { return _parchmentPv; }
             set
             {
-                if (parchmentPv != value)
+                if (_parchmentPv != value)
                 {
-                    parchmentPv = value;
+                    _parchmentPv = value;
                     OnPropertyChanged(nameof(ParchmentPv));
                 }
             }
         }
 
-        private string parchmentMana;
+        private string _parchmentMana;
         public string ParchmentMana
         {
-            get { return parchmentMana; }
+            get { return _parchmentMana; }
             set
             {
-                if (parchmentMana != value)
+                if (_parchmentMana != value)
                 {
-                    parchmentMana = value;
+                    _parchmentMana = value;
                     OnPropertyChanged(nameof(ParchmentMana));
                 }
             }
         }
 
-        private string potionPv;
+        private string _potionPv;
         public string PotionPv
         {
-            get { return potionPv; }
+            get { return _potionPv; }
             set
             {
-                if (potionPv != value)
+                if (_potionPv != value)
                 {
-                    potionPv = value;
+                    _potionPv = value;
                     OnPropertyChanged(nameof(PotionPv));
                 }
             }
         }
-
-        private string potionMana;
-        public string PotionMana
+        private string _nbWavesStr;
+        public string NbWavesStr
         {
-            get { return potionMana; }
+            get { return _nbWavesStr; }
             set
             {
-                if (potionMana != value)
+                if (_nbWavesStr != value)
                 {
-                    potionMana = value;
+                    _nbWavesStr = value;
+                    OnPropertyChanged(nameof(NbWavesStr));
+                }
+            }
+        }
+
+        private string _potionMana;
+        public string PotionMana
+        {
+            get { return _potionMana; }
+            set
+            {
+                if (_potionMana != value)
+                {
+                    _potionMana = value;
                     OnPropertyChanged(nameof(PotionMana));
                 }
             }
@@ -253,6 +292,7 @@ namespace projet.MVVM.ViewModel
             Attack2Command = new RelayCommand(Attack2Clicked);
             Attack3Command = new RelayCommand(Attack3Clicked);
             Attack4Command = new RelayCommand(Attack4Clicked);
+            ChangeModeCommand = new RelayCommand(ChangeMode);
             ParchmentPvCommand = new RelayCommand(UseParchmentPv);
             ParchmentManaCommand = new RelayCommand(UseParchmentMana);
             PotionManaCommand = new RelayCommand(UsePotionMana);
@@ -263,6 +303,7 @@ namespace projet.MVVM.ViewModel
 
             monster = GetRandomMonster(monsters, NbWawes);
             monster.ResetStats();
+            ActualPlayer.AddToPokedex(monster);
             GameStatus += $"\nUn nouveau monstre apparaît : {monster.Name} ! Pour certaines raisons, il n'a pas pu vous attaquer...";
             MonsterName = $"{monster.Name}";
             MonsterMana = $"{monster.Mana}";
@@ -274,6 +315,9 @@ namespace projet.MVVM.ViewModel
             ParchmentMana = $"{ActualPlayer.Inventory.ParchmentMana}";
             PotionPv = $"{ActualPlayer.Inventory.PotionPv}";
             PotionMana = $"{ActualPlayer.Inventory.PotionMana}";
+            ModeButtonColor = "Black";
+            ModeButtonText = "Normal";
+            NbWavesStr = $"{NbWawes}";
         }
 
         public void Death()
@@ -284,10 +328,30 @@ namespace projet.MVVM.ViewModel
             MonsterLife = $"{monster.Health}";
             PlayerMana = $"{ActualPlayer.Mana}";
             PlayerLife = "MORT";
+            /* Reset la partie quand le joueur est mort
             ActualPlayer.Reset();
             NbWawes = 0;
             ActualPlayer.Wins = 0;
             InitializeGame(ActualPlayer);
+            */
+        }
+
+        private void ChangeMode(object parameter)
+        {
+            if (ActualPlayer.HardcoreMode == false)
+            {
+                ActualPlayer.HardcoreMode = true;
+                ModeButtonColor = "Red";
+                ModeButtonText = "HARDCORE";
+                GameStatus = "Mode HARDCORE activé ! Vous n'êtes plus automatiquement soigné à la fin de chaque combat !";
+            }
+            else
+            {
+                ActualPlayer.HardcoreMode = false;
+                ModeButtonColor = "Black";
+                ModeButtonText = "Normal";
+                GameStatus = "Mode HARDCORE désactivé ! Vous serez automatiquement soigné à la fin de chaque combat !";
+            }
         }
 
         private void Attack1Clicked(object parameter)
@@ -346,7 +410,6 @@ namespace projet.MVVM.ViewModel
                     {
                         GameStatus = $"Vous avez vaincu {monster.Name}";
                         monster.UpdatePlayerXP(ActualPlayer);
-                        ActualPlayer.AddToPokedex(monster);
                     }
                     if (ActualPlayer.IsAlivePlayer())
                     {
@@ -354,7 +417,11 @@ namespace projet.MVVM.ViewModel
                         GameStatus += $"\n Vague actuelle: {NbWawes}";
                         monster = GetRandomMonster(monsters, NbWawes);
                         monster.ResetStats();
-                        ActualPlayer.ResetStatsPlayer();
+                        ActualPlayer.AddToPokedex(monster);
+                        if (ActualPlayer.HardcoreMode == false)
+                        {
+                            ActualPlayer.ResetStatsPlayer();
+                        }
                         GameStatus += $"\n Un nouveau monstre apparaît : {monster.Name} ! Pour certaines raisons, il n'a pas pu vous attaquer...";
                         UpdateStats();
                     }
@@ -423,7 +490,6 @@ namespace projet.MVVM.ViewModel
                     {
                         GameStatus = $"Vous avez vaincu {monster.Name}";
                         monster.UpdatePlayerXP(ActualPlayer);
-                        ActualPlayer.AddToPokedex(monster);
                     }
 
                     if (ActualPlayer.IsAlivePlayer())
@@ -432,7 +498,11 @@ namespace projet.MVVM.ViewModel
                         GameStatus += $"\n Vague actuelle: {NbWawes}";
                         monster = GetRandomMonster(monsters, NbWawes);
                         monster.ResetStats();
-                        ActualPlayer.ResetStatsPlayer();
+                        ActualPlayer.AddToPokedex(monster);
+                        if (ActualPlayer.HardcoreMode == false)
+                        {
+                            ActualPlayer.ResetStatsPlayer();
+                        }
                         GameStatus += $"\n Un nouveau monstre apparaît : {monster.Name} ! Pour certaines raisons, il n'a pas pu vous attaquer...";
                         UpdateStats();
                     }
@@ -499,7 +569,6 @@ namespace projet.MVVM.ViewModel
                     {
                         GameStatus = $"Vous avez vaincu {monster.Name}";
                         monster.UpdatePlayerXP(ActualPlayer);
-                        ActualPlayer.AddToPokedex(monster);
                     }
 
                     if (ActualPlayer.IsAlivePlayer())
@@ -508,7 +577,11 @@ namespace projet.MVVM.ViewModel
                         GameStatus += $"\n Vague actuelle: {NbWawes}";
                         monster = GetRandomMonster(monsters, NbWawes);
                         monster.ResetStats();
-                        ActualPlayer.ResetStatsPlayer();
+                        ActualPlayer.AddToPokedex(monster);
+                        if (ActualPlayer.HardcoreMode == false)
+                        {
+                            ActualPlayer.ResetStatsPlayer();
+                        }
                         GameStatus += $"\n Un nouveau monstre apparaît : {monster.Name} ! Pour certaines raisons, il n'a pas pu vous attaquer...";
                         UpdateStats();
                     }
@@ -575,7 +648,6 @@ namespace projet.MVVM.ViewModel
                     {
                         GameStatus = $"Vous avez vaincu {monster.Name}";
                         monster.UpdatePlayerXP(ActualPlayer);
-                        ActualPlayer.AddToPokedex(monster);
                     }
 
                     if (ActualPlayer.IsAlivePlayer())
@@ -584,7 +656,11 @@ namespace projet.MVVM.ViewModel
                         GameStatus += $"\n Vague actuelle: {NbWawes}";
                         monster = GetRandomMonster(monsters, NbWawes);
                         monster.ResetStats();
-                        ActualPlayer.ResetStatsPlayer();
+                        ActualPlayer.AddToPokedex(monster);
+                        if (ActualPlayer.HardcoreMode == false)
+                        {
+                            ActualPlayer.ResetStatsPlayer();
+                        }
                         GameStatus += $"\n Un nouveau monstre apparaît : {monster.Name} ! Pour certaines raisons, il n'a pas pu vous attaquer...";
                         UpdateStats();
                     }
@@ -648,6 +724,7 @@ namespace projet.MVVM.ViewModel
             PotionMana = $"{ActualPlayer.Inventory.PotionMana}";
             ParchmentMana = $"{ActualPlayer.Inventory.ParchmentMana}";
             ParchmentPv = $"{ActualPlayer.Inventory.ParchmentPv}";
+            NbWavesStr = $"{NbWawes}";
         }
 
         public static List<Monster> InitMonster()
