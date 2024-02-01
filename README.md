@@ -1,9 +1,9 @@
 # 🎮 TaskHunter
 
-Découvrez un jeu original  où vous incarnez un pr`ux combattant maître de la foudre et du feu, prêt à tout pour s'maéliorer en combat contre des monstres !
+Découvrez un jeu original  où vous incarnez un preux combattant maître de la foudre et du feu, prêt à tout pour s'améliorer en combat contre des monstres !
 
 # 📖 fonctionnalités: 
- - Interface agréazble
+ - Interface agréable
  - Dashboard du suivi de compétences
  - Système de combat digne d'un rpg
  - Type de combat : tour par tour
