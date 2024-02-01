@@ -144,7 +144,7 @@
                         <TextBlock Text="Inventaire" Foreground="White" FontSize="18" FontWeight="Bold" Margin="15,10,15,15" HorizontalAlignment="Left"/>
                         <StackPanel Orientation="Horizontal" Margin="15">
                             <StackPanel Height="50" Orientation="Horizontal">
-                                <Image Source="/Images/potionPv.png" Height="50"/>
+                                <Image Source="/Images/potionPv.png" Height="48" Width="55"/>
                                 <TextBlock Text="{Binding PotionPv}" Foreground="White" FontSize="20" FontFamily="Consolas" Width="75" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="8,0,0,0"/>
                                 <Image Source="/Images/parcheminPv.png" Height="50"/>
                                 <TextBlock Text="{Binding ParchmentPv}" Foreground="White" FontSize="20" FontFamily="Consolas" Width="75" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="8,0,0,0"/>

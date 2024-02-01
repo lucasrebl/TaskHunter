@@ -40,6 +40,20 @@ namespace projet.MVVM.ViewModel
             }
         }
 
+        private string _taskMessage;
+        public string TaskMessage
+        {
+            get { return _taskMessage; }
+            set
+            {
+                if (_taskMessage != value)
+                {
+                    _taskMessage = value;
+                    OnPropertyChanged(nameof(TaskMessage));
+                }
+            }
+        }
+
         private DateTime _newTaskDate;
         public DateTime NewTaskDate
         {
@@ -63,6 +77,7 @@ namespace projet.MVVM.ViewModel
             AddTaskCommand = new RelayCommand(AddTask);
             CompleteTaskCommand = new RelayCommand(CompleteTask);
             DeleteTaskCommand = new RelayCommand(DeleteTask);
+            NewTaskDate = DateTime.Now;
         }
 
         private void AddTask(object parameter)
@@ -100,10 +115,10 @@ namespace projet.MVVM.ViewModel
             }
         }
 
-
         public void InitializeTasks(Player player)
         {
             ActualPlayer = player;
+            TaskMessage = string.Empty;
         }
 
         private Random random = new Random();
@@ -115,7 +130,26 @@ namespace projet.MVVM.ViewModel
                 Tasks.Remove(task);
                 int rewardAmount = GetRandomReward();
                 random = new Random();
-                ActualPlayer.UpdateInventory(rewardAmount, random.Next(1, 5));
+                int randomRes = random.Next(1, 5);
+                ActualPlayer.UpdateInventory(rewardAmount, randomRes);
+                switch (randomRes)
+                {
+                    case 1:
+                        TaskMessage = $"Vous avez obtenu {rewardAmount} Potion(s) de vie !";
+                        break;
+                    case 2:
+                        TaskMessage = $"Vous avez obtenu {rewardAmount} Potion(s) de mana !";
+                        break;
+                    case 3:
+                        TaskMessage = $"Vous avez obtenu {rewardAmount} Parchemin(s) de vie !";
+                        break;
+                    case 4:
+                        TaskMessage = $"Vous avez obtenu {rewardAmount} Parchemin(s) de mana !";
+                        break;
+                    default:
+                        TaskMessage = $"Vous avez obtenu {rewardAmount} {randomRes} !";
+                        break;
+                }
             }
         }
 
@@ -166,6 +200,7 @@ namespace projet.MVVM.ViewModel
             if (parameter is TaskListManager task)
             {
                 Tasks.Remove(task);
+                TaskMessage = $"Vous avez supprimé une tâche !";
             }
         }
     }

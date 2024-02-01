@@ -23,9 +23,10 @@ namespace Players
         public bool IsFrozen { get; private set; } = false;
         public bool IsDepressed { get; private set; } = false;
         public bool PossessedByTheDevil { get; private set; } = false;
-        public int Wins { get; private set; }
+        public int Wins { get; set; }
         public int originalHealth;
         public int originalMana;
+        public bool HardcoreMode = false;
         public int ExperiencePoints { get; private set; }
 
         public bool hasUsedParchmentMana = false;
@@ -97,7 +98,7 @@ namespace Players
             Pv += pv;
         }
 
-        public void UpdatePlayerProperties(int newPv, int newMana, int level, int XP, int XPRequired, int originalhealth, int originalmana, int wins)
+        public void UpdatePlayerProperties(int newPv, int newMana, int level, int XP, int XPRequired, int originalhealth, int originalmana, int wins, Inventory inventory, ObservableCollection<PokedexItem> pokedex)
         {
             Pv = newPv;
             Mana = newMana;
@@ -106,6 +107,8 @@ namespace Players
             originalMana = originalmana;
             XpRequiredForNextLevel = XPRequired;
             Wins = wins;
+            Inventory = inventory;
+            Pokedex = pokedex;
         }
 
         public void UpdateInventory(int rewardAmount, int type)
@@ -246,6 +249,12 @@ namespace Players
         {
             IsDepressed = true;
             Console.WriteLine($"{Name} est Posséder par le diable");
+        }
+
+        public void Reset()
+        {
+            Pv = 40; Mana = 40;
+            ExperiencePoints = 0;
         }
 
         public void ResetStatsPlayer()
