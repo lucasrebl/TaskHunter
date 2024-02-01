@@ -43,11 +43,7 @@ Découvrez un jeu original  où vous incarnez un pr`ux combattant maître de la 
 
     <ul>Reboulet Lucas => Grand maître</ul>
     <ul>Marie Gabriel => Conquérent du bug</ul>
-    <ul>REemadna Doria => Barde du design intemporel</ul>
-
-    #### Remerciements:;
-
-    Merci à Arsenal pour sa collaboration launcher
+    <ul>Remadna Doria => Barde du design intemporel</ul>
 
     #### Copyright:
 
