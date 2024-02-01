@@ -31,9 +31,10 @@ Découvrez un jeu original  où vous incarnez un preux combattant maître de la 
     ![image](https://github.com/lucasrebl/TaskHunter/assets/112953319/7f2816b1-1286-4ce7-9b34-228dcc97f73a)
  
     Si vous avez ce message :
+    
     ![image](https://github.com/lucasrebl/TaskHunter/assets/112953319/68507236-170a-47c0-b9e6-622ab4ccd14c)
  
-    Cliquez sur "informations complémentaires puis éxécutez:
+    Cliquez sur "informations complémentaires puis exécutez:
  
     ![image](https://github.com/lucasrebl/TaskHunter/assets/112953319/81a89813-7cc9-4443-9b21-012cd2e20aea)
 
