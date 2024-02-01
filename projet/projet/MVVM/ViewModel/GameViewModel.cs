@@ -33,6 +33,7 @@ namespace projet.MVVM.ViewModel
         private Player _player;
         private string _modeButtonText;
         private string _modeButtonColor;
+        private string _hiddenReset;
         public Player Player
         {
             get { return _player; }
@@ -67,6 +68,7 @@ namespace projet.MVVM.ViewModel
         public ICommand PotionPvCommand { get; private set; }
         public ICommand PotionManaCommand { get; private set; }
         public ICommand ChangeModeCommand { get; private set; }
+        public ICommand ResetButtonCommand { get; private set; }
 
         public ICommand SaveCommand { get; private set; }
         public ICommand LoadCommand { get; private set; }
@@ -80,6 +82,18 @@ namespace projet.MVVM.ViewModel
                 {
                     _gameStatus = value;
                     OnPropertyChanged(nameof(GameStatus));
+                }
+            }
+        }
+        public string HiddenReset
+        {
+            get { return _hiddenReset; }
+            set
+            {
+                if (_hiddenReset != value)
+                {
+                    _hiddenReset = value;
+                    OnPropertyChanged(nameof(HiddenReset));
                 }
             }
         }
@@ -299,6 +313,7 @@ namespace projet.MVVM.ViewModel
             PotionPvCommand = new RelayCommand(UsePotionPv);
             SaveCommand = new RelayCommand(SaveGameCommand);
             LoadCommand = new RelayCommand(LoadGameCommand);
+            ResetButtonCommand = new RelayCommand(ResetButtonFunc);
             ActualPlayer = player;
 
             monster = GetRandomMonster(monsters, NbWawes);
@@ -318,6 +333,7 @@ namespace projet.MVVM.ViewModel
             ModeButtonColor = "Black";
             ModeButtonText = "Normal";
             NbWavesStr = $"{NbWawes}";
+            HiddenReset = "Hidden";
         }
 
         public void Death()
@@ -328,6 +344,7 @@ namespace projet.MVVM.ViewModel
             MonsterLife = $"{monster.Health}";
             PlayerMana = $"{ActualPlayer.Mana}";
             PlayerLife = "MORT";
+            HiddenReset = "Visible";
             /* Reset la partie quand le joueur est mort
             ActualPlayer.Reset();
             NbWawes = 0;
@@ -353,7 +370,14 @@ namespace projet.MVVM.ViewModel
                 GameStatus = "Mode HARDCORE désactivé ! Vous serez automatiquement soigné à la fin de chaque combat !";
             }
         }
-
+        private void ResetButtonFunc(object parameter)
+        {
+            ActualPlayer.Reset();
+            NbWawes = 0;
+            ActualPlayer.Wins = 0;
+            HiddenReset = "Hidden";
+            InitializeGame(ActualPlayer);
+        }
         private void Attack1Clicked(object parameter)
         {
             GameStatus = "Attaque 1";

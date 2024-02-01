@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4+0b4AglUdI398S7FhUl6cja3vlB8XKkK+BJP/iC+dXa33cKjArptaetefLYuSF8PrWIRJqC2EDGXLN6qqHNkQ==",
+  "dgSpecHash": "SaahJT3nPfgS2EO8ktNbKZTKz0PTcA8ODPoHAm+kEXmdXrH0Z/P9LD+fv2iaGyPvmgqM2JBXsdYKYUOmlCSOmw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Gabriel\\source\\repos\\TaskHunter\\projet\\projet\\projet.csproj",
+  "projectFilePath": "C:\\Users\\Gabriel\\source\\repos\\TaskHunter\\projet\\projet\\TaskHunter.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Gabriel\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\Gabriel\\.nuget\\packages\\wpfanimatedgif\\2.0.2\\wpfanimatedgif.2.0.2.nupkg.sha512"
