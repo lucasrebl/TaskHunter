@@ -21,7 +21,7 @@ Découvrez un jeu original  où vous incarnez un preux combattant maître de la 
  
     ## ⬇️ Procédure de lancement
       <ul>Etape 1 Télécharger le dossier àl'adresse suivante : 
-      https://github.com/lucasrebl/TaskHunter/releases/tag/Release</ul>
+      [https://github.com/lucasrebl/TaskHunter/releases/tag/Release](https://github.com/lucasrebl/TaskHunter/releases/download/Release/TaskHunter-v1.0.zip)</ul>
       
     ![image](https://github.com/lucasrebl/TaskHunter/assets/112953319/5cfe9b98-2ecd-4db0-947e-5e26d2ab20ea)
 
@@ -51,7 +51,7 @@ https://github.com/lucasrebl/TaskHunter.git
 
   
   En cas de problème:
-    Etape 1 Supprimer les dépendances (le packages nuGet peut poser problème lors de l'instalation)
+    Etape 1 Supprimer les dépendances (le package nuGet peut poser problème lors de l'installation)
     Etape 2 Réinstallation de nuGet
     Etape 3 Exécution du package
     Etape 4 Rebuild du projet
