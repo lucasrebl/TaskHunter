@@ -10,7 +10,7 @@ Découvrez un jeu original  où vous incarnez un preux combattant maître de la 
  - Adieu la paresse, mettez vos objectifs en tâches à effectuer pour gagner des récompenses
  - Système de sauvegarde et chargement de votre dernière sauvegarde
 
- # 👩‍💻 Technologies employés:
+ # 👩‍💻 Technologies employées:
 - C#
 - Principe de la POO
 - WPF
