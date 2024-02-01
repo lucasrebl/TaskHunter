@@ -97,9 +97,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Gabriel\\source\\repos\\TaskHunter\\projet\\projet\\projet.csproj",
-      "projectName": "projet",
-      "projectPath": "C:\\Users\\Gabriel\\source\\repos\\TaskHunter\\projet\\projet\\projet.csproj",
+      "projectUniqueName": "C:\\Users\\Gabriel\\source\\repos\\TaskHunter\\projet\\projet\\TaskHunter.csproj",
+      "projectName": "TaskHunter",
+      "projectPath": "C:\\Users\\Gabriel\\source\\repos\\TaskHunter\\projet\\projet\\TaskHunter.csproj",
       "packagesPath": "C:\\Users\\Gabriel\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Gabriel\\source\\repos\\TaskHunter\\projet\\projet\\obj\\",
       "projectStyle": "PackageReference",

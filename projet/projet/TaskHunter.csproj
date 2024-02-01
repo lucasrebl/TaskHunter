@@ -6,6 +6,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Images\Green_Slime_Anim.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,6 +15,7 @@
     <None Remove="Images\fist.png" />
     <None Remove="Images\flame.png" />
     <None Remove="Images\foothit.png" />
+    <None Remove="Images\Green_Slime_Anim.ico" />
     <None Remove="Images\Monsters\crocmou.gif" />
     <None Remove="Images\Monsters\frenchpampa.png" />
     <None Remove="Images\Monsters\goldenhand.png" />
@@ -41,6 +43,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Images\Green_Slime_Anim.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Fonts\" />
   </ItemGroup>
 
@@ -63,6 +69,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\foothit.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Green_Slime_Anim.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\Monsters\crocmou.gif">

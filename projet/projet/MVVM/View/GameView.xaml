@@ -73,7 +73,10 @@
 
                 <StackPanel Orientation="Horizontal">
                     <Border Width="670" Height="65" Background="#0C0715" CornerRadius="8" Margin="10">
-                        <TextBlock Text="{Binding GameStatus}" Foreground="White" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" MaxWidth="650" MaxHeight="80"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock Text="{Binding GameStatus}" Foreground="White" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" MaxWidth="650" MaxHeight="80"/>
+                            <Button Content="Recommencer" Width="113" Command="{Binding ResetButtonCommand}" Visibility="{Binding HiddenReset}" HorizontalAlignment="Right" Margin="30,10,10,10"/>
+                        </StackPanel>
                     </Border>
                 </StackPanel>
 
