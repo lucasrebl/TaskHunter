@@ -6,28 +6,84 @@
              xmlns:gif="http://wpfanimatedgif.codeplex.com"
              xmlns:local="clr-namespace:projet.MVVM.View"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="533" d:DesignWidth="800">
     <StackPanel Background="#211F2E">
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25">
 
             <StackPanel Orientation="Vertical">
 
-                <Border Width="300" Height="275" Background="#191726" CornerRadius="8" VerticalAlignment="Top">
-                    <TextBlock Text="Mes stats" Foreground="White" FontSize="18" FontWeight="Bold" Margin="15"/>
+                <Border Width="300" Height="300" Background="#191726" CornerRadius="8" VerticalAlignment="Top">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Mes stats" Foreground="White" FontSize="18" FontWeight="Bold" Margin="15"/>
+                        <TextBlock Text="XP" Foreground="White" FontSize="12" Margin="15"/>
+                        <ProgressBar Height="10" Margin="15,0,15,20" Minimum="0" Maximum="{Binding PlayerXpNeeded}" Value="{Binding PlayerXp}"></ProgressBar>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="15,0,0,0" Width="270">
+                            <TextBlock Foreground="White" FontSize="13" Height="27" Width="70" >
+                                <Run Text="Level" FontWeight="Bold" />
+                            </TextBlock>
+                            <TextBlock Foreground="White" FontSize="13" Height="25" Width="70"  Margin="30,0,0,0">
+                                <Run Text="PV" FontWeight="Bold" />
+                            </TextBlock>
+                            <TextBlock Foreground="White" FontSize="13" Height="27" Width="70"  Margin="30,0,0,0">
+                                <Run Text="Mana" FontWeight="Bold" />
+                            </TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="15,0,0,0">
+                            <Border Background="#0C0715" Width="70" Height="70" CornerRadius="10">
+                                <TextBlock Text="{Binding PlayerLevel}" FontSize="30" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Consolas"/>
+                            </Border>
+                            <Border Background="#0C0715" Width="70" Height="70" CornerRadius="10" Margin="30,0,0,0">
+                                <TextBlock Text="{Binding PlayerLife}" FontSize="30" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Consolas"/>
+                            </Border>
+                            <Border Background="#0C0715" Width="70" Height="70" CornerRadius="10" Margin="30,0,0,0">
+                                <TextBlock Text="{Binding PlayerMana}" FontSize="30" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Consolas"/>
+                            </Border>
+                        </StackPanel>
+                        <TextBlock Text="Combats gagnés d'affilée :" HorizontalAlignment="Left" Margin="15,15,15,5" Foreground="White" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding PlayerWins}" HorizontalAlignment="Left" FontSize="20" Margin="15,0,0,0" Foreground="White"/>
+                    </StackPanel>
                 </Border>
 
-                <Border Width="300" Height="125" Background="#191726" CornerRadius="8" Margin="0,10,0,0">
-                    <TextBlock Text="Mes Attaques" Foreground="White" FontSize="18" FontWeight="Bold" Margin="15"/>
+                <Border Width="300" Height="170" Background="#191726" CornerRadius="8" Margin="0,10,0,0">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Mes Attaques" Foreground="White" FontSize="18" FontWeight="Bold" Margin="15"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+                            <StackPanel  Orientation="Horizontal">
+                                <Image Source="/Images/fist.png" Width="30" Height="30" Margin="0,0,10,0"/>
+                                <TextBlock Text="dégâts : 10" Foreground="White" FontSize="12" VerticalAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel  Orientation="Horizontal">
+                                <Image Source="/Images/flame.png" Width="30" Height="30" Margin="40,0,10,0"/>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="dégâts : 25" Foreground="White" FontSize="12" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                                    <TextBlock Text="mana :   -10" Foreground="White" FontSize="12" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,15,0,0"  HorizontalAlignment="Center">
+                            <StackPanel  Orientation="Horizontal">
+                                <Image Source="/Images/foothit.png" Width="30" Height="30" Margin="0,0,10,0"/>
+                                <TextBlock Text="dégâts : 10" Foreground="White" FontSize="12" VerticalAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel  Orientation="Horizontal">
+                                <Image Source="/Images/thunder.png" Width="30" Height="30" Margin="40,0,10,0"/>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="dégâts : 30" Foreground="White" FontSize="12" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                                    <TextBlock Text="mana :   -15" Foreground="White" FontSize="12" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
                 </Border>
 
             </StackPanel>
 
             <StackPanel Orientation="Vertical">
-                <Border Width="300" Height="250" Margin="20,0,0,0" Background="#191726" CornerRadius="8" VerticalAlignment="Top">
+                <Border Width="300" Height="275" Margin="20,0,0,0" Background="#191726" CornerRadius="8" VerticalAlignment="Top">
                     <StackPanel>
                         <TextBlock Text="Pokédex" Foreground="White" FontSize="18" FontWeight="Bold" Margin="15"/>
 
-                        <ListView ItemsSource="{Binding YourItemList}" Background="Transparent" Foreground="Black" BorderBrush="Transparent" VerticalContentAlignment="Top" Height="Auto" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MaxHeight="200">
+                        <ListView ItemsSource="{Binding Pokedex}" Background="Transparent" Foreground="Black" BorderBrush="Transparent" VerticalContentAlignment="Top" Height="Auto" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MaxHeight="225">
                             <ListView.View>
                                 <GridView AllowsColumnReorder="False">
                                     <GridViewColumn Width="75" Header="Image">
@@ -83,9 +139,26 @@
                     </StackPanel>
                 </Border>
 
-
-                <Border Width="300" Height="150" Margin="20,10,0,0" Background="#191726" CornerRadius="8" VerticalAlignment="Top">
-                    <TextBlock Text="Inventaire" Foreground="White" FontSize="18" FontWeight="Bold" Margin="15"/>
+                <Border Width="300" Height="195" Margin="20,10,0,0" Background="#191726" CornerRadius="8">
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Text="Inventaire" Foreground="White" FontSize="18" FontWeight="Bold" Margin="15,10,15,15" HorizontalAlignment="Left"/>
+                        <StackPanel Orientation="Horizontal" Margin="15">
+                            <StackPanel Height="50" Orientation="Horizontal">
+                                <Image Source="/Images/potionPv.png" Height="48" Width="55"/>
+                                <TextBlock Text="{Binding PotionPv}" Foreground="White" FontSize="20" FontFamily="Consolas" Width="75" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="8,0,0,0"/>
+                                <Image Source="/Images/parcheminPv.png" Height="50"/>
+                                <TextBlock Text="{Binding ParchmentPv}" Foreground="White" FontSize="20" FontFamily="Consolas" Width="75" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="8,0,0,0"/>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="15,0,15,15">
+                            <StackPanel Height="50" Orientation="Horizontal">
+                                <Image gif:ImageBehavior.AnimatedSource="/Images/potionMana.gif" Stretch="Uniform" Height="50"/>
+                                <TextBlock Text="{Binding PotionMana}" Foreground="White" FontSize="20" FontFamily="Consolas" Width="75" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="8,0,0,0"/>
+                                <Image Source="/Images/parcheminMana.png" Height="50"/>
+                                <TextBlock Text="{Binding ParchmentMana}" Foreground="White" FontSize="20" FontFamily="Consolas" Width="75" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="8,0,0,0"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
                 </Border>
 
             </StackPanel>

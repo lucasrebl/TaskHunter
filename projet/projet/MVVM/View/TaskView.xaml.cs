@@ -20,64 +20,9 @@ namespace projet.MVVM.View
 {
     public partial class TaskView : UserControl
     {
-        private TaskListManager taskListManager;
-
         public TaskView()
         {
             InitializeComponent();
-
-            // Utilisez le singleton de l'InventoryManager pour initialiser le TaskListManager
-            this.taskListManager = InventoryManager.Instance.TaskListManager;
-            taskListBox.ItemsSource = taskListManager.Tasks;
-        }
-
-        private void addButton_Click(object sender, RoutedEventArgs e)
-        {
-            string newTask = ToDoListTitle.Text;
-            DateTime selectedDate = calendarDatePicker.SelectedDate ?? DateTime.Now;
-            taskListManager.AddTask(newTask, selectedDate);
-            ToDoListTitle.Text = "";
-        }
-
-        private void ToDoListTitle_GotFocus(object sender, RoutedEventArgs e)
-        {
-            ToDoListTitle.Text = "";
-        }
-
-        private void ToDoListTitle_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-        {
-            // Gestion de la modification du texte, si nécessaire
-        }
-
-        private const string CompleteButtonName = "completeButton";
-        private const string DeleteButtonName = "deleteButton";
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            ButtonBase button = (ButtonBase)sender;
-            TaskItem task = (TaskItem)button.DataContext;
-
-            if (task != null)
-            {
-                if (button.Name == CompleteButtonName)
-                {
-                    taskListManager.CompleteTask(task);
-                    taskListManager.Tasks.Remove(task);
-
-                    int rewardAmount = taskListManager.GetRandomReward();
-                    string rewardType = taskListManager.GetRewardType(rewardAmount);
-
-                    statusLabel.Text = $"Félicitations ! Vous avez reçu {taskListManager.TotalReward} {rewardType} en récompense. ";
-                }
-                else if (button.Name == DeleteButtonName)
-                {
-                    if (taskListManager.Tasks.Contains(task))
-                    {
-                        taskListManager.Tasks.Remove(task);
-                    }
-                }
-            }
         }
     }
 }
-

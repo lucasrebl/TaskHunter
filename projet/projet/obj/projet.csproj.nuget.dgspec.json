@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\C#\\TaskHunter\\projet\\projet\\projet.csproj": {}
+    "C:\\Ynov\\B2\\C#\\TaskHunter\\projet\\projet\\projet.csproj": {}
   },
   "projects": {
-    "D:\\C#\\TaskHunter\\projet\\projet\\projet.csproj": {
+    "C:\\Ynov\\B2\\C#\\TaskHunter\\projet\\projet\\projet.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\C#\\TaskHunter\\projet\\projet\\projet.csproj",
+        "projectUniqueName": "C:\\Ynov\\B2\\C#\\TaskHunter\\projet\\projet\\projet.csproj",
         "projectName": "projet",
-        "projectPath": "D:\\C#\\TaskHunter\\projet\\projet\\projet.csproj",
-        "packagesPath": "C:\\Users\\M1603Q_Doria\\.nuget\\packages\\",
-        "outputPath": "D:\\C#\\TaskHunter\\projet\\projet\\obj\\",
+        "projectPath": "C:\\Ynov\\B2\\C#\\TaskHunter\\projet\\projet\\projet.csproj",
+        "packagesPath": "C:\\Users\\rebou\\.nuget\\packages\\",
+        "outputPath": "C:\\Ynov\\B2\\C#\\TaskHunter\\projet\\projet\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\M1603Q_Doria\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\rebou\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -38,12 +34,19 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "default"
         }
       },
       "frameworks": {
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
             "WpfAnimatedGif": {
               "target": "Package",
               "version": "[2.0.2, )"
