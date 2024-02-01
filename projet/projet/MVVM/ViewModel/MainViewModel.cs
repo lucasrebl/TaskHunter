@@ -70,7 +70,7 @@ namespace projet.MVVM.ViewModel
             GameVM.InitializeGame(player);
         }
         private void CloseWindow(object parameter)
-        {0
+        {
             Application.Current.Shutdown();
         }
     }
