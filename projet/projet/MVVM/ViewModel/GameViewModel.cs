@@ -373,8 +373,7 @@ namespace projet.MVVM.ViewModel
         private void ResetButtonFunc(object parameter)
         {
             ActualPlayer.Reset();
-            NbWawes = 0;
-            ActualPlayer.Wins = 0;
+            NbWawes = 1;
             HiddenReset = "Hidden";
             InitializeGame(ActualPlayer);
         }
