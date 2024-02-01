@@ -253,8 +253,15 @@ namespace Players
 
         public void Reset()
         {
-            Pv = 40; Mana = 40;
+            Pv = 40;
+            Mana = 40;
+            originalHealth = 40;
+            originalMana = 40;
             ExperiencePoints = 0;
+            Level = 1;
+            Wins = 0;
+            Inventory newInv = new Inventory();
+            Inventory = newInv;
         }
 
         public void ResetStatsPlayer()
