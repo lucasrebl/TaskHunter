@@ -2,7 +2,7 @@
 
 Découvrez un jeu original  où vous incarnez un preux combattant maître de la foudre et du feu, prêt à tout pour s'améliorer en combat contre des monstres !
 
-# 📖 fonctionnalités: 
+# 📖 Fonctionnalités: 
  - Interface agréable
  - Dashboard du suivi de compétences
  - Système de combat digne d'un rpg
@@ -17,7 +17,7 @@ Découvrez un jeu original  où vous incarnez un preux combattant maître de la 
 - Design pattern:
   - State machine : Représente un système où le comportement est déterminé par un ensemble fini d'états, et les transitions entre ces états sont modifiées en fonction d'actions spécifiques, telles que les attaques, permettant ainsi de changer l'état des monstres.
   - Singleton : Permet qu'une classe n'ait qu'une seule instance et fournissant un point d'accès global à cette instance, comme par exemple le joueur et son inventaire qui sont appelés de partout mais qui ne sont créé qu'une fois
-  - Modèle MVVM (Modèle-Vue-VueModèle) : architecture de conception logicielle utilisée dans le développement d'interfaces utilisateur, séparant les responsabilités entre la logique métier (Modèle), la présentation (Vue), et la gestion des     interactions utilisateur (VueModèle)
+  - Modèle MVVM (Modèle-Vue-VueModèle) : Architecture de conception logicielle utilisée dans le développement d'interfaces utilisateur, séparant les responsabilités entre la logique métier (Modèle), la présentation (Vue), et la gestion des interactions utilisateurs (VueModèle)
  
     ## ⬇️ Procédure de lancement
       <ul>Etape 1 Télécharger le dossier àl'adresse suivante : 
@@ -60,11 +60,11 @@ https://github.com/lucasrebl/TaskHunter.git
    #### 🥞 Contributions
 
    <ul>Reboulet Lucas => Grand maître</ul>
-   <ul>Marie Gabriel => Conquérent du bug</ul>
+   <ul>Marie Gabriel => Conquérant du bug</ul>
    <ul>Remadna Doria => Barde du design intemporel</ul>
 
    #### 🖨️ Copyright:
 
-   Tous droits réservés, ce projet étudiants appartient au groupe de développeur et interdit la modification du code.
+   Tous droits réservés, ce projet étudiant appartient au groupe de développeur et interdit la modification du code.
 
    Merci pour votre soutien ! 
