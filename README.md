@@ -52,10 +52,10 @@ https://github.com/lucasrebl/TaskHunter.git
 
   
   En cas de problème:
-    Etape 1 Supprimer les dépendances (le package nuGet peut poser problème lors de l'installation)
-    Etape 2 Réinstallation de nuGet
-    Etape 3 Exécution du package
-    Etape 4 Rebuild du projet
+    <ul>Etape 1 Supprimer les dépendances (le package nuGet peut poser problème lors de l'installation)</ul>
+    <ul>Etape 2 Réinstallation de nuGet</ul>
+    <ul>Etape 3 Exécution du package</ul>
+    <ul>Etape 4 Rebuild du projet</ul>
 
    #### 🥞 Contributions
 
