@@ -2,7 +2,8 @@
 
 Découvrez un jeu original  où vous incarnez un preux combattant maître de la foudre et du feu, prêt à tout pour s'améliorer en combat contre des monstres !
 
-# 📖 Fonctionnalités: 
+# 📖 Fonctionnalités:
+
  - Interface agréable
  - Dashboard du suivi de compétences
  - Système de combat digne d'un rpg
@@ -12,59 +13,65 @@ Découvrez un jeu original  où vous incarnez un preux combattant maître de la 
 
  # 👩‍💻 Technologies employées:
 - C#
-- Principe de la POO
+- Principes de la POO
 - WPF
-- Design pattern:
+- Design patterns utilisés :
+
   - State machine : Représente un système où le comportement est déterminé par un ensemble fini d'états, et les transitions entre ces états sont modifiées en fonction d'actions spécifiques, telles que les attaques, permettant ainsi de changer l'état des monstres.
   - Singleton : Permet qu'une classe n'ait qu'une seule instance et fournissant un point d'accès global à cette instance, comme par exemple le joueur et son inventaire qui sont appelés de partout mais qui ne sont créé qu'une fois
   - Modèle MVVM (Modèle-Vue-VueModèle) : Architecture de conception logicielle utilisée dans le développement d'interfaces utilisateur, séparant les responsabilités entre la logique métier (Modèle), la présentation (Vue), et la gestion des interactions utilisateurs (VueModèle)
+  - Commanders
  
-    ## ⬇️ Procédure de lancement
-      <ul>Etape 1 Télécharger le dossier àl'adresse suivante : 
-     https://github.com/lucasrebl/TaskHunter/releases/download/Release/TaskHunter-v1.0.zip</ul>
-      
-    ![image](https://github.com/lucasrebl/TaskHunter/assets/112953319/5cfe9b98-2ecd-4db0-947e-5e26d2ab20ea)
+ # ⬇️ Procédure de lancement
+ 
+ - Étape 1 : Télécharger le dossier à l'adresse suivante :
 
-    <ul>Etape 2 Dézippe du projet</ul>
-    <ul>Etape 3 Lancement du .exe</ul>
+ https://github.com/lucasrebl/TaskHunter/releases/download/Release/TaskHunter-v1.0.zip
+
+![image](https://github.com/lucasrebl/TaskHunter/assets/112953319/5cfe9b98-2ecd-4db0-947e-5e26d2ab20ea)
+
+- Étape 2 : Dézipper TaskHunter-v1.0.zip
+  
+- Étape 3 : Ouvrir TaskHunter.exe
+
+![image](https://github.com/lucasrebl/TaskHunter/assets/112953319/7f2816b1-1286-4ce7-9b34-228dcc97f73a)
  
-    ![image](https://github.com/lucasrebl/TaskHunter/assets/112953319/7f2816b1-1286-4ce7-9b34-228dcc97f73a)
- 
-    Si vous avez ce message :
+Si vous avez ce message :
     
-    ![image](https://github.com/lucasrebl/TaskHunter/assets/112953319/68507236-170a-47c0-b9e6-622ab4ccd14c)
+![image](https://github.com/lucasrebl/TaskHunter/assets/112953319/68507236-170a-47c0-b9e6-622ab4ccd14c)
  
-    Cliquez sur "informations complémentaires puis exécutez:
+Cliquez sur "Informations complémentaires" puis exécutez:
  
-    ![image](https://github.com/lucasrebl/TaskHunter/assets/112953319/81a89813-7cc9-4443-9b21-012cd2e20aea)
+![image](https://github.com/lucasrebl/TaskHunter/assets/112953319/81a89813-7cc9-4443-9b21-012cd2e20aea)
 
-    ### 🖱️ Pour les développeurs,
+## 🖱️ Pour les développeurs,
 
-    <ul>Ouvrir Visual Studio Code et cliquer sur cloner le repository</ul>
+- Ouvrir Visual Studio Code et cliquer sur cloner le repository
     
-    ![image](https://github.com/lucasrebl/TaskHunter/assets/112953319/f574640b-f5a4-46b7-a8ac-76b5e72922da)
+![image](https://github.com/lucasrebl/TaskHunter/assets/112953319/f574640b-f5a4-46b7-a8ac-76b5e72922da)
 
-   <ul> Etape 2 Clone du repository </ul>
- ```bash
+- Étape 2 : Clone du repository
+
+```bash
 https://github.com/lucasrebl/TaskHunter.git
 ```
-   <ul>Etape 3 Lancement du projet</ul>
 
-  
-  En cas de problème:
-    <ul>Etape 1 Supprimer les dépendances (le package nuGet peut poser problème lors de l'installation)</ul>
-    <ul>Etape 2 Réinstallation de nuGet</ul>
-    <ul>Etape 3 Exécution du package</ul>
-    <ul>Etape 4 Rebuild du projet</ul>
+- Étape 3 : Lancement du projet
 
-   #### 🥞 Contributions
+En cas de problème:
+- Étape 1 : Supprimer les dépendances (le package nuGet peut poser problème lors de l'installation)
+- Étape 2 : Réinstallation de nuGet
+- Étape 3 : Exécution du package
+- Étape 4 : Rebuild du projet
 
-   <ul>Reboulet Lucas => Grand maître</ul>
-   <ul>Marie Gabriel => Conquérant du bug</ul>
-   <ul>Remadna Doria => Barde du design intemporel</ul>
+# 🥞 Contributions
 
-   #### 🖨️ Copyright:
+- REBOULET Lucas => Grand maître
+- MARIE Gabriel => Conquérant du bug
+- REMADNA Doria => Barde du design intemporel
 
-   Tous droits réservés, ce projet étudiant appartient au groupe de développeur et interdit la modification du code.
+## 🖨️ Copyright:
 
-   Merci pour votre soutien ! 
+Tous droits réservés, ce projet étudiant appartient au groupe de développeur et interdit la modification du code.
+
+Merci pour votre soutien ! 
